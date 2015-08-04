@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "pkTestObject.h"
 
 @interface AppDelegate ()
 
@@ -46,6 +47,22 @@
 	
 	[view setFrame:NSOffsetRect(view.frame, 50, 50)];
 	[[[self window] contentView] addSubview:view];
+	
+	
+	// ------------------------------------------------------------------------
+	pkTestObject *obj = [[pkTestObject alloc] init];
+	[obj setDate:[NSDate date]];
+	[obj setImage:[NSImage imageNamed:NSImageNameUser]];
+	[obj setTest:@"Hallo World"];
+	[obj setName:@"Name yxcvb"];
+	[obj setCheck:YES];
+	[obj setInum:32000];
+	[obj setLnum:64000];
+	[obj setCcheck:'r'];
+	
+	NSView *newView = [obj debugQuickLookObject];
+	[newView setFrame:NSOffsetRect(newView.frame, 500, 50)];
+	[[[self window] contentView] addSubview:newView];
 }
 
 @end
