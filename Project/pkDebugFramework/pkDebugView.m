@@ -23,6 +23,14 @@
 	return view;
 }
 
++ (NSData *)getSubData:(NSData *)source withRange:(NSRange)range
+{
+	UInt8 bytes[range.length];
+	[source getBytes:&bytes range:range];
+	NSData *result = [[NSData alloc] initWithBytes:bytes length:sizeof(bytes)];
+	return result;
+}
+
 + (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
@@ -45,7 +53,7 @@
 			NSString *propertyName = [NSString stringWithUTF8String:propName];
 			NSString *propertyType = [NSString stringWithUTF8String:type];
 			
-			NSLog(@"type: %@", propertyType);
+//			NSLog(@"type: %@", propertyType);
 			
 			id object = [[NSClassFromString(propertyType) alloc] init];		// every Obj-C Object ...
 			if (object)
@@ -55,9 +63,16 @@
 //					property = @"nil";
 //				}
 				
-				if ([object isKindOfClass:[NSImage class]] || [object isKindOfClass:[NSData class]])
+				
+				if ([object isKindOfClass:[NSData class]])
 				{
-					NSString *string = [NSString stringWithFormat:@"%@", [object debugDescription]];
+					NSData *data = (NSData *)property;
+					NSString *string = [NSString stringWithFormat:@"%@ ...", [self getSubData:data withRange:NSMakeRange(0, 40)]];
+					[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+				}
+				else if ([object isKindOfClass:[NSImage class]])
+				{
+					NSString *string = [NSString stringWithFormat:@"%@", [property debugDescription]];
 //					NSString *string = @"image ...";
 					[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 				}
