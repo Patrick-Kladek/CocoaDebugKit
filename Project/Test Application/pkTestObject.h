@@ -14,6 +14,8 @@
 @property (nonatomic) NSImage *image;
 @property (nonatomic) id prop;
 
+@property (nonatomic) NSSet *set;
+
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *test;
 

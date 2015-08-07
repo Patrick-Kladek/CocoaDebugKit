@@ -51,8 +51,13 @@
 	
 	// ------------------------------------------------------------------------
 	pkTestObject *obj = [[pkTestObject alloc] init];
-	[obj setDate:[NSDate date]];
-	[obj setImage:[NSImage imageNamed:NSImageNameUser]];
+//	[obj setDate:[NSDate date]];
+	
+	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Ich" ofType:@"jpg"]];
+	[image setCacheMode:NSImageCacheNever];
+	
+	[obj setSet:[NSSet setWithObject:@"Hallo"]];
+	[obj setImage:image];
 	[obj setTest:@"Hallo World"];
 	[obj setName:@"Name yxcvb"];
 	[obj setCheck:YES];
