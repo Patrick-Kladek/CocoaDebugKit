@@ -1,0 +1,6 @@
+framework module pkDebugFramework {
+  umbrella header "pkDebugFramework.h"
+
+  export *
+  module * { export * }
+}

@@ -45,7 +45,7 @@
 			NSString *propertyName = [NSString stringWithUTF8String:propName];
 			NSString *propertyType = [NSString stringWithUTF8String:type];
 			
-//			NSLog(@"type: %@", propertyType);
+			NSLog(@"type: %@", propertyType);
 			
 			id object = [[NSClassFromString(propertyType) alloc] init];		// every Obj-C Object ...
 			if (object)
@@ -55,9 +55,10 @@
 //					property = @"nil";
 //				}
 				
-				if ([object isKindOfClass:[NSImage class]])
+				if ([object isKindOfClass:[NSImage class]] || [object isKindOfClass:[NSData class]])
 				{
-					NSString *string = [NSString stringWithFormat:@"%@", [property debugDescription]];
+					NSString *string = [NSString stringWithFormat:@"%@", [object debugDescription]];
+//					NSString *string = @"image ...";
 					[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 				}
 				else
