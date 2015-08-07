@@ -10,6 +10,8 @@
 
 @interface pkTestObject : NSObject
 
+@property (nonatomic) NSData *data;
+
 @property (nonatomic) NSDate *date;
 @property (nonatomic) NSImage *image;
 @property (nonatomic) id prop;
