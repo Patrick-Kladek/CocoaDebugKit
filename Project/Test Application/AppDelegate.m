@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "pkTestObject.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <pkTestObjectDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @end
@@ -40,6 +40,7 @@
 	[view addLineWithDescription:@"array" string:array.description];
 	
 	
+	
 	[view addLineWithDescription:@"test" string:nil];
 	[view addLineWithDescription:@"test" boolean:YES];
 	[view addLineWithDescription:@"test" boolean:NO];
@@ -51,6 +52,7 @@
 	
 	// ------------------------------------------------------------------------
 	pkTestObject *obj = [[pkTestObject alloc] init];
+	[obj setDelegate:self];
 //	[obj setDate:[NSDate date]];
 	
 	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Ich" ofType:@"jpg"]];
@@ -65,6 +67,7 @@
 	[obj setInum:32000];
 	[obj setLnum:64000];
 	[obj setCcheck:'r'];
+	[obj setUrl:[NSURL URLWithString:@"file:///Users/patrick/Desktop/"]];
 	
 	NSView *newView = [obj debugQuickLookObject];
 	[newView setFrame:NSOffsetRect(newView.frame, 500, 50)];

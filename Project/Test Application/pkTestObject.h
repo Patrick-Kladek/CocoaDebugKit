@@ -8,7 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class pkTestObject;
+
+@protocol pkTestObjectDelegate <NSObject>
+
+-(void)smt;
+
+@end
+
+
+
 @interface pkTestObject : NSObject
+
+@property (nonatomic, weak) id<pkTestObjectDelegate> delegate;
 
 @property (nonatomic) NSData *data;
 
@@ -25,6 +37,8 @@
 @property (nonatomic) unsigned char ccheck;
 @property (nonatomic) int inum;
 @property (nonatomic) long lnum;
+
+@property (nonatomic) NSURL *url;
 
 - (id)debugQuickLookObject;
 

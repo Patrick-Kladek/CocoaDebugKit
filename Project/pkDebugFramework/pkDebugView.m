@@ -48,12 +48,9 @@
 		if(propName)
 		{
 			const char *type = getPropertyType(property);
-			
-			
 			NSString *propertyName = [NSString stringWithUTF8String:propName];
 			NSString *propertyType = [NSString stringWithUTF8String:type];
 			
-//			NSLog(@"type: %@", propertyType);
 			
 			id object = [[NSClassFromString(propertyType) alloc] init];		// every Obj-C Object ...
 			if (object)
@@ -73,7 +70,6 @@
 				else if ([object isKindOfClass:[NSImage class]])
 				{
 					NSString *string = [NSString stringWithFormat:@"%@", [property debugDescription]];
-//					NSString *string = @"image ...";
 					[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 				}
 				else
@@ -83,34 +79,21 @@
 				}
 
 			}
-			
-			if ([propertyType isEqualToString:@"id"])										// id
+			else if ([propertyType isEqualToString:@"id"])										// id
 			{
 				id property = [obj valueForKey:propertyName];
 				
 				NSString *string = [NSString stringWithFormat:@"%@", property];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 			}
-			
-			/*
-			if ([propertyType isEqualToString:NSStringFromClass([NSString class])])			// NSString
+			else if ([propertyType isEqualToString:@"NSURL"])									// NSURL
 			{
-				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]]];
+				id property = [obj valueForKey:propertyName];
+				
+				NSString *string = [NSString stringWithFormat:@"%@", property];
+				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 			}
-			
-			if ([propertyType isEqualToString:NSStringFromClass([NSDate class])])			// NSDate
-			{
-				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]]];
-			}
-			
-			if ([propertyType isEqualToString:NSStringFromClass([NSImage class])])			// NSImage
-			{
-				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]]];
-			}*/
-			
-			
-			
-			if ([propertyType isEqualToString:@"c"])										// Char
+			else if ([propertyType isEqualToString:@"c"])										// Char
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				if ([number boolValue] == true)
@@ -122,84 +105,82 @@
 					[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:NO];
 				}
 			}
-			
-			if ([propertyType isEqualToString:@"i"])										// Int
+			else if ([propertyType isEqualToString:@"i"])										// Int
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number integerValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"s"])										// Short
+			else if ([propertyType isEqualToString:@"s"])										// Short
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number shortValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"l"])										// long
+			else if ([propertyType isEqualToString:@"l"])										// long
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number longValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"q"])										// long long
+			else if ([propertyType isEqualToString:@"q"])										// long long
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] longnumber:[number longLongValue]];
 			}
-			
-			
-			
-			if ([propertyType isEqualToString:@"C"])										// unsigned char
+			else if ([propertyType isEqualToString:@"C"])										// unsigned char
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				char mchar = [number charValue];
 				NSString *string = [NSString stringWithFormat:@"%c", mchar];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 			}
-			
-			if ([propertyType isEqualToString:@"I"])										// unsigned Int
+			else if ([propertyType isEqualToString:@"I"])										// unsigned Int
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedIntegerValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"S"])										// unsigned Short
+			else if ([propertyType isEqualToString:@"S"])										// unsigned Short
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number unsignedShortValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"L"])										// unsigned long
+			else if ([propertyType isEqualToString:@"L"])										// unsigned long
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedLongValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"Q"])										// unsigned long long
+			else if ([propertyType isEqualToString:@"Q"])										// unsigned long long
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedLongnumber:[number unsignedLongLongValue]];
 			}
-			
-			
-			if ([propertyType isEqualToString:@"f"])										// float
+			else if ([propertyType isEqualToString:@"f"])										// float
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number floatValue]];
 			}
-			
-			if ([propertyType isEqualToString:@"d"])										// double
+			else if ([propertyType isEqualToString:@"d"])										// double
 			{
 				NSNumber *number = [obj valueForKey:propertyName];
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number doubleValue]];
 			}
-			
-			
-			if ([propertyType isEqualToString:@"*"])										// char * (pointer)
+			else if ([propertyType isEqualToString:@"*"])										// char * (pointer)
 			{
 				NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
 				
 				[view addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%@", string]];
+			}
+			else
+			{
+				// if first char == '<' and last char == '>' then some delegate ...
+				NSString *firstChar = [propertyType substringToIndex:1];
+				NSString *lastChar = [propertyType substringFromIndex:propertyType.length-1];
+				
+				NSLog(@"%@	%@", firstChar, lastChar);
+				
+				if ([firstChar isEqualToString:@"<"] && [lastChar isEqualToString:@">"])
+				{
+					// Delegate ...
+					[view addLineWithDescription:propertyName string:propertyType];
+				}
 			}
 			
 		}
