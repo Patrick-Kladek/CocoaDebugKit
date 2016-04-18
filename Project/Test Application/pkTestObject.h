@@ -33,12 +33,16 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *test;
 
-@property (nonatomic) BOOL check;
+@property (nonatomic, getter=isCheck) BOOL check;
 @property (nonatomic) unsigned char ccheck;
 @property (nonatomic) int inum;
 @property (nonatomic) long lnum;
 
 @property (nonatomic) NSURL *url;
+
+
+
+@property (nonatomic) pkTestObject *object;
 
 - (id)debugQuickLookObject;
 

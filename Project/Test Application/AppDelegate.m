@@ -14,6 +14,8 @@
 @property (weak) IBOutlet NSWindow *window;
 @end
 
+
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -53,7 +55,7 @@
 	// ------------------------------------------------------------------------
 	pkTestObject *obj = [[pkTestObject alloc] init];
 	[obj setDelegate:self];
-//	[obj setDate:[NSDate date]];
+	[obj setDate:[NSDate date]];
 	
 	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Ich" ofType:@"jpg"]];
 	[obj setData:[image TIFFRepresentation]];
@@ -69,8 +71,13 @@
 	[obj setCcheck:'r'];
 	[obj setUrl:[NSURL URLWithString:@"file:///Users/patrick/Desktop/"]];
 	
+	pkTestObject *obj2 = [[pkTestObject alloc] init];
+	[obj2 setName:@"hugo"];
+	[obj setObject:obj2];
+	
+	
 	NSView *newView = [obj debugQuickLookObject];
-	[newView setFrame:NSOffsetRect(newView.frame, 500, 50)];
+	[newView setFrame:NSOffsetRect(newView.frame, 600, 50)];
 	[[[self window] contentView] addSubview:newView];
 }
 
