@@ -34,6 +34,20 @@
                ReferencedContainer = "container:pkDebugFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD5796111CC522EB0014BFD0"
+               BuildableName = "pkDebugFrameworkMobileTests.xctest"
+               BlueprintName = "pkDebugFrameworkMobileTests"
+               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "CD2762521B0E30210000BB5D"
                BuildableName = "Test ApplicationTests.xctest"
                BlueprintName = "Test ApplicationTests"
+               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD5796111CC522EB0014BFD0"
+               BuildableName = "pkDebugFrameworkMobileTests.xctest"
+               BlueprintName = "pkDebugFrameworkMobileTests"
                ReferencedContainer = "container:pkDebugFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>

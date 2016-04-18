@@ -28,6 +28,13 @@
 
 + (pkDebugView *)debugView;
 + (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj;
++ (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj;
+
+
+
+
+- (void)addProperties:(NSString *)string fromObject:(NSObject *)obj;
+- (void)addAllPropertiesFromObject:(NSObject *)obj;
 
 - (void)addLineWithDescription:(NSString *)desc string:(NSString *)value;
 - (void)addLineWithDescription:(NSString *)desc integer:(NSInteger)integer;
