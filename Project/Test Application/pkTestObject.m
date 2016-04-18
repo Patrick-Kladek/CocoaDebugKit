@@ -24,7 +24,7 @@
 	
 	
 	// option 2
-//	pkDebugView *view = [pkDebugView debugViewWithProperties:@"name, image, set" ofObject:self];
+//	pkDebugView *view = [pkDebugView debugViewWithProperties:@"name, image, url" ofObject:self];
 	
 	// or
 //	pkDebugView *view = [pkDebugView debugView];

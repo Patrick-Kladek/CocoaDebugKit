@@ -10,6 +10,13 @@
 #import <objc/runtime.h>
 
 @interface pkDebugView ()
+{
+	NSInteger pos;
+	NSInteger leftWidth;
+	NSInteger rightWidth;
+	
+	NSTextField *titleTextField;
+}
 
 - (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor;
 
@@ -58,12 +65,13 @@
 static const char *getPropertyType(objc_property_t property)
 {
 	const char *attributes = property_getAttributes(property);
-//	printf("attributes=%s\n", attributes);
 	char buffer[1 + strlen(attributes)];
 	strcpy(buffer, attributes);
 	char *state = buffer, *attribute;
-	while ((attribute = strsep(&state, ",")) != NULL) {
-		if (attribute[0] == 'T' && attribute[1] != '@') {
+	while ((attribute = strsep(&state, ",")) != NULL)
+	{
+		if (attribute[0] == 'T' && attribute[1] != '@')
+		{
 			// it's a C primitive type:
 			/*
 			 if you want a list of what will be returned for these primitives, search online for
@@ -72,24 +80,19 @@ static const char *getPropertyType(objc_property_t property)
 			 */
 			return (const char *)[[NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1] bytes];
 		}
-//		else if (attribute[0] == 'T' && attribute[1] == '@')
-//		{
-//			// it's an ObjC id type:
-//			return "id";
-//		}
-		else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2) {
+		else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2)
+		{
 			// it's an ObjC id type:
 			return "id";
 		}
-		else if (attribute[0] == 'T' && attribute[1] == '@') {
+		else if (attribute[0] == 'T' && attribute[1] == '@')
+		{
 			// it's another ObjC object type:
 			return (const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes];
 		}
 	}
 	return "";
 }
-
-
 
 
 
@@ -123,6 +126,12 @@ static const char *getPropertyType(objc_property_t property)
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
+	
+	// TODO: change this
+	if (titleTextField.frame.size.width + 20 > self.frame.size.width)	// +20 => | 10 --- label ----- 10 |
+	{
+		[self setFrame:NSMakeRect(self.frame.origin.x, self.frame.origin.y, titleTextField.frame.size.width + 20, self.frame.size.height)];
+	}
 	
 	[self setWantsLayer:YES];
 	[self.layer setCornerRadius:5];
@@ -311,6 +320,7 @@ static const char *getPropertyType(objc_property_t property)
 	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10 + leftWidth + 20, pos, 40, 40)];
 	[imageView setImage:image];
 	[imageView setIdentifier:@"rightImage"];
+//	[[imageView cell] setImageFrameStyle:NSImageFrameGrayBezel];
 	
 	if (imageView.frame.size.width > rightWidth) {
 		rightWidth = imageView.frame.size.width;

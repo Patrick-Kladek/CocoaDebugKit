@@ -15,7 +15,6 @@
 		CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD27624A1B0E30210000BB5D /* Images.xcassets */; };
 		CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27624C1B0E30210000BB5D /* MainMenu.xib */; };
 		CD2762611B0E30580000BB5D /* pkDebugFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */; };
-		CD57960D1CC522EB0014BFD0 /* pkDebugFrameworkMobile.h in Headers */ = {isa = PBXBuildFile; fileRef = CD57960C1CC522EB0014BFD0 /* pkDebugFrameworkMobile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD57962D1CC5262E0014BFD0 /* pkDebugFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD57963D1CC56CD40014BFD0 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = CD57963C1CC56CD40014BFD0 /* image.png */; };
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
@@ -58,9 +57,6 @@
 		CD2762481B0E30210000BB5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD27624A1B0E30210000BB5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD27624D1B0E30210000BB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		CD5796081CC522EB0014BFD0 /* pkDebugFrameworkMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pkDebugFrameworkMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD57960B1CC522EB0014BFD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD57960C1CC522EB0014BFD0 /* pkDebugFrameworkMobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkDebugFrameworkMobile.h; sourceTree = "<group>"; };
 		CD57963C1CC56CD40014BFD0 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		CDBBC8451B70E31600923E3E /* pkTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkTestObject.h; sourceTree = "<group>"; };
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
@@ -82,13 +78,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD5796041CC522EB0014BFD0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,8 +86,6 @@
 			children = (
 				CD2762421B0E30210000BB5D /* Test Application */,
 				CD2761ED1B0E1C050000BB5D /* pkDebugFramework */,
-				CD5796091CC522EB0014BFD0 /* pkDebugFrameworkMobile */,
-				CD5796281CC522FE0014BFD0 /* Shared */,
 				CD2761EC1B0E1C050000BB5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,7 +95,6 @@
 			children = (
 				CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */,
 				CD2762411B0E30210000BB5D /* Test Application.app */,
-				CD5796081CC522EB0014BFD0 /* pkDebugFrameworkMobile.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */,
+				CD57963E1CC56F620014BFD0 /* DebugView */,
 				CD2761EE1B0E1C050000BB5D /* Supporting Files */,
 			);
 			path = pkDebugFramework;
@@ -135,8 +122,7 @@
 			children = (
 				CD2762451B0E30210000BB5D /* AppDelegate.h */,
 				CD2762461B0E30210000BB5D /* AppDelegate.m */,
-				CDBBC8451B70E31600923E3E /* pkTestObject.h */,
-				CDBBC8461B70E31600923E3E /* pkTestObject.m */,
+				CD57963F1CC570170014BFD0 /* Test Object */,
 				CD27624A1B0E30210000BB5D /* Images.xcassets */,
 				CD27624C1B0E30210000BB5D /* MainMenu.xib */,
 				CD2762431B0E30210000BB5D /* Supporting Files */,
@@ -154,31 +140,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CD5796091CC522EB0014BFD0 /* pkDebugFrameworkMobile */ = {
-			isa = PBXGroup;
-			children = (
-				CD57960C1CC522EB0014BFD0 /* pkDebugFrameworkMobile.h */,
-				CD57960A1CC522EB0014BFD0 /* Supporting Files */,
-			);
-			path = pkDebugFrameworkMobile;
-			sourceTree = "<group>";
-		};
-		CD57960A1CC522EB0014BFD0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CD57960B1CC522EB0014BFD0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CD5796281CC522FE0014BFD0 /* Shared */ = {
+		CD57963E1CC56F620014BFD0 /* DebugView */ = {
 			isa = PBXGroup;
 			children = (
 				CD2762071B0E1DB50000BB5D /* pkDebugView.h */,
 				CD2762081B0E1DB50000BB5D /* pkDebugView.m */,
 			);
-			name = Shared;
-			path = pkDebugFramework;
+			name = DebugView;
+			sourceTree = "<group>";
+		};
+		CD57963F1CC570170014BFD0 /* Test Object */ = {
+			isa = PBXGroup;
+			children = (
+				CDBBC8451B70E31600923E3E /* pkTestObject.h */,
+				CDBBC8461B70E31600923E3E /* pkTestObject.m */,
+			);
+			name = "Test Object";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,14 +167,6 @@
 			files = (
 				CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */,
 				CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD5796051CC522EB0014BFD0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD57960D1CC522EB0014BFD0 /* pkDebugFrameworkMobile.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,25 +211,6 @@
 			productReference = CD2762411B0E30210000BB5D /* Test Application.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CD5796071CC522EB0014BFD0 /* pkDebugFrameworkMobile */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD5796211CC522EB0014BFD0 /* Build configuration list for PBXNativeTarget "pkDebugFrameworkMobile" */;
-			buildPhases = (
-				CD5796031CC522EB0014BFD0 /* Sources */,
-				CD5796041CC522EB0014BFD0 /* Frameworks */,
-				CD5796051CC522EB0014BFD0 /* Headers */,
-				CD5796061CC522EB0014BFD0 /* Resources */,
-				CD57962B1CC523960014BFD0 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = pkDebugFrameworkMobile;
-			productName = pkDebugFrameworkMobile;
-			productReference = CD5796081CC522EB0014BFD0 /* pkDebugFrameworkMobile.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -274,9 +224,6 @@
 						CreatedOnToolsVersion = 6.2;
 					};
 					CD2762401B0E30210000BB5D = {
-						CreatedOnToolsVersion = 6.2;
-					};
-					CD5796071CC522EB0014BFD0 = {
 						CreatedOnToolsVersion = 6.2;
 					};
 				};
@@ -296,7 +243,6 @@
 			targets = (
 				CD2762401B0E30210000BB5D /* Test Application */,
 				CD2761EA1B0E1C050000BB5D /* pkDebugFramework */,
-				CD5796071CC522EB0014BFD0 /* pkDebugFrameworkMobile */,
 			);
 		};
 /* End PBXProject section */
@@ -319,30 +265,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD5796061CC522EB0014BFD0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		CD57962A1CC523830014BFD0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
-		};
-		CD57962B1CC523960014BFD0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,13 +299,6 @@
 				CD2762491B0E30210000BB5D /* main.m in Sources */,
 				CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */,
 				CD2762471B0E30210000BB5D /* AppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD5796031CC522EB0014BFD0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,52 +474,6 @@
 			};
 			name = Release;
 		};
-		CD5796221CC522EB0014BFD0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = pkDebugFrameworkMobile/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CD5796231CC522EB0014BFD0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = pkDebugFrameworkMobile/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -627,15 +500,6 @@
 			buildConfigurations = (
 				CD27625C1B0E30210000BB5D /* Debug */,
 				CD27625D1B0E30210000BB5D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CD5796211CC522EB0014BFD0 /* Build configuration list for PBXNativeTarget "pkDebugFrameworkMobile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD5796221CC522EB0014BFD0 /* Debug */,
-				CD5796231CC522EB0014BFD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

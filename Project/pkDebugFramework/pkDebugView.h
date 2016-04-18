@@ -9,13 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface pkDebugView : NSView
-{
-	NSInteger pos;
-	NSInteger leftWidth;
-	NSInteger rightWidth;
-	
-	NSTextField *titleTextField;
-}
 
 @property (nonatomic) NSString *title;
 @property (nonatomic) BOOL highlightKeywords;
