@@ -38,7 +38,8 @@
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
 
-	[view setTitle:[obj className]];
+//	[view setTitle:[obj className]];
+	[view setTitle:[NSString stringWithFormat:@"%@ : %@", [obj class], [obj superclass]]];
 	[view enumerateProperties:obj allowed:nil];
 
 	return view;
@@ -47,7 +48,7 @@
 + (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
-	[view setTitle:[obj className]];
+	[view setTitle:[NSString stringWithFormat:@"%@ : %@", [obj class], [obj superclass]]];
 	
 	[view addProperties:properties fromObject:obj];
 	
@@ -286,6 +287,42 @@ static const char *getPropertyType(objc_property_t property)
 	}
 }
 
+- (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image
+{
+	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
+	
+	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
+	
+	
+	[left setIdentifier:@"left"];
+	[left setTextColor:[NSColor blackColor]];
+	[left setFont:[NSFont fontWithName:@"Lucida Grande" size:[NSFont smallSystemFontSize]+0.0]];
+	[left sizeToFit];
+	
+	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y + 2.5, left.frame.size.width, left.frame.size.height + 2.5)];
+	
+	if (left.frame.size.width > leftWidth) {
+		leftWidth = left.frame.size.width;
+	}
+	[self addSubview:left];
+	
+	
+	
+	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10 + leftWidth + 20, pos, 40, 40)];
+	[imageView setImage:image];
+	[imageView setIdentifier:@"rightImage"];
+	
+	if (imageView.frame.size.width > rightWidth) {
+		rightWidth = imageView.frame.size.width;
+	}
+	
+	pos = pos + imageView.frame.size.height + _space;
+	[self addSubview:imageView];
+	[self resizeLeftTextViews];
+	[self resizeRightTextViews];
+	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
+}
+
 
 
 #pragma mark - Intern
@@ -302,13 +339,12 @@ static const char *getPropertyType(objc_property_t property)
 		if ([object isKindOfClass:[NSData class]])
 		{
 			NSData *data = (NSData *)property;
-			NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 40)]];
+			NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
 			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 		}
 		else if ([object isKindOfClass:[NSImage class]])
 		{
-			NSString *string = [NSString stringWithFormat:@"%@", [property debugDescription]];
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:property];
 		}
 		else
 		{
@@ -411,8 +447,6 @@ static const char *getPropertyType(objc_property_t property)
 		// if first char == '<' and last char == '>' then some delegate ...
 		NSString *firstChar = [propertyType substringToIndex:1];
 		NSString *lastChar = [propertyType substringFromIndex:propertyType.length-1];
-		
-		NSLog(@"%@	%@", firstChar, lastChar);
 		
 		if ([firstChar isEqualToString:@"<"] && [lastChar isEqualToString:@">"])
 		{

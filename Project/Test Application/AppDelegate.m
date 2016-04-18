@@ -57,7 +57,7 @@
 	[obj setDelegate:self];
 	[obj setDate:[NSDate date]];
 	
-	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Ich" ofType:@"jpg"]];
+	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image" ofType:@"png"]];
 	[obj setData:[image TIFFRepresentation]];
 	
 	
