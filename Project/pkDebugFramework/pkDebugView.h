@@ -43,5 +43,6 @@
 - (void)addLineWithDescription:(NSString *)desc unsignedLongnumber:(unsigned long long)number;
 - (void)addLineWithDescription:(NSString *)desc floating:(double)floating;
 - (void)addLineWithDescription:(NSString *)desc boolean:(BOOL)boolean;
+- (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
 
 @end
