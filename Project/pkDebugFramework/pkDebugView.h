@@ -14,9 +14,22 @@
 @property (nonatomic) BOOL highlightKeywords;
 @property (nonatomic) BOOL highlightNumbers;
 @property (nonatomic) NSInteger space;
-@property (nonatomic) NSColor *color;
+
+@property (nonatomic) NSColor *textColor;
+@property (nonatomic) NSFont *textFont;
+
 @property (nonatomic) NSColor *keywordColor;
+@property (nonatomic) NSFont *keywordFont;
+
 @property (nonatomic) NSColor *numberColor;
+@property (nonatomic) NSFont *numberFont;
+
+@property (nonatomic) NSColor *propertyNameColor;
+@property (nonatomic) NSFont *propertyNameFont;
+
+@property (nonatomic) NSColor *frameColor;
+@property (nonatomic) NSColor *backgroundColor;
+@property (nonatomic) NSSize imageSize;
 
 
 + (pkDebugView *)debugView;

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "pkTestObject.h"
+#import "Person.h"
 
 @interface AppDelegate () <pkTestObjectDelegate>
 
@@ -24,7 +25,7 @@
 	
 	pkDebugView *view = [pkDebugView debugView];
 	[view setTitle:@"ClassName"];
-	[view setColor:[NSColor purpleColor]];
+	[view setFrameColor:[NSColor purpleColor]];
 	
 	
 	[view addLineWithDescription:@"Name:"				string:@"Value"];
@@ -79,6 +80,18 @@
 	NSView *newView = [obj debugQuickLookObject];
 	[newView setFrame:NSOffsetRect(newView.frame, 600, 50)];
 	[[[self window] contentView] addSubview:newView];
+	
+	
+	
+	
+	Person *person = [[Person alloc] init];
+	[person setImage:[NSImage imageNamed:NSImageNameUser]];
+	[person setFirstName:@"Mark"];
+	[person setLastName:@"Johnson"];
+	[person setBirthday:[NSDate dateWithTimeIntervalSince1970:5*365*60*600]];
+	NSLog(@"%@", person);
+	
+	[[[self window] contentView] addSubview:[person debugQuickLookObject]];
 }
 
 @end

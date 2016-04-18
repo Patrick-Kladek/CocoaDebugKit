@@ -6,8 +6,37 @@
 //  Copyright (c) 2015 Patrick Kladek. All rights reserved.
 //
 
+// TODO: calculate hight of labels and resize ...
+
 #import "pkDebugView.h"
 #import <objc/runtime.h>
+
+
+
+static NSColor *NSColorFromHexString(NSString *inColorString)
+{
+	NSColor *result = nil;
+	unsigned colorCode = 0;
+	unsigned char redByte, greenByte, blueByte, alphaByte;
+	
+	if (nil != inColorString)
+	{
+		NSScanner *scanner = [NSScanner scannerWithString:inColorString];
+		(void) [scanner scanHexInt:&colorCode]; // ignore error
+	}
+	redByte = (unsigned char)(colorCode >> 24);
+	greenByte = (unsigned char)(colorCode >> 16);
+	blueByte = (unsigned char)(colorCode >> 8);
+	alphaByte = (unsigned char)(colorCode);		// masks off high bits
+	
+	result = [NSColor colorWithCalibratedRed:(CGFloat)redByte / 0xff green:(CGFloat)greenByte / 0xff blue:(CGFloat)blueByte / 0xff alpha:(CGFloat)alphaByte / 0xff];
+	return result;
+}
+
+
+
+
+
 
 @interface pkDebugView ()
 {
@@ -109,7 +138,10 @@ static const char *getPropertyType(objc_property_t property)
 		_highlightKeywords		= true;
 		_highlightNumbers		= true;
 		_title					= @"pkDebugView";
-		_color					= [NSColor blueColor];
+		
+		_textColor				= [NSColor blackColor];
+		_backgroundColor		= [NSColor whiteColor];
+		_frameColor				= [NSColor blueColor];
 		_keywordColor			= [NSColor colorWithCalibratedRed:0.592 green:0.000 blue:0.496 alpha:1.000];
 		_numberColor			= [NSColor colorWithCalibratedRed:0.077 green:0.000 blue:0.766 alpha:1.000];
 		[self setTitle:_title];
@@ -118,10 +150,47 @@ static const char *getPropertyType(objc_property_t property)
 		self.wantsLayer = YES;
 		self.layer.masksToBounds = YES;
 		
-		[self.layer setBackgroundColor:[[NSColor whiteColor] CGColor]];
+		[self.layer setBackgroundColor:[_backgroundColor CGColor]];
+		
+		
+		[self setDefaultsFromUrl:[[NSBundle mainBundle] URLForResource:@"com.kladek.pkDebugFramework.settings" withExtension:@"plist"]];
 	}
 	return self;
 }
+
+- (void)setDefaultsFromUrl:(NSURL *)url
+{
+	if (![url isFileURL]) {
+		return;
+	}
+	
+	
+	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfURL:url];
+	
+	_highlightNumbers = [[dict valueForKeyPath:@"numbers.highlight"] boolValue];
+	_numberColor = NSColorFromHexString([dict valueForKeyPath:@"numbers.color"]);
+	_numberFont = [NSFont fontWithName:[dict valueForKeyPath:@"numbers.font"] size:[[dict valueForKeyPath:@"numbers.size"] integerValue]];
+	
+	
+	_highlightKeywords = [[dict valueForKeyPath:@"keywords.highlight"] boolValue];
+	_keywordColor = NSColorFromHexString([dict valueForKeyPath:@"keywords.color"]);
+	_keywordFont = [NSFont fontWithName:[dict valueForKeyPath:@"keywords.font"] size:[[dict valueForKeyPath:@"keywords.size"] integerValue]];
+	
+	_textColor = NSColorFromHexString([dict valueForKeyPath:@"text.color"]);
+	_textFont = [NSFont fontWithName:[dict valueForKeyPath:@"text.font"] size:[[dict valueForKeyPath:@"text.size"] integerValue]];
+	
+	_propertyNameColor = NSColorFromHexString([dict valueForKeyPath:@"propertyName.color"]);
+	_propertyNameFont = [NSFont fontWithName:[dict valueForKeyPath:@"propertyName.font"] size:[[dict valueForKeyPath:@"propertyName.size"] integerValue]];
+	
+	
+	
+	_imageSize = NSSizeFromString([dict valueForKeyPath:@"image.size"]);
+	
+	
+	_backgroundColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.backgroundColor"]);
+	_frameColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.frameColor"]);
+}
+
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -135,12 +204,14 @@ static const char *getPropertyType(objc_property_t property)
 	
 	[self setWantsLayer:YES];
 	[self.layer setCornerRadius:5];
-	[self.layer setBorderColor:[_color CGColor]];
+	[self.layer setBorderColor:[_frameColor CGColor]];
 	[self.layer setBorderWidth:1];
 	[self setLayer:self.layer];
 	
+	[self.layer setBackgroundColor:[_backgroundColor CGColor]];
+	
 	NSRect rect = NSMakeRect(0, 0, dirtyRect.size.width, 23);
-	[_color set];
+	[_frameColor set];
 	NSRectFill(rect);
 }
 
@@ -174,7 +245,7 @@ static const char *getPropertyType(objc_property_t property)
 
 - (void)setColor:(NSColor *)color
 {
-	_color = color;
+	_frameColor = color;
 	[self setNeedsDisplay:YES];
 }
 
@@ -205,6 +276,8 @@ static const char *getPropertyType(objc_property_t property)
 	}
 }
 
+
+
 - (void)addLineWithDescription:(NSString *)desc string:(NSString *)value
 {
 	if (value == nil || value == NULL || [value isEqualToString:@"(null)"])
@@ -212,14 +285,14 @@ static const char *getPropertyType(objc_property_t property)
 		value = @"nil";
 		
 		if (_highlightKeywords == true) {
-			[self _addLineWithDescription:desc string:value leftColor:[NSColor blackColor] rightColor:_keywordColor];
+			[self _addLineWithDescription:desc string:value leftColor:_propertyNameColor rightColor:_keywordColor leftFont:_propertyNameFont rightFont:_keywordFont];
 		} else {
-			[self _addLineWithDescription:desc string:value leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+			[self _addLineWithDescription:desc string:value leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_keywordFont];
 		}
 	}
 	else
 	{
-		[self _addLineWithDescription:desc string:value leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:value leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_textFont];
 	}
 }
 
@@ -228,11 +301,10 @@ static const char *getPropertyType(objc_property_t property)
 	NSString *number = [NSString stringWithFormat:@"%li", integer];
 	
 	if (_highlightNumbers) {
-		[self _addLineWithDescription:desc string:number leftColor:[NSColor blackColor] rightColor:_numberColor];
+		[self _addLineWithDescription:desc string:number leftColor:_propertyNameColor rightColor:_numberColor leftFont:_propertyNameFont rightFont:_numberFont];
 	} else {
-		[self _addLineWithDescription:desc string:number leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:number leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_textFont];
 	}
-	
 }
 
 - (void)addLineWithDescription:(NSString *)desc unsignedInteger:(NSUInteger)uinteger
@@ -240,9 +312,9 @@ static const char *getPropertyType(objc_property_t property)
 	NSString *number = [NSString stringWithFormat:@"%lu", uinteger];
 	
 	if (_highlightNumbers) {
-		[self _addLineWithDescription:desc string:number leftColor:[NSColor blackColor] rightColor:_numberColor];
+		[self _addLineWithDescription:desc string:number leftColor:_propertyNameColor rightColor:_numberColor leftFont:_propertyNameFont rightFont:_numberFont];
 	} else {
-		[self _addLineWithDescription:desc string:number leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:number leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_keywordFont];
 	}
 }
 
@@ -251,9 +323,9 @@ static const char *getPropertyType(objc_property_t property)
 	NSString *num = [NSString stringWithFormat:@"%lli", number];
 	
 	if (_highlightNumbers) {
-		[self _addLineWithDescription:desc string:num leftColor:[NSColor blackColor] rightColor:_numberColor];
+		[self _addLineWithDescription:desc string:num leftColor:_propertyNameColor rightColor:_numberColor leftFont:_propertyNameFont rightFont:_numberFont];
 	} else {
-		[self _addLineWithDescription:desc string:num leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:num leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_keywordFont];
 	}
 }
 
@@ -262,9 +334,9 @@ static const char *getPropertyType(objc_property_t property)
 	NSString *num = [NSString stringWithFormat:@"%llu", number];
 	
 	if (_highlightNumbers) {
-		[self _addLineWithDescription:desc string:num leftColor:[NSColor blackColor] rightColor:_numberColor];
+		[self _addLineWithDescription:desc string:num leftColor:_propertyNameColor rightColor:_numberColor leftFont:_propertyNameFont rightFont:_numberFont];
 	} else {
-		[self _addLineWithDescription:desc string:num leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:num leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_keywordFont];
 	}
 }
 
@@ -273,9 +345,9 @@ static const char *getPropertyType(objc_property_t property)
 	NSString *number = [NSString stringWithFormat:@"%3.8f", floating];
 	
 	if (_highlightNumbers) {
-		[self _addLineWithDescription:desc string:number leftColor:[NSColor blackColor] rightColor:_numberColor];
+		[self _addLineWithDescription:desc string:number leftColor:_propertyNameColor rightColor:_numberColor leftFont:_propertyNameFont rightFont:_numberFont];
 	} else {
-		[self _addLineWithDescription:desc string:number leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:number leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_keywordFont];
 	}
 }
 
@@ -290,9 +362,9 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	
 	if (_highlightKeywords) {
-		[self _addLineWithDescription:desc string:result leftColor:[NSColor blackColor] rightColor:_keywordColor];
+		[self _addLineWithDescription:desc string:result leftColor:_propertyNameColor rightColor:_keywordColor leftFont:_propertyNameFont rightFont:_keywordFont];
 	} else {
-		[self _addLineWithDescription:desc string:result leftColor:[NSColor blackColor] rightColor:[NSColor blackColor]];
+		[self _addLineWithDescription:desc string:result leftColor:_propertyNameColor rightColor:_textColor leftFont:_propertyNameFont rightFont:_keywordFont];
 	}
 }
 
@@ -300,12 +372,13 @@ static const char *getPropertyType(objc_property_t property)
 {
 	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
 	
-	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
+//	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
+	[left setStringValue:[left.stringValue capitalizedString]];
 	
 	
 	[left setIdentifier:@"left"];
-	[left setTextColor:[NSColor blackColor]];
-	[left setFont:[NSFont fontWithName:@"Lucida Grande" size:[NSFont smallSystemFontSize]+0.0]];
+	[left setTextColor:_propertyNameColor];
+	[left setFont:_propertyNameFont];
 	[left sizeToFit];
 	
 	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y + 2.5, left.frame.size.width, left.frame.size.height + 2.5)];
@@ -317,10 +390,10 @@ static const char *getPropertyType(objc_property_t property)
 	
 	
 	
-	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10 + leftWidth + 20, pos, 40, 40)];
+	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10 + leftWidth + 20, pos, _imageSize.width, _imageSize.height)];
 	[imageView setImage:image];
 	[imageView setIdentifier:@"rightImage"];
-//	[[imageView cell] setImageFrameStyle:NSImageFrameGrayBezel];
+	[imageView setImageScaling:NSImageScaleProportionallyUpOrDown];
 	
 	if (imageView.frame.size.width > rightWidth) {
 		rightWidth = imageView.frame.size.width;
@@ -354,7 +427,10 @@ static const char *getPropertyType(objc_property_t property)
 		}
 		else if ([object isKindOfClass:[NSImage class]])
 		{
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:property];
+			if (property)
+			{
+				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:property];
+			}
 		}
 		else
 		{
@@ -525,7 +601,7 @@ static const char *getPropertyType(objc_property_t property)
 
 
 
-- (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor
+- (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor leftFont:(NSFont *)lFont rightFont:(NSFont *)rfont
 {
 	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
 	
@@ -534,10 +610,10 @@ static const char *getPropertyType(objc_property_t property)
 	
 	[left setIdentifier:@"left"];
 	[left setTextColor:leftColor];
-	[left setFont:[NSFont fontWithName:@"Lucida Grande" size:[NSFont smallSystemFontSize]+0.0]];
+	[left setFont:lFont];
 	[left sizeToFit];
 	
-	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y + 2.5, left.frame.size.width, left.frame.size.height + 2.5)];
+	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y + 0.5, left.frame.size.width, left.frame.size.height + 0.5)];
 	
 	if (left.frame.size.width > leftWidth) {
 		leftWidth = left.frame.size.width;
@@ -549,14 +625,16 @@ static const char *getPropertyType(objc_property_t property)
 	NSTextField *right = [self defaultLabelWithString:value point:NSMakePoint(10 + leftWidth + 20, pos) textAlignment:NSLeftTextAlignment];
 	[right setIdentifier:@"right"];
 	[right setTextColor:rightColor];
-	[right setFont:[NSFont fontWithName:@"Menlo" size:[NSFont smallSystemFontSize]]];
+	[right setFont:rfont];
 	[right sizeToFit];
 	
 	if (right.frame.size.width > rightWidth) {
 		rightWidth = right.frame.size.width;
 	}
 	
-	pos = pos + right.frame.size.height + _space;
+	
+	
+	pos = pos + fmaxf(left.frame.size.height, right.frame.size.height) + _space;
 	[self addSubview:right];
 	[self resizeLeftTextViews];
 	[self resizeRightTextViews];
@@ -593,6 +671,11 @@ static const char *getPropertyType(objc_property_t property)
 		if ([[view identifier] isEqualToString:@"right"])
 		{
 			[view setFrame:NSMakeRect(10 + leftWidth + 20, view.frame.origin.y, rightWidth, view.frame.size.height)];
+		}
+		
+		if ([[view identifier] isEqualToString:@"rightImage"])
+		{
+			[view setFrame:NSMakeRect(10 + leftWidth + 20, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
 		}
 	}
 }
