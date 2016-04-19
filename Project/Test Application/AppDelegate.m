@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "pkDebugFramework.h"
+#import <pkDebugFramework/pkDebugFramework.h>
 #import "pkTestObject.h"
 #import "Person.h"
 
@@ -97,6 +97,11 @@
 	NSLog(@"%@", person);
 	
 	[[[self window] contentView] addSubview:[person debugQuickLookObject]];
+}
+
+- (void)smt
+{
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end

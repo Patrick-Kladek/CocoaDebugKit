@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD01A8A51CC6653300DE196C /* pkDebugDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = CD01A8A31CC6653300DE196C /* pkDebugDescription.h */; };
+		CD01A8A61CC6653300DE196C /* pkDebugDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01A8A41CC6653300DE196C /* pkDebugDescription.m */; };
 		CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2762071B0E1DB50000BB5D /* pkDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD27620A1B0E1DB50000BB5D /* pkDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762081B0E1DB50000BB5D /* pkDebugView.m */; };
@@ -51,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD01A8A31CC6653300DE196C /* pkDebugDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkDebugDescription.h; sourceTree = "<group>"; };
+		CD01A8A41CC6653300DE196C /* pkDebugDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkDebugDescription.m; sourceTree = "<group>"; };
 		CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pkDebugFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2761EF1B0E1C050000BB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkDebugFramework.h; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD01A8A71CC6653700DE196C /* Debug Description */ = {
+			isa = PBXGroup;
+			children = (
+				CD01A8A31CC6653300DE196C /* pkDebugDescription.h */,
+				CD01A8A41CC6653300DE196C /* pkDebugDescription.m */,
+			);
+			name = "Debug Description";
+			sourceTree = "<group>";
+		};
 		CD2761E11B0E1C050000BB5D = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +131,7 @@
 				CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */,
 				CD5796491CC625F60014BFD0 /* Settings */,
 				CD57963E1CC56F620014BFD0 /* DebugView */,
+				CD01A8A71CC6653700DE196C /* Debug Description */,
 				CD2761EE1B0E1C050000BB5D /* Supporting Files */,
 			);
 			path = pkDebugFramework;
@@ -193,6 +207,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD01A8A51CC6653300DE196C /* pkDebugDescription.h in Headers */,
 				CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */,
 				CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */,
 				CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */,
@@ -321,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD27620A1B0E1DB50000BB5D /* pkDebugView.m in Sources */,
+				CD01A8A61CC6653300DE196C /* pkDebugDescription.m in Sources */,
 				CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
