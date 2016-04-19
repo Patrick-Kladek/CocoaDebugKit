@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>keywords</key>
+	<dict>
+		<key>highlight</key>
+		<true/>
+		<key>color</key>
+		<string>7F007FFF</string>
+		<key>font</key>
+		<string>Menlo</string>
+		<key>size</key>
+		<string>12</string>
+	</dict>
+	<key>numbers</key>
+	<dict>
+		<key>highlight</key>
+		<true/>
+		<key>color</key>
+		<string>786DC5FF</string>
+		<key>font</key>
+		<string>Menlo</string>
+		<key>size</key>
+		<string>12</string>
+	</dict>
+	<key>text</key>
+	<dict>
+		<key>color</key>
+		<string>FFFFFFFF</string>
+		<key>font</key>
+		<string>Menlo</string>
+		<key>size</key>
+		<string>12</string>
+	</dict>
+	<key>image</key>
+	<dict>
+		<key>size</key>
+		<string>{60, 60}</string>
+	</dict>
+	<key>propertyName</key>
+	<dict>
+		<key>color</key>
+		<string>FFFFFFFF</string>
+		<key>font</key>
+		<string>Menlo</string>
+		<key>size</key>
+		<string>12</string>
+	</dict>
+	<key>appearance</key>
+	<dict>
+		<key>frameColor</key>
+		<string>929292FF</string>
+		<key>backgroundColor</key>
+		<string>1E1F28FF</string>
+		<key>lineSpace</key>
+		<string>7</string>
+	</dict>
+	<key>title</key>
+	<dict>
+		<key>size</key>
+		<string>13</string>
+		<key>color</key>
+		<string>FFFFFFFF</string>
+		<key>font</key>
+		<string>Menlo Bold</string>
+	</dict>
+</dict>
+</plist>

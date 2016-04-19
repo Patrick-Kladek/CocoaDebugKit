@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "pkDebugFramework.h"
 #import "pkTestObject.h"
 #import "Person.h"
 
@@ -22,6 +23,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	// Insert code here to initialize your application
+	
+	// init debugFramework
+	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.pkDebugFramework.settings.default" withExtension:@"plist"];
+	[[pkDebugSettings sharedSettings] loadSettings:url];
+	
 	
 	pkDebugView *view = [pkDebugView debugView];
 	[view setTitle:@"ClassName"];
@@ -80,7 +86,6 @@
 	NSView *newView = [obj debugQuickLookObject];
 	[newView setFrame:NSOffsetRect(newView.frame, 600, 50)];
 	[[[self window] contentView] addSubview:newView];
-	
 	
 	
 	

@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "pkDebugFramework.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
