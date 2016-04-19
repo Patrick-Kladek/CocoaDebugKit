@@ -10,28 +10,10 @@
 
 #import "pkDebugView.h"
 #import <objc/runtime.h>
+#import "pkDebugSettings.h"
 
 
 
-static NSColor *NSColorFromHexString(NSString *inColorString)
-{
-	NSColor *result = nil;
-	unsigned colorCode = 0;
-	unsigned char redByte, greenByte, blueByte, alphaByte;
-	
-	if (nil != inColorString)
-	{
-		NSScanner *scanner = [NSScanner scannerWithString:inColorString];
-		(void) [scanner scanHexInt:&colorCode]; // ignore error
-	}
-	redByte = (unsigned char)(colorCode >> 24);
-	greenByte = (unsigned char)(colorCode >> 16);
-	blueByte = (unsigned char)(colorCode >> 8);
-	alphaByte = (unsigned char)(colorCode);		// masks off high bits
-	
-	result = [NSColor colorWithCalibratedRed:(CGFloat)redByte / 0xff green:(CGFloat)greenByte / 0xff blue:(CGFloat)blueByte / 0xff alpha:(CGFloat)alphaByte / 0xff];
-	return result;
-}
 
 
 
@@ -134,26 +116,41 @@ static const char *getPropertyType(objc_property_t property)
 		leftWidth				= 0;
 		rightWidth				= 0;
 		pos						= 30;
-		_space					= 7;
-		_highlightKeywords		= true;
-		_highlightNumbers		= true;
 		_title					= @"pkDebugView";
-		
-		_textColor				= [NSColor blackColor];
-		_backgroundColor		= [NSColor whiteColor];
-		_frameColor				= [NSColor blueColor];
-		_keywordColor			= [NSColor colorWithCalibratedRed:0.592 green:0.000 blue:0.496 alpha:1.000];
-		_numberColor			= [NSColor colorWithCalibratedRed:0.077 green:0.000 blue:0.766 alpha:1.000];
 		[self setTitle:_title];
+		
+		
+		pkDebugSettings *settings = [pkDebugSettings sharedSettings];
+		
+		self.lineSpace				= settings.lineSpace;
+		self.highlightKeywords	= settings.highlightKeywords;
+		self.highlightNumbers	= settings.highlightNumbers;
+		
+		self.textColor			= settings.textColor;
+		self.textFont			= settings.textFont;
+		
+		self.keywordColor		= settings.keywordColor;
+		self.keywordFont		= settings.keywordFont;
+		
+		self.numberColor		= settings.numberColor;
+		self.numberFont			= settings.numberFont;
+		
+		self.propertyNameColor	= settings.propertyNameColor;
+		self.propertyNameFont	= settings.propertyNameFont;
+		
+		self.titleColor			= settings.titleColor;
+		self.titleFont			= settings.titleFont;
+		
+		self.backgroundColor	= settings.backgroundColor;
+		self.frameColor			= settings.frameColor;
+		
+		self.imageSize			= settings.imageSize;
 	
 		self.layer = _layer;
 		self.wantsLayer = YES;
 		self.layer.masksToBounds = YES;
 		
 		[self.layer setBackgroundColor:[_backgroundColor CGColor]];
-		
-		
-		[self setDefaultsFromUrl:[[NSBundle mainBundle] URLForResource:@"com.kladek.pkDebugFramework.settings" withExtension:@"plist"]];
 	}
 	return self;
 }
@@ -165,30 +162,30 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	
 	
-	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfURL:url];
+//	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfURL:url];
 	
-	_highlightNumbers = [[dict valueForKeyPath:@"numbers.highlight"] boolValue];
-	_numberColor = NSColorFromHexString([dict valueForKeyPath:@"numbers.color"]);
-	_numberFont = [NSFont fontWithName:[dict valueForKeyPath:@"numbers.font"] size:[[dict valueForKeyPath:@"numbers.size"] integerValue]];
-	
-	
-	_highlightKeywords = [[dict valueForKeyPath:@"keywords.highlight"] boolValue];
-	_keywordColor = NSColorFromHexString([dict valueForKeyPath:@"keywords.color"]);
-	_keywordFont = [NSFont fontWithName:[dict valueForKeyPath:@"keywords.font"] size:[[dict valueForKeyPath:@"keywords.size"] integerValue]];
-	
-	_textColor = NSColorFromHexString([dict valueForKeyPath:@"text.color"]);
-	_textFont = [NSFont fontWithName:[dict valueForKeyPath:@"text.font"] size:[[dict valueForKeyPath:@"text.size"] integerValue]];
-	
-	_propertyNameColor = NSColorFromHexString([dict valueForKeyPath:@"propertyName.color"]);
-	_propertyNameFont = [NSFont fontWithName:[dict valueForKeyPath:@"propertyName.font"] size:[[dict valueForKeyPath:@"propertyName.size"] integerValue]];
-	
-	
-	
-	_imageSize = NSSizeFromString([dict valueForKeyPath:@"image.size"]);
-	
-	
-	_backgroundColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.backgroundColor"]);
-	_frameColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.frameColor"]);
+//	_highlightNumbers = [[dict valueForKeyPath:@"numbers.highlight"] boolValue];
+//	_numberColor = NSColorFromHexString([dict valueForKeyPath:@"numbers.color"]);
+//	_numberFont = [NSFont fontWithName:[dict valueForKeyPath:@"numbers.font"] size:[[dict valueForKeyPath:@"numbers.size"] integerValue]];
+//	
+//	
+//	_highlightKeywords = [[dict valueForKeyPath:@"keywords.highlight"] boolValue];
+//	_keywordColor = NSColorFromHexString([dict valueForKeyPath:@"keywords.color"]);
+//	_keywordFont = [NSFont fontWithName:[dict valueForKeyPath:@"keywords.font"] size:[[dict valueForKeyPath:@"keywords.size"] integerValue]];
+//	
+//	_textColor = NSColorFromHexString([dict valueForKeyPath:@"text.color"]);
+//	_textFont = [NSFont fontWithName:[dict valueForKeyPath:@"text.font"] size:[[dict valueForKeyPath:@"text.size"] integerValue]];
+//	
+//	_propertyNameColor = NSColorFromHexString([dict valueForKeyPath:@"propertyName.color"]);
+//	_propertyNameFont = [NSFont fontWithName:[dict valueForKeyPath:@"propertyName.font"] size:[[dict valueForKeyPath:@"propertyName.size"] integerValue]];
+//	
+//	
+//	
+//	_imageSize = NSSizeFromString([dict valueForKeyPath:@"image.size"]);
+//	
+//	
+//	_backgroundColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.backgroundColor"]);
+//	_frameColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.frameColor"]);
 }
 
 
@@ -235,8 +232,8 @@ static const char *getPropertyType(objc_property_t property)
 	titleTextField = [self defaultLabelWithString:title point:NSMakePoint(10, 2) textAlignment:NSLeftTextAlignment];
 	[titleTextField setIdentifier:@"title"];
 	[titleTextField setAllowsEditingTextAttributes:YES];
-	[titleTextField setFont:[NSFont boldSystemFontOfSize:13]];
-	[titleTextField setTextColor:[NSColor whiteColor]];
+	[titleTextField setFont:_titleFont];
+	[titleTextField setTextColor:_titleColor];
 	[titleTextField sizeToFit];
 	
 	[self addSubview:titleTextField];
@@ -381,7 +378,7 @@ static const char *getPropertyType(objc_property_t property)
 	[left setFont:_propertyNameFont];
 	[left sizeToFit];
 	
-	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y + 2.5, left.frame.size.width, left.frame.size.height + 2.5)];
+	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, left.frame.size.height)];
 	
 	if (left.frame.size.width > leftWidth) {
 		leftWidth = left.frame.size.width;
@@ -398,8 +395,10 @@ static const char *getPropertyType(objc_property_t property)
 	if (imageView.frame.size.width > rightWidth) {
 		rightWidth = imageView.frame.size.width;
 	}
-	
-	pos = pos + imageView.frame.size.height + _space;
+
+
+	[self syncroniseHeightOfView:left secondView:imageView];
+	pos = pos + imageView.frame.size.height + _lineSpace;
 	[self addSubview:imageView];
 	[self resizeLeftTextViews];
 	[self resizeRightTextViews];
@@ -598,6 +597,12 @@ static const char *getPropertyType(objc_property_t property)
 	return nil;
 }
 
+- (void)syncroniseHeightOfView:(NSView *)left secondView:(NSView *)right
+{
+	CGFloat height = fmaxf(left.frame.size.height, right.frame.size.height);
+	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, height)];
+	[right setFrame:NSMakeRect(right.frame.origin.x, right.frame.origin.y, right.frame.size.width, height)];
+}
 
 
 
@@ -613,7 +618,7 @@ static const char *getPropertyType(objc_property_t property)
 	[left setFont:lFont];
 	[left sizeToFit];
 	
-	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y + 0.5, left.frame.size.width, left.frame.size.height + 0.5)];
+//	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, left.frame.size.height)];
 	
 	if (left.frame.size.width > leftWidth) {
 		leftWidth = left.frame.size.width;
@@ -633,8 +638,8 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	
 	
-	
-	pos = pos + fmaxf(left.frame.size.height, right.frame.size.height) + _space;
+	[self syncroniseHeightOfView:left secondView:right];
+	pos = pos + fmaxf(left.frame.size.height, right.frame.size.height) + _lineSpace;
 	[self addSubview:right];
 	[self resizeLeftTextViews];
 	[self resizeRightTextViews];

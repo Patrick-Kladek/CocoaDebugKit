@@ -18,3 +18,4 @@ FOUNDATION_EXPORT const unsigned char pkDebugFrameworkVersionString[];
 
 
 #import "pkDebugView.h"
+#import "pkDebugSettings.h"

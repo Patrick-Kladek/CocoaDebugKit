@@ -7,7 +7,7 @@
 		<key>highlight</key>
 		<true/>
 		<key>color</key>
-		<string>AA0D91FF</string>
+		<string>0000FFFF</string>
 		<key>font</key>
 		<string>Menlo</string>
 		<key>size</key>
@@ -18,7 +18,7 @@
 		<key>highlight</key>
 		<true/>
 		<key>color</key>
-		<string>1C00CFFF</string>
+		<string>000000FF</string>
 		<key>font</key>
 		<string>Menlo</string>
 		<key>size</key>
@@ -29,7 +29,7 @@
 		<key>color</key>
 		<string>000000FF</string>
 		<key>font</key>
-		<string>Lucida Grande</string>
+		<string>Menlo</string>
 		<key>size</key>
 		<string>12</string>
 	</dict>
@@ -43,7 +43,7 @@
 		<key>color</key>
 		<string>000000FF</string>
 		<key>font</key>
-		<string>Lucida Grande</string>
+		<string>Menlo</string>
 		<key>size</key>
 		<string>12</string>
 	</dict>
@@ -53,6 +53,17 @@
 		<string>0000FFFF</string>
 		<key>backgroundColor</key>
 		<string>FFFFFFFF</string>
+		<key>lineSpace</key>
+		<string>7</string>
+	</dict>
+	<key>title</key>
+	<dict>
+		<key>size</key>
+		<string>13</string>
+		<key>color</key>
+		<string>FFFFFFFF</string>
+		<key>font</key>
+		<string>Menlo Bold</string>
 	</dict>
 </dict>
 </plist>

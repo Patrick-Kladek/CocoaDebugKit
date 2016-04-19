@@ -13,7 +13,7 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) BOOL highlightKeywords;
 @property (nonatomic) BOOL highlightNumbers;
-@property (nonatomic) NSInteger space;
+@property (nonatomic) NSInteger lineSpace;
 
 @property (nonatomic) NSColor *textColor;
 @property (nonatomic) NSFont *textFont;
@@ -26,6 +26,9 @@
 
 @property (nonatomic) NSColor *propertyNameColor;
 @property (nonatomic) NSFont *propertyNameFont;
+
+@property (nonatomic) NSColor *titleColor;
+@property (nonatomic) NSFont *titleFont;
 
 @property (nonatomic) NSColor *frameColor;
 @property (nonatomic) NSColor *backgroundColor;
