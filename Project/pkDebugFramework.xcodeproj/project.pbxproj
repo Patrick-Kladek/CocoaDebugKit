@@ -28,6 +28,7 @@
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; };
 		CDBD4F5B1CCE419C00A0912B /* pkPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */; };
+		CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
 		CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkPropertyEnumerator.h; sourceTree = "<group>"; };
 		CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkPropertyEnumerator.m; sourceTree = "<group>"; };
+		CDE848D71CCE75E900DD5A00 /* pkSecondObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkSecondObject.h; sourceTree = "<group>"; };
+		CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkSecondObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 			children = (
 				CDBBC8451B70E31600923E3E /* pkTestObject.h */,
 				CDBBC8461B70E31600923E3E /* pkTestObject.m */,
+				CDE848D71CCE75E900DD5A00 /* pkSecondObject.h */,
+				CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */,
 				CD5796421CC585CA0014BFD0 /* Person.h */,
 				CD5796431CC585CA0014BFD0 /* Person.m */,
 			);
@@ -361,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */,
 				CD2762491B0E30210000BB5D /* main.m in Sources */,
 				CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */,
 				CD5796441CC585CA0014BFD0 /* Person.m in Sources */,
