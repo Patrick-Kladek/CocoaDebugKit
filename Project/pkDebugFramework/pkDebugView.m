@@ -11,9 +11,7 @@
 #import "pkDebugView.h"
 #import <objc/runtime.h>
 #import "pkDebugSettings.h"
-
-
-
+#import "pkPropertyEnumerator.h"
 
 
 
@@ -27,6 +25,9 @@
 	NSInteger rightWidth;
 	
 	NSTextField *titleTextField;
+	
+	
+	pkPropertyEnumerator *propertyEnumerator;
 }
 
 - (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor;
@@ -58,7 +59,8 @@
 
 //	[view setTitle:[obj className]];
 	[view setTitle:[NSString stringWithFormat:@"%@ : %@", [obj class], [obj superclass]]];
-	[view enumerateProperties:obj allowed:nil];
+//	[view enumerateProperties:obj allowed:nil];
+	[view addAllPropertiesFromObject:obj];
 
 	return view;
 }
@@ -73,6 +75,7 @@
 	return view;
 }
 
+/*
 static const char *getPropertyType(objc_property_t property)
 {
 	const char *attributes = property_getAttributes(property);
@@ -84,11 +87,10 @@ static const char *getPropertyType(objc_property_t property)
 		if (attribute[0] == 'T' && attribute[1] != '@')
 		{
 			// it's a C primitive type:
-			/*
-			 if you want a list of what will be returned for these primitives, search online for
-			 "objective-c" "Property Attribute Description Examples"
-			 apple docs list plenty of examples of what you get for int "i", long "l", unsigned "I", struct, etc.
-			 */
+//			 if you want a list of what will be returned for these primitives, search online for
+//			 "objective-c" "Property Attribute Description Examples"
+//			 apple docs list plenty of examples of what you get for int "i", long "l", unsigned "I", struct, etc.
+
 			return (const char *)[[NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1] bytes];
 		}
 		else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2)
@@ -104,6 +106,7 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	return "";
 }
+*/
 
 
 
@@ -113,6 +116,9 @@ static const char *getPropertyType(objc_property_t property)
 	self = [super init];
 	if (self)
 	{
+		propertyEnumerator = [[pkPropertyEnumerator alloc] init];
+		
+		
 		leftWidth				= 0;
 		rightWidth				= 0;
 		pos						= 30;
@@ -252,7 +258,9 @@ static const char *getPropertyType(objc_property_t property)
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj
 {
-	[self enumerateProperties:obj allowed:nil];
+	[propertyEnumerator enumerateProperties:obj allowed:nil block:^(NSString *type, NSString *name) {
+		[self addProperty:name type:type toObject:obj];
+	}];
 }
 
 - (void)addProperties:(NSString *)string fromObject:(NSObject *)obj
@@ -268,7 +276,7 @@ static const char *getPropertyType(objc_property_t property)
 		
 		[properties enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
 			
-			[self addProperty:key type:[self propertyTypeFromName:key object:obj] toObject:obj];
+			[self addProperty:key type:[propertyEnumerator propertyTypeFromName:key object:obj] toObject:obj];
 		}];
 	}
 }
@@ -541,6 +549,8 @@ static const char *getPropertyType(objc_property_t property)
 	}
 }
 
+
+/*
 - (void)enumerateProperties:(NSObject *)obj allowed:(NSString *)allowed
 {
 	// get all properties and Display them in DebugView ...
@@ -596,6 +606,7 @@ static const char *getPropertyType(objc_property_t property)
 	
 	return nil;
 }
+*/
 
 - (void)syncroniseHeightOfView:(NSView *)left secondView:(NSView *)right
 {

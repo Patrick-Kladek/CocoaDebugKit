@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD01A8A51CC6653300DE196C /* pkDebugDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = CD01A8A31CC6653300DE196C /* pkDebugDescription.h */; };
+		CD01A8A51CC6653300DE196C /* pkDebugDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = CD01A8A31CC6653300DE196C /* pkDebugDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD01A8A61CC6653300DE196C /* pkDebugDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01A8A41CC6653300DE196C /* pkDebugDescription.m */; };
 		CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2762071B0E1DB50000BB5D /* pkDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +26,8 @@
 		CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */; };
 		CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */; };
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
+		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; };
+		CDBD4F5B1CCE419C00A0912B /* pkPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.basic.plist; sourceTree = "<group>"; };
 		CDBBC8451B70E31600923E3E /* pkTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkTestObject.h; sourceTree = "<group>"; };
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
+		CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkPropertyEnumerator.h; sourceTree = "<group>"; };
+		CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkPropertyEnumerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 			children = (
 				CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */,
 				CD5796491CC625F60014BFD0 /* Settings */,
+				CDBD4F5C1CCE419F00A0912B /* Property Enumerator */,
 				CD57963E1CC56F620014BFD0 /* DebugView */,
 				CD01A8A71CC6653700DE196C /* Debug Description */,
 				CD2761EE1B0E1C050000BB5D /* Supporting Files */,
@@ -200,6 +205,15 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		CDBD4F5C1CCE419F00A0912B /* Property Enumerator */ = {
+			isa = PBXGroup;
+			children = (
+				CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */,
+				CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */,
+			);
+			name = "Property Enumerator";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -211,6 +225,7 @@
 				CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */,
 				CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */,
 				CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */,
+				CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +353,7 @@
 				CD27620A1B0E1DB50000BB5D /* pkDebugView.m in Sources */,
 				CD01A8A61CC6653300DE196C /* pkDebugDescription.m in Sources */,
 				CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */,
+				CDBD4F5B1CCE419C00A0912B /* pkPropertyEnumerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
