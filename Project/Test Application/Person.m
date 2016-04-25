@@ -12,6 +12,14 @@
 
 @implementation Person
 
+- (NSString *)debugDescription
+{
+	pkDebugDescription *description = [[pkDebugDescription alloc] init];
+//	[description addAllPropertiesFromObject:self];
+	
+	return [description descriptionForObject:self];
+}
+
 - (id)debugQuickLookObject
 {
 	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self];

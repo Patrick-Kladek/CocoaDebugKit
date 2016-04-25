@@ -11,6 +11,13 @@
 
 @implementation pkTestObject
 
+- (NSString *)debugDescription
+{
+	pkDebugDescription *description = [[pkDebugDescription alloc] init];
+	
+	return [description descriptionForObject:self];
+}
+
 - (id)debugQuickLookObject
 {
 	// option 1

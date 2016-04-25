@@ -86,7 +86,9 @@
 	NSView *newView = [obj debugQuickLookObject];
 	[newView setFrame:NSOffsetRect(newView.frame, 600, 50)];
 	[[[self window] contentView] addSubview:newView];
+//	NSLog(@"%@", [obj debugDescription]);
 	
+	printf("%s\n", [[obj debugDescription] UTF8String]);
 	
 	
 	Person *person = [[Person alloc] init];
@@ -94,7 +96,8 @@
 	[person setFirstName:@"Mark"];
 	[person setLastName:@"Johnson"];
 	[person setBirthday:[NSDate dateWithTimeIntervalSince1970:5*365*60*600]];
-	NSLog(@"%@", person);
+//	NSLog(@"%@", [person debugDescription]);
+	printf("%s", [[person debugDescription] UTF8String]);
 	
 	[[[self window] contentView] addSubview:[person debugQuickLookObject]];
 }

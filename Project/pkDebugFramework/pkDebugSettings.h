@@ -47,6 +47,11 @@
 
 
 
+@property (nonatomic) NSNumber *maxDataLenght;
+
+
+
+
 
 - (BOOL)loadSettings:(NSURL *)url;
 - (BOOL)saveSettings:(NSURL *)url;

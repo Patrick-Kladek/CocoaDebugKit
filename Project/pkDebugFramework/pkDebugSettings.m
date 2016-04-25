@@ -113,85 +113,94 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 
 - (void)importSettings
 {
-	if ([settings valueForKeyPath:@"keywords.highlight"]) {
-		_highlightKeywords = [[settings valueForKeyPath:@"keywords.highlight"] boolValue];
+	if ([settings valueForKeyPath:@"debugView.keywords.highlight"]) {
+		_highlightKeywords = [[settings valueForKeyPath:@"debugView.keywords.highlight"] boolValue];
 	}
 	
-	if ([settings valueForKeyPath:@"keywords.color"]) {
-		_keywordColor = NSColorFromHexString([settings valueForKeyPath:@"keywords.color"]);
+	if ([settings valueForKeyPath:@"debugView.keywords.color"]) {
+		_keywordColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.keywords.color"]);
 	}
 	
-	if ([settings valueForKeyPath:@"keywords.font"] && [settings valueForKeyPath:@"keywords.size"]) {
-		_keywordFont = [NSFont fontWithName:[settings valueForKeyPath:@"keywords.font"] size:[[settings valueForKeyPath:@"keywords.size"] integerValue]];
-	}
-	
-	
-	
-	
-	if ([settings valueForKeyPath:@"numbers.highlight"]) {
-		_highlightNumbers = [[settings valueForKeyPath:@"numbers.highlight"] boolValue];
-	}
-	
-	if ([settings valueForKeyPath:@"numbers.color"]) {
-		_numberColor = NSColorFromHexString([settings valueForKeyPath:@"numbers.color"]);
-	}
-	
-	if ([settings valueForKeyPath:@"numbers.font"] && [settings valueForKeyPath:@"numbers.size"]) {
-		_numberFont = [NSFont fontWithName:[settings valueForKeyPath:@"numbers.font"] size:[[settings valueForKeyPath:@"numbers.size"] integerValue]];
+	if ([settings valueForKeyPath:@"debugView.keywords.font"] && [settings valueForKeyPath:@"debugView.keywords.size"]) {
+		_keywordFont = [NSFont fontWithName:[settings valueForKeyPath:@"debugView.keywords.font"] size:[[settings valueForKeyPath:@"debugView.keywords.size"] integerValue]];
 	}
 	
 	
 	
 	
-	
-	if ([settings valueForKeyPath:@"text.color"]) {
-		_textColor = NSColorFromHexString([settings valueForKeyPath:@"text.color"]);
+	if ([settings valueForKeyPath:@"debugView.numbers.highlight"]) {
+		_highlightNumbers = [[settings valueForKeyPath:@"debugView.numbers.highlight"] boolValue];
 	}
 	
-	if ([settings valueForKeyPath:@"text.font"] && [settings valueForKeyPath:@"text.size"]) {
-		_textFont = [NSFont fontWithName:[settings valueForKeyPath:@"text.font"] size:[[settings valueForKeyPath:@"text.size"] integerValue]];
+	if ([settings valueForKeyPath:@"debugView.numbers.color"]) {
+		_numberColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.numbers.color"]);
 	}
 	
-	
-	
-	
-	if ([settings valueForKeyPath:@"propertyName.color"]) {
-		_propertyNameColor = NSColorFromHexString([settings valueForKeyPath:@"propertyName.color"]);
-	}
-	
-	if ([settings valueForKeyPath:@"propertyName.font"] && [settings valueForKeyPath:@"propertyName.size"]) {
-		_propertyNameFont = [NSFont fontWithName:[settings valueForKeyPath:@"propertyName.font"] size:[[settings valueForKeyPath:@"propertyName.size"] integerValue]];
-	}
-	
-	
-	
-	if ([settings valueForKeyPath:@"title.color"]) {
-		_titleColor = NSColorFromHexString([settings valueForKeyPath:@"title.color"]);
-	}
-	
-	if ([settings valueForKeyPath:@"title.font"] && [settings valueForKeyPath:@"title.size"]) {
-		_titleFont = [NSFont fontWithName:[settings valueForKeyPath:@"title.font"] size:[[settings valueForKeyPath:@"title.size"] integerValue]];
-	}
-	
-	
-	
-	if ([settings valueForKeyPath:@"image.size"]) {
-		_imageSize = NSSizeFromString([settings valueForKeyPath:@"image.size"]);
+	if ([settings valueForKeyPath:@"debugView.numbers.font"] && [settings valueForKeyPath:@"debugView.numbers.size"]) {
+		_numberFont = [NSFont fontWithName:[settings valueForKeyPath:@"debugView.numbers.font"] size:[[settings valueForKeyPath:@"debugView.numbers.size"] integerValue]];
 	}
 	
 	
 	
 	
-	if ([settings valueForKeyPath:@"appearance.lineSpace"]) {
-		_lineSpace = [[settings valueForKeyPath:@"appearance.lineSpace"] integerValue];
+	
+	if ([settings valueForKeyPath:@"debugView.text.color"]) {
+		_textColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.text.color"]);
 	}
 	
-	if ([settings valueForKeyPath:@"appearance.backgroundColor"]) {
-		_backgroundColor = NSColorFromHexString([settings valueForKeyPath:@"appearance.backgroundColor"]);
+	if ([settings valueForKeyPath:@"debugView.text.font"] && [settings valueForKeyPath:@"debugView.text.size"]) {
+		_textFont = [NSFont fontWithName:[settings valueForKeyPath:@"debugView.text.font"] size:[[settings valueForKeyPath:@"debugView.text.size"] integerValue]];
 	}
 	
-	if ([settings valueForKeyPath:@"appearance.frameColor"]) {
-		_frameColor = NSColorFromHexString([settings valueForKeyPath:@"appearance.frameColor"]);
+	
+	
+	
+	if ([settings valueForKeyPath:@"debugView.propertyName.color"]) {
+		_propertyNameColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.propertyName.color"]);
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.propertyName.font"] && [settings valueForKeyPath:@"debugView.propertyName.size"]) {
+		_propertyNameFont = [NSFont fontWithName:[settings valueForKeyPath:@"debugView.propertyName.font"] size:[[settings valueForKeyPath:@"debugView.propertyName.size"] integerValue]];
+	}
+	
+	
+	
+	if ([settings valueForKeyPath:@"debugView.title.color"]) {
+		_titleColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.title.color"]);
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.title.font"] && [settings valueForKeyPath:@"debugView.title.size"]) {
+		_titleFont = [NSFont fontWithName:[settings valueForKeyPath:@"debugView.title.font"] size:[[settings valueForKeyPath:@"debugView.title.size"] integerValue]];
+	}
+	
+	
+	
+	if ([settings valueForKeyPath:@"debugView.image.size"]) {
+		_imageSize = NSSizeFromString([settings valueForKeyPath:@"debugView.image.size"]);
+	}
+	
+	
+	
+	
+	if ([settings valueForKeyPath:@"debugView.appearance.lineSpace"]) {
+		_lineSpace = [[settings valueForKeyPath:@"debugView.appearance.lineSpace"] integerValue];
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.appearance.backgroundColor"]) {
+		_backgroundColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.appearance.backgroundColor"]);
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.appearance.frameColor"]) {
+		_frameColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.appearance.frameColor"]);
+	}
+	
+	
+	
+	
+	
+	if ([settings valueForKeyPath:@"debugDescription.NSData.cutLenght"])
+	{
+		_maxDataLenght = [settings valueForKeyPath:@"debugDescription.NSData.cutLenght"];
 	}
 }
 

@@ -11,4 +11,12 @@
 @interface pkDebugDescription : NSObject
 
 
+@property (nonatomic) NSNumber *dataMaxLenght;
+
+
+
+- (void)addAllPropertiesFromObject:(NSObject *)obj;
+
+- (NSString *)descriptionForObject:(NSObject *)object;
+
 @end
