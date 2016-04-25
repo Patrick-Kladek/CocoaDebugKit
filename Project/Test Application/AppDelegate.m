@@ -10,6 +10,7 @@
 #import <pkDebugFramework/pkDebugFramework.h>
 #import "pkTestObject.h"
 #import "Person.h"
+#import "pkSecondObject.h"
 
 @interface AppDelegate () <pkTestObjectDelegate>
 
@@ -28,7 +29,7 @@
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.pkDebugFramework.settings.default" withExtension:@"plist"];
 	[[pkDebugSettings sharedSettings] loadSettings:url];
 	
-	
+
 	pkDebugView *view = [pkDebugView debugView];
 	[view setTitle:@"ClassName"];
 	[view setFrameColor:[NSColor purpleColor]];
@@ -57,10 +58,10 @@
 	
 	[view setFrame:NSOffsetRect(view.frame, 50, 50)];
 	[[[self window] contentView] addSubview:view];
-	
+
 	
 	// ------------------------------------------------------------------------
-	pkTestObject *obj = [[pkTestObject alloc] init];
+	pkSecondObject *obj = [[pkSecondObject alloc] init];
 	[obj setDelegate:self];
 	[obj setDate:[NSDate date]];
 	
@@ -89,17 +90,21 @@
 //	NSLog(@"%@", [obj debugDescription]);
 	
 	printf("%s\n", [[obj debugDescription] UTF8String]);
+
 	
-	
+
 	Person *person = [[Person alloc] init];
 	[person setImage:[NSImage imageNamed:NSImageNameUser]];
 	[person setFirstName:@"Mark"];
 	[person setLastName:@"Johnson"];
 	[person setBirthday:[NSDate dateWithTimeIntervalSince1970:5*365*60*600]];
-//	NSLog(@"%@", [person debugDescription]);
-	printf("%s", [[person debugDescription] UTF8String]);
+
+	// NSLog(@"%@", [person debugDescription]);
+//	printf("%s", [[person debugDescription] UTF8String]);
 	
 	[[[self window] contentView] addSubview:[person debugQuickLookObject]];
+
+
 }
 
 - (void)smt

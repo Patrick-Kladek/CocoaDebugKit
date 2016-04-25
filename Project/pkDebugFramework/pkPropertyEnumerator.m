@@ -43,7 +43,8 @@ static const char *getPropertyType(objc_property_t property)
 	return "";
 }
 
-// - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block NS_AVAILABLE(10_6, 4_0);
+
+/*
 - (void)enumerateProperties:(NSObject *)obj allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *name))callbackBlock
 {
 	// get all properties and Display them in DebugView ...
@@ -71,6 +72,36 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	free(properties);
 }
+ */
+
+- (void)enumerateProperties:(Class)objectClass allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *name))callbackBlock
+{
+	// get all properties and Display them in DebugView ...
+	unsigned int outCount, i;
+	objc_property_t *properties = class_copyPropertyList(objectClass, &outCount);
+	
+	for (i = 0; i < outCount; i++)
+	{
+		objc_property_t property = properties[i];
+		const char *propName = property_getName(property);
+		
+		if (propName)
+		{
+			const char *type = getPropertyType(property);
+			NSString *propertyName = [NSString stringWithUTF8String:propName];
+			NSString *propertyType = [NSString stringWithUTF8String:type];
+			
+			if (allowed && ![allowed isEqualToString:propertyName])
+			{
+				continue;
+			}
+			
+			callbackBlock(propertyType, propertyName);
+		}
+	}
+	free(properties);
+}
+
 
 - (NSString *)propertyTypeFromName:(NSString *)name object:(NSObject *)obj
 {

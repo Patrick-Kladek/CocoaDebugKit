@@ -30,7 +30,7 @@
 	pkPropertyEnumerator *propertyEnumerator;
 }
 
-- (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor;
+- (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor leftFont:(NSFont *)lFont rightFont:(NSFont *)rfont;
 
 @end
 
@@ -57,9 +57,7 @@
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
 
-//	[view setTitle:[obj className]];
-	[view setTitle:[NSString stringWithFormat:@"%@ : %@", [obj class], [obj superclass]]];
-//	[view enumerateProperties:obj allowed:nil];
+	[view traceSuperClassesOfObject:obj];
 	[view addAllPropertiesFromObject:obj];
 
 	return view;
@@ -68,8 +66,8 @@
 + (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
-	[view setTitle:[NSString stringWithFormat:@"%@ : %@", [obj class], [obj superclass]]];
-	
+
+	[view traceSuperClassesOfObject:obj];
 	[view addProperties:properties fromObject:obj];
 	
 	return view;
@@ -214,8 +212,15 @@ static const char *getPropertyType(objc_property_t property)
 	[self.layer setBackgroundColor:[_backgroundColor CGColor]];
 	
 	NSRect rect = NSMakeRect(0, 0, dirtyRect.size.width, 23);
-	[_frameColor set];
-	NSRectFill(rect);
+//	[_frameColor set];
+//	NSRectFill(rect);
+	
+	
+	NSColor *startingColor = [NSColor colorWithRed:_frameColor.redComponent green:_frameColor.greenComponent blue:_frameColor.blueComponent alpha:0.75];
+	NSGradient* aGradient = [[NSGradient alloc] initWithStartingColor:startingColor endingColor:_frameColor];
+	[aGradient drawInRect:rect angle:90];
+	
+	
 }
 
 - (BOOL)isFlipped
@@ -254,13 +259,38 @@ static const char *getPropertyType(objc_property_t property)
 
 
 
+- (void)traceSuperClassesOfObject:(NSObject *)obj
+{
+	Class currentClass = [obj class];
+	NSString *classStructure = NSStringFromClass(currentClass);
+	
+	
+	while (NSStringFromClass([currentClass superclass]) != nil)
+	{
+		currentClass = [currentClass superclass];
+		classStructure = [classStructure stringByAppendingString:[NSString stringWithFormat:@" : %@", NSStringFromClass(currentClass)]];
+	}
+	
+	[self setTitle:classStructure];
+}
+
 #pragma mark - Add Data
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj
 {
-	[propertyEnumerator enumerateProperties:obj allowed:nil block:^(NSString *type, NSString *name) {
-		[self addProperty:name type:type toObject:obj];
-	}];
+	// enumerate all subclasses "class_copyPropertyList(...)"
+	Class currentClass = [obj class];
+	
+	while (currentClass != nil)
+	{
+		[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+			[self addProperty:name type:type toObject:obj];
+		}];
+		
+		[self addSeperator];
+		
+		currentClass = [currentClass superclass];
+	}
 }
 
 - (void)addProperties:(NSString *)string fromObject:(NSObject *)obj
@@ -413,7 +443,10 @@ static const char *getPropertyType(objc_property_t property)
 	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
 }
 
-
+- (void)addSeperator
+{
+	// draw dashed line here
+}
 
 #pragma mark - Intern
 

@@ -47,9 +47,20 @@
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj
 {
-	[propertyEnumerator enumerateProperties:obj allowed:nil block:^(NSString *type, NSString *name) {
-		[self addProperty:name type:type fromObject:obj];
-	}];
+//	[propertyEnumerator enumerateProperties:obj allowed:nil block:^(NSString *type, NSString *name) {
+//		[self addProperty:name type:type fromObject:obj];
+//	}];
+	
+	Class currentClass = [obj class];
+	
+	while (currentClass != nil)
+	{
+		[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+			[self addProperty:name type:type fromObject:obj];
+		}];
+		
+		currentClass = [currentClass superclass];
+	}
 }
 
 - (void)addProperty:(NSString *)name type:(NSString *)type fromObject:(NSObject *)obj
