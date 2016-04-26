@@ -21,7 +21,7 @@
 - (id)debugQuickLookObject
 {
 	// option 1
-	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self];
+	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self includeSubclasses:YES];
 	
 	// or
 //	pkDebugView *view = [[pkDebugView alloc] init];

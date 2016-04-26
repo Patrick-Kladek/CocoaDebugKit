@@ -14,10 +14,6 @@
 #import "pkPropertyEnumerator.h"
 
 
-
-
-
-
 @interface pkDebugView ()
 {
 	NSInteger pos;
@@ -53,12 +49,17 @@
 	return result;
 }
 
-+ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj
++ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
 
-	[view traceSuperClassesOfObject:obj];
-	[view addAllPropertiesFromObject:obj];
+	if (include) {
+		[view traceSuperClassesOfObject:obj];
+	} else {
+		[view setTitle:[obj className]];
+	}
+	
+	[view addAllPropertiesFromObject:obj includeSubclasses:include];
 
 	return view;
 }
@@ -73,38 +74,7 @@
 	return view;
 }
 
-/*
-static const char *getPropertyType(objc_property_t property)
-{
-	const char *attributes = property_getAttributes(property);
-	char buffer[1 + strlen(attributes)];
-	strcpy(buffer, attributes);
-	char *state = buffer, *attribute;
-	while ((attribute = strsep(&state, ",")) != NULL)
-	{
-		if (attribute[0] == 'T' && attribute[1] != '@')
-		{
-			// it's a C primitive type:
-//			 if you want a list of what will be returned for these primitives, search online for
-//			 "objective-c" "Property Attribute Description Examples"
-//			 apple docs list plenty of examples of what you get for int "i", long "l", unsigned "I", struct, etc.
 
-			return (const char *)[[NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1] bytes];
-		}
-		else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2)
-		{
-			// it's an ObjC id type:
-			return "id";
-		}
-		else if (attribute[0] == 'T' && attribute[1] == '@')
-		{
-			// it's another ObjC object type:
-			return (const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes];
-		}
-	}
-	return "";
-}
-*/
 
 
 
@@ -276,20 +246,29 @@ static const char *getPropertyType(objc_property_t property)
 
 #pragma mark - Add Data
 
-- (void)addAllPropertiesFromObject:(NSObject *)obj
+- (void)addAllPropertiesFromObject:(NSObject *)obj includeSubclasses:(BOOL)include
 {
-	// enumerate all subclasses "class_copyPropertyList(...)"
-	Class currentClass = [obj class];
-	
-	while (currentClass != nil)
+	if (include)
 	{
-		[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+		// enumerate all subclasses "class_copyPropertyList(...)"
+		Class currentClass = [obj class];
+		
+		while (currentClass != nil)
+		{
+			[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+				[self addProperty:name type:type toObject:obj];
+			}];
+			
+			[self addSeperator];
+			
+			currentClass = [currentClass superclass];
+		}
+	}
+	else
+	{
+		[propertyEnumerator enumerateProperties:[obj class] allowed:nil block:^(NSString *type, NSString *name) {
 			[self addProperty:name type:type toObject:obj];
 		}];
-		
-		[self addSeperator];
-		
-		currentClass = [currentClass superclass];
 	}
 }
 
@@ -306,6 +285,7 @@ static const char *getPropertyType(objc_property_t property)
 		
 		[properties enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
 			
+			// TODO: enumerate subclasses
 			[self addProperty:key type:[propertyEnumerator propertyTypeFromName:key object:obj] toObject:obj];
 		}];
 	}

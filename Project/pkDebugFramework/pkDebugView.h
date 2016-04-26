@@ -36,7 +36,7 @@
 
 
 + (pkDebugView *)debugView;
-+ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj;
++ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include;
 + (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj;
 
 

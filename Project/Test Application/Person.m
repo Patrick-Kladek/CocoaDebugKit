@@ -22,7 +22,7 @@
 
 - (id)debugQuickLookObject
 {
-	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self];
+	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self includeSubclasses:YES];
 	
 	return view;
 }
