@@ -35,6 +35,8 @@
 		<dict>
 			<key>size</key>
 			<string>{60, 60}</string>
+			<key>dataToImage</key>
+			<true/>
 		</dict>
 		<key>text</key>
 		<dict>

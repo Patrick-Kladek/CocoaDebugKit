@@ -66,7 +66,7 @@
 	[obj setDate:[NSDate date]];
 	
 	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image" ofType:@"png"]];
-	[obj setData:[image TIFFRepresentation]];
+	[obj setDataImage:[image TIFFRepresentation]];
 	
 	
 	[obj setSet:[NSSet setWithObject:@"Hallo"]];

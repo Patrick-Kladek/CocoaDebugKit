@@ -7,7 +7,7 @@
 //
 
 #import "pkTestObject.h"
-#import "pkDebugFramework.h"
+#import <pkDebugFramework/pkDebugFramework.h>
 
 @implementation pkTestObject
 

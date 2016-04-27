@@ -24,6 +24,7 @@
 		CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* pkDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796461CC625F10014BFD0 /* pkDebugSettings.m */; };
 		CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */; };
+		CD5B602C1CCFCD4000EE3F31 /* objc types.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */; };
 		CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */; };
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -77,6 +78,7 @@
 		CD5796451CC625F10014BFD0 /* pkDebugSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkDebugSettings.h; path = pkDebugFramework/pkDebugSettings.h; sourceTree = SOURCE_ROOT; };
 		CD5796461CC625F10014BFD0 /* pkDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pkDebugSettings.m; path = pkDebugFramework/pkDebugSettings.m; sourceTree = SOURCE_ROOT; };
 		CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.dusk.plist; sourceTree = "<group>"; };
+		CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "objc types.pdf"; sourceTree = "<group>"; };
 		CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.basic.plist; sourceTree = "<group>"; };
 		CDBBC8451B70E31600923E3E /* pkTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkTestObject.h; sourceTree = "<group>"; };
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		CD2761EE1B0E1C050000BB5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */,
 				CD2761EF1B0E1C050000BB5D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -324,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD5B602C1CCFCD4000EE3F31 /* objc types.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

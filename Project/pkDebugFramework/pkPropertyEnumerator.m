@@ -17,6 +17,39 @@ static const char *getPropertyType(objc_property_t property)
 	char buffer[1 + strlen(attributes)];
 	strcpy(buffer, attributes);
 	char *state = buffer, *attribute;
+	
+	printf("%s\n", attributes);
+//	T@"NSString",&,N,V_hallo
+//	T@"<pkTestObjectDelegate>",W,N,V_delegate
+//	T@"NSData",&,N,V_data
+//	T@"NSDate",&,N,V_date
+//	T@"NSImage",&,N,V_image
+//	T@,&,N,V_prop
+//	T@"NSSet",&,N,V_set
+//	T@"NSString",&,N,V_name
+//	T@"NSString",&,N,V_test
+//	Tc,N,GisCheck,V_check
+//	TC,N,V_ccheck
+//	Ti,N,V_inum
+//	Tq,N,V_lnum
+//	T@"NSURL",&,N,V_url
+//	T@"pkTestObject",&,N,V_object
+//	T@"NSString",&,N,V_hallo
+//	T@"<pkTestObjectDelegate>",W,N,V_delegate
+//	T@"NSData",&,N,V_data
+//	T@"NSDate",&,N,V_date
+//	T@"NSImage",&,N,V_image
+//	T@,&,N,V_prop
+//	T@"NSSet",&,N,V_set
+//	T@"NSString",&,N,V_name
+//	T@"NSString",&,N,V_test
+//	Tc,N,GisCheck,V_check
+//	TC,N,V_ccheck
+//	Ti,N,V_inum
+//	Tq,N,V_lnum
+//	T@"NSURL",&,N,V_url
+//	T@"pkTestObject",&,N,V_object
+	
 	while ((attribute = strsep(&state, ",")) != NULL)
 	{
 		if (attribute[0] == 'T' && attribute[1] != '@')
@@ -42,37 +75,6 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	return "";
 }
-
-
-/*
-- (void)enumerateProperties:(NSObject *)obj allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *name))callbackBlock
-{
-	// get all properties and Display them in DebugView ...
-	unsigned int outCount, i;
-	objc_property_t *properties = class_copyPropertyList([obj class], &outCount);
-	
-	for (i = 0; i < outCount; i++)
-	{
-		objc_property_t property = properties[i];
-		const char *propName = property_getName(property);
-		
-		if (propName)
-		{
-			const char *type = getPropertyType(property);
-			NSString *propertyName = [NSString stringWithUTF8String:propName];
-			NSString *propertyType = [NSString stringWithUTF8String:type];
-			
-			if (allowed && ![allowed isEqualToString:propertyName])
-			{
-				continue;
-			}
-			
-			callbackBlock(propertyType, propertyName);
-		}
-	}
-	free(properties);
-}
- */
 
 - (void)enumerateProperties:(Class)objectClass allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *name))callbackBlock
 {
@@ -101,7 +103,6 @@ static const char *getPropertyType(objc_property_t property)
 	}
 	free(properties);
 }
-
 
 - (NSString *)propertyTypeFromName:(NSString *)name object:(NSObject *)obj
 {

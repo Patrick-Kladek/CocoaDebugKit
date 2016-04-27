@@ -33,6 +33,7 @@
 @property (nonatomic) NSColor *frameColor;
 @property (nonatomic) NSColor *backgroundColor;
 @property (nonatomic) NSSize imageSize;
+@property (nonatomic) BOOL convertDataToImage;
 
 
 + (pkDebugView *)debugView;
@@ -43,7 +44,7 @@
 
 
 - (void)addProperties:(NSString *)string fromObject:(NSObject *)obj;
-- (void)addAllPropertiesFromObject:(NSObject *)obj;
+- (void)addAllPropertiesFromObject:(NSObject *)obj includeSubclasses:(BOOL)include;
 
 - (void)addLineWithDescription:(NSString *)desc string:(NSString *)value;
 - (void)addLineWithDescription:(NSString *)desc integer:(NSInteger)integer;
