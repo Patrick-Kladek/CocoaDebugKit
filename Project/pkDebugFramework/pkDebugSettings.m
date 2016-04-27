@@ -86,6 +86,9 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_frameColor				= [NSColor blueColor];
 		_backgroundColor		= [NSColor whiteColor];
 		_imageSize				= NSMakeSize(30, 30);
+		
+		_maxDataLenght			= [NSNumber numberWithInteger:50];
+		_convertDataToImage		= true;
 	}
 	return self;
 }
@@ -201,6 +204,10 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 	if ([settings valueForKeyPath:@"debugDescription.NSData.cutLenght"])
 	{
 		_maxDataLenght = [settings valueForKeyPath:@"debugDescription.NSData.cutLenght"];
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.image.dataToImage"]) {
+		_convertDataToImage = [[settings valueForKeyPath:@"debugView.image.dataToImage"] boolValue];
 	}
 }
 

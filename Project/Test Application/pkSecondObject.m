@@ -7,7 +7,7 @@
 //
 
 #import "pkSecondObject.h"
-#import "pkDebugFramework.h"
+#import <pkDebugFramework/pkDebugFramework.h>
 
 @implementation pkSecondObject
 

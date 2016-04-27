@@ -47,10 +47,6 @@
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj
 {
-//	[propertyEnumerator enumerateProperties:obj allowed:nil block:^(NSString *type, NSString *name) {
-//		[self addProperty:name type:type fromObject:obj];
-//	}];
-	
 	Class currentClass = [obj class];
 	
 	while (currentClass != nil)
@@ -78,25 +74,6 @@
 	
 	myDescription = [myDescription stringByAppendingString:[NSString stringWithFormat:@"(%@) %@ = %@,\n", type, name, value]];
 }
-
-/*
-- (NSString *)description
-{
-	NSMutableArray *lines = [NSMutableArray array];
-	
-	[[_description componentsSeparatedByString:@"\n"] enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
-		
-		if (obj.length > 0) {
-			[lines addObject:[NSString stringWithFormat:@"\t%@", obj]];
-		}
-	}];
-	
-	
-	NSString *string = [NSString stringWithFormat:@"%@ {\n%@\n}", [super description], [lines componentsJoinedByString:@"\n"]];
-	return string;
-}
-*/
-
 
 - (NSString *)descriptionForObject:(NSObject *)object
 {

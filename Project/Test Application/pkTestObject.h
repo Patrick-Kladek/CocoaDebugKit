@@ -23,7 +23,7 @@
 
 @property (nonatomic, weak) id<pkTestObjectDelegate> delegate;
 
-@property (nonatomic) NSData *data;
+@property (nonatomic) NSData *dataImage;
 
 @property (nonatomic) NSDate *date;
 @property (nonatomic) NSImage *image;

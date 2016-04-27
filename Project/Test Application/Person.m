@@ -7,7 +7,7 @@
 //
 
 #import "Person.h"
-#import "pkDebugFramework.h"
+#import <pkDebugFramework/pkDebugFramework.h>
 
 
 @implementation Person
@@ -15,7 +15,6 @@
 - (NSString *)debugDescription
 {
 	pkDebugDescription *description = [[pkDebugDescription alloc] init];
-//	[description addAllPropertiesFromObject:self];
 	
 	return [description descriptionForObject:self];
 }

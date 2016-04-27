@@ -119,6 +119,7 @@
 		self.frameColor			= settings.frameColor;
 		
 		self.imageSize			= settings.imageSize;
+		self.convertDataToImage	= settings.convertDataToImage;
 	
 		self.layer = _layer;
 		self.wantsLayer = YES;
@@ -134,32 +135,6 @@
 	if (![url isFileURL]) {
 		return;
 	}
-	
-	
-//	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfURL:url];
-	
-//	_highlightNumbers = [[dict valueForKeyPath:@"numbers.highlight"] boolValue];
-//	_numberColor = NSColorFromHexString([dict valueForKeyPath:@"numbers.color"]);
-//	_numberFont = [NSFont fontWithName:[dict valueForKeyPath:@"numbers.font"] size:[[dict valueForKeyPath:@"numbers.size"] integerValue]];
-//	
-//	
-//	_highlightKeywords = [[dict valueForKeyPath:@"keywords.highlight"] boolValue];
-//	_keywordColor = NSColorFromHexString([dict valueForKeyPath:@"keywords.color"]);
-//	_keywordFont = [NSFont fontWithName:[dict valueForKeyPath:@"keywords.font"] size:[[dict valueForKeyPath:@"keywords.size"] integerValue]];
-//	
-//	_textColor = NSColorFromHexString([dict valueForKeyPath:@"text.color"]);
-//	_textFont = [NSFont fontWithName:[dict valueForKeyPath:@"text.font"] size:[[dict valueForKeyPath:@"text.size"] integerValue]];
-//	
-//	_propertyNameColor = NSColorFromHexString([dict valueForKeyPath:@"propertyName.color"]);
-//	_propertyNameFont = [NSFont fontWithName:[dict valueForKeyPath:@"propertyName.font"] size:[[dict valueForKeyPath:@"propertyName.size"] integerValue]];
-//	
-//	
-//	
-//	_imageSize = NSSizeFromString([dict valueForKeyPath:@"image.size"]);
-//	
-//	
-//	_backgroundColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.backgroundColor"]);
-//	_frameColor = NSColorFromHexString([dict valueForKeyPath:@"appearance.frameColor"]);
 }
 
 
@@ -187,10 +162,8 @@
 	
 	
 	NSColor *startingColor = [NSColor colorWithRed:_frameColor.redComponent green:_frameColor.greenComponent blue:_frameColor.blueComponent alpha:0.75];
-	NSGradient* aGradient = [[NSGradient alloc] initWithStartingColor:startingColor endingColor:_frameColor];
+	NSGradient *aGradient = [[NSGradient alloc] initWithStartingColor:startingColor endingColor:_frameColor];
 	[aGradient drawInRect:rect angle:90];
-	
-	
 }
 
 - (BOOL)isFlipped
@@ -386,9 +359,8 @@
 - (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image
 {
 	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
-	
-//	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
-	[left setStringValue:[left.stringValue capitalizedString]];
+//	[left setStringValue:[left.stringValue capitalizedString]];		// all other letters will be lowercase
+	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
 	
 	
 	[left setIdentifier:@"left"];
@@ -441,9 +413,30 @@
 		
 		if ([object isKindOfClass:[NSData class]])
 		{
-			NSData *data = (NSData *)property;
-			NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+			if (_convertDataToImage)
+			{
+				if ([propertyName rangeOfString:@"image" options:NSCaseInsensitiveSearch].location != NSNotFound)
+				{
+					// image Variable encoded as data
+					NSData *data = (NSData *)property;
+					
+					NSImage *image = [[NSImage alloc] initWithData:data];
+					
+					if (image) {
+						[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:image];
+					} else {
+						NSData *data = (NSData *)property;
+						NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+						[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+					}
+				}
+			}
+			else
+			{
+				NSData *data = (NSData *)property;
+				NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+			}
 		}
 		else if ([object isKindOfClass:[NSImage class]])
 		{
@@ -561,65 +554,6 @@
 		}
 	}
 }
-
-
-/*
-- (void)enumerateProperties:(NSObject *)obj allowed:(NSString *)allowed
-{
-	// get all properties and Display them in DebugView ...
-	unsigned int outCount, i;
-	objc_property_t *properties = class_copyPropertyList([obj class], &outCount);
-	
-	for (i = 0; i < outCount; i++)
-	{
-		objc_property_t property = properties[i];
-		const char *propName = property_getName(property);
-		
-		if (propName)
-		{
-			const char *type = getPropertyType(property);
-			NSString *propertyName = [NSString stringWithUTF8String:propName];
-			NSString *propertyType = [NSString stringWithUTF8String:type];
-			
-			if (allowed && ![allowed isEqualToString:propertyName])
-			{
-				continue;
-			}
-			
-			[self addProperty:propertyName type:propertyType toObject:obj];
-		}
-	}
-	free(properties);
-}
-
-- (NSString *)propertyTypeFromName:(NSString *)name object:(NSObject *)obj
-{
-	// get all properties and Display them in DebugView ...
-	unsigned int outCount, i;
-	objc_property_t *properties = class_copyPropertyList([obj class], &outCount);
-	
-	for (i = 0; i < outCount; i++)
-	{
-		objc_property_t property = properties[i];
-		const char *propName = property_getName(property);
-		
-		if (propName)
-		{
-			const char *type = getPropertyType(property);
-			NSString *propertyName = [NSString stringWithUTF8String:propName];
-			NSString *propertyType = [NSString stringWithUTF8String:type];
-			
-			if ([propertyName isEqualToString:name])
-			{
-				return propertyType;
-			}
-		}
-	}
-	free(properties);
-	
-	return nil;
-}
-*/
 
 - (void)syncroniseHeightOfView:(NSView *)left secondView:(NSView *)right
 {
