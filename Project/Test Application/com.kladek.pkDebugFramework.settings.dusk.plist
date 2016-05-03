@@ -37,6 +37,11 @@
 			<string>{60, 60}</string>
 			<key>dataToImage</key>
 			<true/>
+			<key>propertyNameContains</key>
+			<array>
+				<string>image</string>
+				<string>icon</string>
+			</array>
 		</dict>
 		<key>text</key>
 		<dict>

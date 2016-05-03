@@ -120,6 +120,7 @@
 		
 		self.imageSize			= settings.imageSize;
 		self.convertDataToImage	= settings.convertDataToImage;
+		self.propertyNameContains	= [NSMutableArray arrayWithArray:[settings propertyNameContains]];
 	
 		self.layer = _layer;
 		self.wantsLayer = YES;
@@ -407,15 +408,29 @@
 	id object = [[NSClassFromString(propertyType) alloc] init];		// every Obj-C Object ...
 	if (object)
 	{
+		// not working for CoreData because lazy loading
+		// should access data with getter (self.property)
 		id property = [obj valueForKey:propertyName];
 
 		
-		
 		if ([object isKindOfClass:[NSData class]])
 		{
-			if (_convertDataToImage)
+			if (_convertDataToImage && _propertyNameContains.count > 0)
 			{
-				if ([propertyName rangeOfString:@"image" options:NSCaseInsensitiveSearch].location != NSNotFound)
+				BOOL contains = false;
+				
+				for (NSString *name in _propertyNameContains)
+				{
+					if ([propertyName rangeOfString:name options:NSCaseInsensitiveSearch].location != NSNotFound)
+					{
+						contains = true;
+						break;
+					}
+				}
+				
+				
+				
+				if (contains)
 				{
 					// image Variable encoded as data
 					NSData *data = (NSData *)property;
@@ -466,7 +481,80 @@
 		NSString *string = [NSString stringWithFormat:@"%@", property];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 	}
-	else if ([propertyType isEqualToString:@"c"])										// Char
+	else if ([propertyType isEqualToString:@"char"])										// Char & bool
+	{
+		// char
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%c", [[obj valueForKey:propertyName] charValue]]];
+		
+		
+//		NSNumber *number = [obj valueForKey:propertyName];
+//		if ([number boolValue] == true)
+//		{
+//			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:YES];
+//		}
+//		else
+//		{
+//			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:NO];
+//		}
+	}
+	else if ([propertyType isEqualToString:@"int"])										// Int
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number integerValue]];
+	}
+	else if ([propertyType isEqualToString:@"short"])										// Short
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number shortValue]];
+	}
+	else if ([propertyType isEqualToString:@"long"])										// long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number longValue]];
+	}
+	else if ([propertyType isEqualToString:@"long long"])										// long long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] longnumber:[number longLongValue]];
+	}
+	else if ([propertyType isEqualToString:@"unsigned char"])										// unsigned char
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		char mchar = [number charValue];
+		NSString *string = [NSString stringWithFormat:@"%c", mchar];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+	}
+	else if ([propertyType isEqualToString:@"unsigned int"])										// unsigned Int
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedIntegerValue]];
+	}
+	else if ([propertyType isEqualToString:@"unsigned short"])										// unsigned Short
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number unsignedShortValue]];
+	}
+	else if ([propertyType isEqualToString:@"unsigned long"])										// unsigned long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedLongValue]];
+	}
+	else if ([propertyType isEqualToString:@"unsigned long long"])										// unsigned long long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedLongnumber:[number unsignedLongLongValue]];
+	}
+	else if ([propertyType isEqualToString:@"float"])										// float
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number floatValue]];
+	}
+	else if ([propertyType isEqualToString:@"double"])										// double
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number doubleValue]];
+	}
+	else if ([propertyName isEqualToString:@"bool"])
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		if ([number boolValue] == true)
@@ -477,65 +565,9 @@
 		{
 			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:NO];
 		}
+
 	}
-	else if ([propertyType isEqualToString:@"i"])										// Int
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number integerValue]];
-	}
-	else if ([propertyType isEqualToString:@"s"])										// Short
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number shortValue]];
-	}
-	else if ([propertyType isEqualToString:@"l"])										// long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number longValue]];
-	}
-	else if ([propertyType isEqualToString:@"q"])										// long long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] longnumber:[number longLongValue]];
-	}
-	else if ([propertyType isEqualToString:@"C"])										// unsigned char
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		char mchar = [number charValue];
-		NSString *string = [NSString stringWithFormat:@"%c", mchar];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-	}
-	else if ([propertyType isEqualToString:@"I"])										// unsigned Int
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedIntegerValue]];
-	}
-	else if ([propertyType isEqualToString:@"S"])										// unsigned Short
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number unsignedShortValue]];
-	}
-	else if ([propertyType isEqualToString:@"L"])										// unsigned long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedLongValue]];
-	}
-	else if ([propertyType isEqualToString:@"Q"])										// unsigned long long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedLongnumber:[number unsignedLongLongValue]];
-	}
-	else if ([propertyType isEqualToString:@"f"])										// float
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number floatValue]];
-	}
-	else if ([propertyType isEqualToString:@"d"])										// double
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number doubleValue]];
-	}
-	else if ([propertyType isEqualToString:@"*"])										// char * (pointer)
+	else if ([propertyType isEqualToString:@"void"])										// char * (pointer)
 	{
 		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
 		

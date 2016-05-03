@@ -7,15 +7,8 @@
 //
 
 #import "pkSecondObject.h"
-#import <pkDebugFramework/pkDebugFramework.h>
+//#import <pkDebugFramework/pkDebugFramework.h>
 
 @implementation pkSecondObject
-
-- (id)debugQuickLookObject
-{
-	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self includeSubclasses:YES];
-	
-	return view;
-}
 
 @end

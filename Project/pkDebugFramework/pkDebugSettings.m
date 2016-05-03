@@ -89,6 +89,7 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		
 		_maxDataLenght			= [NSNumber numberWithInteger:50];
 		_convertDataToImage		= true;
+		_propertyNameContains 	= [NSArray array];
 	}
 	return self;
 }
@@ -208,6 +209,10 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 	
 	if ([settings valueForKeyPath:@"debugView.image.dataToImage"]) {
 		_convertDataToImage = [[settings valueForKeyPath:@"debugView.image.dataToImage"] boolValue];
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.image.propertyNameContains"]) {
+		_propertyNameContains = [settings valueForKeyPath:@"debugView.image.propertyNameContains"];
 	}
 }
 

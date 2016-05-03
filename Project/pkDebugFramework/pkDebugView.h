@@ -34,6 +34,7 @@
 @property (nonatomic) NSColor *backgroundColor;
 @property (nonatomic) NSSize imageSize;
 @property (nonatomic) BOOL convertDataToImage;
+@property (nonatomic) NSMutableArray *propertyNameContains;
 
 
 + (pkDebugView *)debugView;

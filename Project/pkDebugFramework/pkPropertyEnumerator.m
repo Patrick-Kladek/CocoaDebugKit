@@ -18,7 +18,7 @@ static const char *getPropertyType(objc_property_t property)
 	strcpy(buffer, attributes);
 	char *state = buffer, *attribute;
 	
-	printf("%s\n", attributes);
+//	printf("%s\n", attributes);
 //	T@"NSString",&,N,V_hallo
 //	T@"<pkTestObjectDelegate>",W,N,V_delegate
 //	T@"NSData",&,N,V_data
@@ -60,6 +60,71 @@ static const char *getPropertyType(objc_property_t property)
 			 "objective-c" "Property Attribute Description Examples"
 			 apple docs list plenty of examples of what you get for int "i", long "l", unsigned "I", struct, etc.
 			 */
+			
+			switch (attribute[1]) {
+				case 'c':
+					return "char";
+					break;
+				case 'i':
+					return "int";
+					break;
+					
+				case 's':
+					return "short";
+					break;
+					
+				case 'l':
+					return "long";
+					break;
+					
+				case 'q':
+					return "long long";
+					break;
+					
+				case 'C':
+					return "unsigned char";
+					break;
+					
+				case 'I':
+					return "unsigned int";
+					break;
+					
+				case 'S':
+					return "unsigned short";
+					break;
+					
+				case 'L':
+					return "unsigned long";
+					break;
+					
+				case 'Q':
+					return "unsigned long long";
+					break;
+					
+				case 'f':
+					return "float";
+					break;
+					
+				case 'd':
+					return "double";
+					break;
+					
+				case 'B':
+					return "bool";
+					break;
+					
+				case 'v':
+					return "void";
+					break;
+					
+				case '*':
+					return "char *";
+					break;
+					
+				default:
+					break;
+			}
+			
 			return (const char *)[[NSData dataWithBytes:(attribute + 1) length:strlen(attribute) - 1] bytes];
 		}
 		else if (attribute[0] == 'T' && attribute[1] == '@' && strlen(attribute) == 2)

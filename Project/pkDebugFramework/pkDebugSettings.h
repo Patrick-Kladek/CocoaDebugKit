@@ -49,6 +49,7 @@
 
 @property (nonatomic) NSNumber *maxDataLenght;
 @property (nonatomic) BOOL convertDataToImage;
+@property (nonatomic) NSArray *propertyNameContains;
 
 
 
