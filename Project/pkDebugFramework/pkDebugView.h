@@ -10,6 +10,8 @@
 
 @interface pkDebugView : NSView
 
+@property (nonatomic) NSObject *obj;
+
 @property (nonatomic) NSString *title;
 @property (nonatomic) BOOL highlightKeywords;
 @property (nonatomic) BOOL highlightNumbers;
@@ -36,6 +38,9 @@
 @property (nonatomic) BOOL convertDataToImage;
 @property (nonatomic) NSMutableArray *propertyNameContains;
 
+@property (nonatomic) BOOL save;
+@property (nonatomic) NSURL *saveUrl;
+
 
 + (pkDebugView *)debugView;
 + (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include;
@@ -55,5 +60,8 @@
 - (void)addLineWithDescription:(NSString *)desc floating:(double)floating;
 - (void)addLineWithDescription:(NSString *)desc boolean:(BOOL)boolean;
 - (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
+
+- (void)saveDebugView;
+- (BOOL)saveDebugViewToUrl:(NSURL *)url;
 
 @end

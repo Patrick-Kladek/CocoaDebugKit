@@ -21,6 +21,10 @@
 			<string>FFFFFFFF</string>
 			<key>lineSpace</key>
 			<string>7</string>
+			<key>save</key>
+			<true/>
+			<key>path</key>
+			<string>~/Desktop/debugView</string>
 		</dict>
 		<key>propertyName</key>
 		<dict>

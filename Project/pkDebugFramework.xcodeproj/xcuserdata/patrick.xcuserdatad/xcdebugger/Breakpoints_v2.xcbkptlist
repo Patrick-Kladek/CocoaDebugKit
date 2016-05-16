@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "pkDebugFramework/pkDebugDescription.m"
-            timestampString = "483295907.087273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-addAllPropertiesFromObject:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pkDebugFramework/pkDebugView.m"
-            timestampString = "483978708.793884"
+            timestampString = "484505609.930169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
-            landmarkName = "-addProperty:type:toObject:"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "-saveDebugViewToUrl:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Patrick Kladek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+//#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @class pkTestObject;
 
