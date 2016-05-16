@@ -94,16 +94,6 @@
 	self = [super init];
 	if (self)
 	{
-		propertyEnumerator = [[pkPropertyEnumerator alloc] init];
-		
-		
-		leftWidth				= 0;
-		rightWidth				= 0;
-		pos						= 30;
-		_title					= @"pkDebugView";
-		[self setTitle:_title];
-		
-		
 		pkDebugSettings *settings = [pkDebugSettings sharedSettings];
 		
 		self.lineSpace				= settings.lineSpace;
@@ -138,6 +128,21 @@
 		
 		self.dateFormat				= settings.dateFormat;
 	
+		
+		
+		
+		propertyEnumerator = [[pkPropertyEnumerator alloc] init];
+		
+		
+		leftWidth				= 0;
+		rightWidth				= 0;
+		pos						= 30;
+		_title					= @"pkDebugView";
+		[self setTitle:_title];
+		
+		
+		
+		
 		self.layer = _layer;
 		self.wantsLayer = YES;
 		self.layer.masksToBounds = YES;
@@ -290,6 +295,8 @@
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj includeSubclasses:(BOOL)include
 {
+	[self traceSuperClassesOfObject:obj];
+	
 	if (include)
 	{
 		// enumerate all subclasses "class_copyPropertyList(...)"
@@ -721,6 +728,7 @@
 	NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(point.x, point.y, 100, 100)];
 	[textField setBordered:NO];
 	[textField setEditable:NO];
+	[textField setSelectable:YES];
 	[textField setAlignment:align];
 	[textField setBackgroundColor:[NSColor clearColor]];
 	[textField setStringValue:string];

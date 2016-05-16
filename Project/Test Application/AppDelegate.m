@@ -56,7 +56,7 @@
 	[view addLineWithDescription:@"test" boolean:NO];
 	
 	
-	[view setFrame:NSOffsetRect(view.frame, 50, 50)];
+	[view setFrame:NSOffsetRect(view.frame, 20, 212)];
 	[[[self window] contentView] addSubview:view];
 
 	
@@ -85,7 +85,7 @@
 	
 	
 	NSView *newView = [obj debugQuickLookObject];
-	[newView setFrame:NSOffsetRect(newView.frame, 600, 50)];
+	[newView setFrame:NSOffsetRect(newView.frame, 602, 39)];
 	[[[self window] contentView] addSubview:newView];
 //	NSLog(@"%@", [obj debugDescription]);
 	
@@ -101,10 +101,10 @@
 	[person setLastName:@"Johnson"];
 	[person setBirthday:[NSDate dateWithTimeIntervalSince1970:5*365*60*600]];
 
-	// NSLog(@"%@", [person debugDescription]);
-//	printf("%s", [[person debugDescription] UTF8String]);
+	NSView *view2 = [person debugQuickLookObject];
+	[view2 setFrame:NSOffsetRect(view2.frame, 20, 20)];
 	
-	[[[self window] contentView] addSubview:[person debugQuickLookObject]];
+	[[[self window] contentView] addSubview:view2];
 
 
 }
@@ -112,6 +112,11 @@
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
 	return YES;
+}
+
+- (void)smt
+{
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end
