@@ -52,7 +52,8 @@
 + (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
-
+	[view setObj:obj];
+	
 	if (include) {
 		[view traceSuperClassesOfObject:obj];
 	} else {
@@ -60,6 +61,10 @@
 	}
 	
 	[view addAllPropertiesFromObject:obj includeSubclasses:include];
+	
+	if ([view save]) {
+		[view saveDebugView];
+	}
 
 	return view;
 }
@@ -67,9 +72,14 @@
 + (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
-
+	[view setObj:obj];
+	
 	[view traceSuperClassesOfObject:obj];
 	[view addProperties:properties fromObject:obj];
+	
+	if ([view save]) {
+		[view saveDebugView];
+	}
 	
 	return view;
 }
@@ -121,6 +131,9 @@
 		self.imageSize			= settings.imageSize;
 		self.convertDataToImage	= settings.convertDataToImage;
 		self.propertyNameContains	= [NSMutableArray arrayWithArray:[settings propertyNameContains]];
+		
+		self.save 				= settings.save;
+		self.saveUrl			= settings.saveUrl;
 	
 		self.layer = _layer;
 		self.wantsLayer = YES;
@@ -137,7 +150,6 @@
 		return;
 	}
 }
-
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -217,6 +229,49 @@
 	
 	[self setTitle:classStructure];
 }
+
+#pragma mark - Save
+
+- (void)saveDebugView
+{
+	NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+	NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"]; 	// example: 1.0.0
+	NSString *buildNumber = [infoDict objectForKey:@"CFBundleVersion"]; 			// example: 42
+	
+	NSURL *url = [_saveUrl URLByAppendingPathComponent:appVersion];
+	url = [url URLByAppendingPathComponent:buildNumber];
+	
+	NSError *error;
+	if (![[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error])
+	{
+		NSAlert *alert = [NSAlert alertWithError:error];
+		[alert runModal];
+		return;
+	}
+	
+	NSDictionary *debuggedObjects = [[pkDebugSettings sharedSettings] debuggedObjects];
+	NSInteger debuggedNr = [[debuggedObjects valueForKey:[_obj className]] integerValue];
+	debuggedNr++;
+	[debuggedObjects setValue:[NSNumber numberWithInteger:debuggedNr] forKey:[_obj className]];
+	url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@ %li.png", [_obj className], debuggedNr]];
+	
+	[self saveDebugViewToUrl:url];
+}
+
+- (BOOL)saveDebugViewToUrl:(NSURL *)url
+{
+	NSBitmapImageRep *rep = [self bitmapImageRepForCachingDisplayInRect:self.bounds];
+	[self cacheDisplayInRect:self.bounds toBitmapImageRep:rep];
+	
+	NSLog(@"bounds: %@", NSStringFromRect(self.bounds));
+	NSLog(@"frame:  %@", NSStringFromRect(self.frame));
+
+	
+	NSData *data = [rep representationUsingType:NSPNGFileType properties:nil];
+	return [data writeToURL:url atomically:YES];
+}
+
+
 
 #pragma mark - Add Data
 

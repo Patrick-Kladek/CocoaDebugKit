@@ -24,7 +24,6 @@
 		CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* pkDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796461CC625F10014BFD0 /* pkDebugSettings.m */; };
 		CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */; };
-		CD5B602C1CCFCD4000EE3F31 /* objc types.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */; };
 		CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */; };
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -275,6 +274,7 @@
 				CD27623E1B0E30210000BB5D /* Frameworks */,
 				CD27623F1B0E30210000BB5D /* Resources */,
 				CD5796301CC5262E0014BFD0 /* Embed Frameworks */,
+				CD39ADEB1CE0ADAC009ED057 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -327,7 +327,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD5B602C1CCFCD4000EE3F31 /* objc types.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +346,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		CD39ADEB1CE0ADAC009ED057 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 		CD57962A1CC523830014BFD0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -542,7 +554,9 @@
 				);
 				INFOPLIST_FILE = "Test Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -554,7 +568,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Test Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

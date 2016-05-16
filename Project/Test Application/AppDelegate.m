@@ -90,6 +90,8 @@
 //	NSLog(@"%@", [obj debugDescription]);
 	
 	printf("%s\n", [[obj debugDescription] UTF8String]);
+	// second call
+	[obj debugQuickLookObject];
 
 	
 

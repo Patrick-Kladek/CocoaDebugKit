@@ -52,6 +52,12 @@
 @property (nonatomic) NSArray *propertyNameContains;
 
 
+@property (nonatomic) BOOL save;
+@property (nonatomic) NSURL *saveUrl;
+
+
+@property (nonatomic) NSMutableDictionary *debuggedObjects;
+
 
 
 

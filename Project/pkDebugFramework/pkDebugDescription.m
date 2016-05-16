@@ -39,7 +39,9 @@
 		
 		pkDebugSettings *settings = [pkDebugSettings sharedSettings];
 		
-		self.dataMaxLenght = settings.maxDataLenght;
+		self.dataMaxLenght	= settings.maxDataLenght;
+		self.save			= settings.save;
+		self.saveUrl		= settings.saveUrl;
 	}
 	return self;
 }
@@ -47,6 +49,8 @@
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj
 {
+	_obj = obj;
+	
 	Class currentClass = [obj class];
 	
 	while (currentClass != nil)
@@ -89,11 +93,45 @@
 		}
 	}];
 	
+	if (_save) {
+		[self saveDebugDescription];
+	}
 	
 	NSString *string = [NSString stringWithFormat:@"%@ <%p> {\n%@\n}", NSStringFromClass([object class]), object, [lines componentsJoinedByString:@"\n"]];
 	return string;
+}
+
+- (void)saveDebugDescription
+{
+	NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+	NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"]; 	// example: 1.0.0
+	NSString *buildNumber = [infoDict objectForKey:@"CFBundleVersion"]; 			// example: 42
 	
+	NSURL *url = [_saveUrl URLByAppendingPathComponent:appVersion];
+	url = [url URLByAppendingPathComponent:buildNumber];
 	
+	NSError *error;
+	if (![[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error])
+	{
+		NSAlert *alert = [NSAlert alertWithError:error];
+		[alert runModal];
+		return;
+	}
+	
+	NSDictionary *debuggedObjects = [[pkDebugSettings sharedSettings] debuggedObjects];
+	NSInteger debuggedNr = [[debuggedObjects valueForKey:[_obj className]] integerValue];
+	debuggedNr++;
+	[debuggedObjects setValue:[NSNumber numberWithInteger:debuggedNr] forKey:[_obj className]];
+	url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@ %li.txt", [_obj className], debuggedNr]];
+	
+	[self saveDebugDescriptionToUrl:url];
+}
+
+- (BOOL)saveDebugDescriptionToUrl:(NSURL *)url
+{
+	NSError *error;
+	
+	return [myDescription writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&error];
 }
 
 @end

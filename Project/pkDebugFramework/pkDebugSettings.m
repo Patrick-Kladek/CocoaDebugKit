@@ -90,6 +90,11 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_maxDataLenght			= [NSNumber numberWithInteger:50];
 		_convertDataToImage		= true;
 		_propertyNameContains 	= [NSArray array];
+		
+		_save = NO;
+		_saveUrl = [NSURL fileURLWithPath:[@"~/Desktop" stringByExpandingTildeInPath]];
+		
+		_debuggedObjects 		= [NSMutableDictionary dictionary];
 	}
 	return self;
 }
@@ -214,6 +219,17 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 	if ([settings valueForKeyPath:@"debugView.image.propertyNameContains"]) {
 		_propertyNameContains = [settings valueForKeyPath:@"debugView.image.propertyNameContains"];
 	}
+	
+	
+	if ([settings valueForKeyPath:@"debugView.appearance.save"]) {
+		_save = [[settings valueForKeyPath:@"debugView.appearance.save"] boolValue];
+	}
+	
+	if ([settings valueForKeyPath:@"debugView.appearance.path"]) {
+		_saveUrl = [NSURL fileURLWithPath:[[settings valueForKeyPath:@"debugView.appearance.path"] stringByExpandingTildeInPath]];
+	}
+	
+	
 }
 
 @end
