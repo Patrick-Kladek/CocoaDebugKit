@@ -109,9 +109,9 @@
 
 }
 
-- (void)smt
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
+	return YES;
 }
 
 @end

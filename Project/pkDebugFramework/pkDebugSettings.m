@@ -91,6 +91,8 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_convertDataToImage		= true;
 		_propertyNameContains 	= [NSArray array];
 		
+		_dateFormat				= @"yyyy-MM-dd 'at' HH:mm";
+		
 		_save = NO;
 		_saveUrl = [NSURL fileURLWithPath:[@"~/Desktop" stringByExpandingTildeInPath]];
 		
@@ -229,7 +231,15 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_saveUrl = [NSURL fileURLWithPath:[[settings valueForKeyPath:@"debugView.appearance.path"] stringByExpandingTildeInPath]];
 	}
 	
+	if ([settings valueForKeyPath:@"debugView.appearance.save"]) {
+		_saveAsPDF = [[settings valueForKeyPath:@"debugView.appearance.usePDF"] boolValue];
+	}
 	
+	
+	
+	if ([settings valueForKeyPath:@"debugView.NSDate.format"]) {
+		_dateFormat = [settings valueForKeyPath:@"debugView.NSDate.format"];
+	}
 }
 
 @end

@@ -38,8 +38,11 @@
 @property (nonatomic) BOOL convertDataToImage;
 @property (nonatomic) NSMutableArray *propertyNameContains;
 
+@property (nonatomic) NSString *dateFormat;
+
 @property (nonatomic) BOOL save;
 @property (nonatomic) NSURL *saveUrl;
+@property (nonatomic) BOOL saveAsPDF;
 
 
 + (pkDebugView *)debugView;
@@ -60,6 +63,7 @@
 - (void)addLineWithDescription:(NSString *)desc floating:(double)floating;
 - (void)addLineWithDescription:(NSString *)desc boolean:(BOOL)boolean;
 - (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
+- (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date;
 
 - (void)saveDebugView;
 - (BOOL)saveDebugViewToUrl:(NSURL *)url;

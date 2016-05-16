@@ -43,7 +43,7 @@
 @property (nonatomic) NSColor *backgroundColor;
 @property (nonatomic) NSSize imageSize;
 
-
+@property (nonatomic) NSString *dateFormat;
 
 
 
@@ -54,6 +54,7 @@
 
 @property (nonatomic) BOOL save;
 @property (nonatomic) NSURL *saveUrl;
+@property (nonatomic) BOOL saveAsPDF;
 
 
 @property (nonatomic) NSMutableDictionary *debuggedObjects;
