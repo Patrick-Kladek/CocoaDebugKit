@@ -107,33 +107,36 @@
 		pkDebugSettings *settings = [pkDebugSettings sharedSettings];
 		
 		self.lineSpace				= settings.lineSpace;
-		self.highlightKeywords	= settings.highlightKeywords;
-		self.highlightNumbers	= settings.highlightNumbers;
+		self.highlightKeywords		= settings.highlightKeywords;
+		self.highlightNumbers		= settings.highlightNumbers;
 		
-		self.textColor			= settings.textColor;
-		self.textFont			= settings.textFont;
+		self.textColor				= settings.textColor;
+		self.textFont				= settings.textFont;
 		
-		self.keywordColor		= settings.keywordColor;
-		self.keywordFont		= settings.keywordFont;
+		self.keywordColor			= settings.keywordColor;
+		self.keywordFont			= settings.keywordFont;
 		
-		self.numberColor		= settings.numberColor;
-		self.numberFont			= settings.numberFont;
+		self.numberColor			= settings.numberColor;
+		self.numberFont				= settings.numberFont;
 		
-		self.propertyNameColor	= settings.propertyNameColor;
-		self.propertyNameFont	= settings.propertyNameFont;
+		self.propertyNameColor		= settings.propertyNameColor;
+		self.propertyNameFont		= settings.propertyNameFont;
 		
-		self.titleColor			= settings.titleColor;
-		self.titleFont			= settings.titleFont;
+		self.titleColor				= settings.titleColor;
+		self.titleFont				= settings.titleFont;
 		
-		self.backgroundColor	= settings.backgroundColor;
-		self.frameColor			= settings.frameColor;
+		self.backgroundColor		= settings.backgroundColor;
+		self.frameColor				= settings.frameColor;
 		
-		self.imageSize			= settings.imageSize;
-		self.convertDataToImage	= settings.convertDataToImage;
+		self.imageSize				= settings.imageSize;
+		self.convertDataToImage		= settings.convertDataToImage;
 		self.propertyNameContains	= [NSMutableArray arrayWithArray:[settings propertyNameContains]];
 		
-		self.save 				= settings.save;
-		self.saveUrl			= settings.saveUrl;
+		self.save 					= settings.save;
+		self.saveUrl				= settings.saveUrl;
+		self.saveAsPDF				= settings.saveAsPDF;
+		
+		self.dateFormat				= settings.dateFormat;
 	
 		self.layer = _layer;
 		self.wantsLayer = YES;
@@ -253,19 +256,29 @@
 	NSInteger debuggedNr = [[debuggedObjects valueForKey:[_obj className]] integerValue];
 	debuggedNr++;
 	[debuggedObjects setValue:[NSNumber numberWithInteger:debuggedNr] forKey:[_obj className]];
-	url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@ %li.png", [_obj className], debuggedNr]];
+	url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@ %li", [_obj className], debuggedNr]];
+	
+	if (_saveAsPDF) {
+		url = [url URLByAppendingPathExtension:@"pdf"];
+	} else {
+		url = [url URLByAppendingPathExtension:@"png"];
+	}
+	
 	
 	[self saveDebugViewToUrl:url];
 }
 
 - (BOOL)saveDebugViewToUrl:(NSURL *)url
 {
+	if ([[url pathExtension] isEqualToString:@"pdf"])
+	{
+		NSData *data = [self dataWithPDFInsideRect:[self bounds]];
+		return [data writeToURL:url atomically:YES];
+	}
+	
+	
 	NSBitmapImageRep *rep = [self bitmapImageRepForCachingDisplayInRect:self.bounds];
 	[self cacheDisplayInRect:self.bounds toBitmapImageRep:rep];
-	
-	NSLog(@"bounds: %@", NSStringFromRect(self.bounds));
-	NSLog(@"frame:  %@", NSStringFromRect(self.frame));
-
 	
 	NSData *data = [rep representationUsingType:NSPNGFileType properties:nil];
 	return [data writeToURL:url atomically:YES];
@@ -451,6 +464,14 @@
 	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
 }
 
+- (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date
+{
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:_dateFormat];
+	NSString *dateString = [dateFormatter stringFromDate:date];
+	[self addLineWithDescription:desc string:dateString];
+}
+
 - (void)addSeperator
 {
 	// draw dashed line here
@@ -507,6 +528,10 @@
 				NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
 				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 			}
+		}
+		else if ([object isKindOfClass:[NSDate class]])
+		{
+			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] date:property];
 		}
 		else if ([object isKindOfClass:[NSImage class]])
 		{
