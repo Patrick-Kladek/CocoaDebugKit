@@ -25,13 +25,14 @@
 	
 	// or
 //	pkDebugView *view = [[pkDebugView alloc] init];
-//	[view addAllPropertiesFromObject:self];
+//	[view setFrameColor:[NSColor purpleColor]];
+//	[view addAllPropertiesFromObject:self includeSubclasses:YES];
 	
 	
 	
 	
 	// option 2
-//	pkDebugView *view = [pkDebugView debugViewWithProperties:@"name, image, url" ofObject:self];
+//	pkDebugView *view = [pkDebugView debugViewWithProperties:@"_name, _image, _url" ofObject:self];
 	
 	// or
 //	pkDebugView *view = [pkDebugView debugView];

@@ -45,8 +45,20 @@
 @property (nonatomic) BOOL saveAsPDF;
 
 
+/**
+ *	creates a new debugView with no information
+ */
 + (pkDebugView *)debugView;
+
+/**
+ *	creates a new debugView with all properties from Object
+ *	@param include:	includes properties from subclasses if true, otherwise only properties from current class
+ */
 + (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include;
+
+/**
+ *	works only with current class, not objects/variables from subclasses
+ */
 + (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj;
 
 

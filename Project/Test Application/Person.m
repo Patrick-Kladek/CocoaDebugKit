@@ -22,6 +22,7 @@
 - (id)debugQuickLookObject
 {
 	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self includeSubclasses:YES];
+	[view setFrameColor:[NSColor purpleColor]];
 	
 	return view;
 }
