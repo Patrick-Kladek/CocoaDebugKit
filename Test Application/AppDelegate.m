@@ -99,8 +99,21 @@
 	[person setImage:[NSImage imageNamed:NSImageNameUser]];
 	[person setFirstName:@"Mark"];
 	[person setLastName:@"Johnson"];
-	[person setBirthday:[NSDate dateWithTimeIntervalSince1970:5*365*60*600]];
+	[person setBirthday:[NSDate date]];
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	NSView *view2 = [person debugQuickLookObject];
 	[view2 setFrame:NSOffsetRect(view2.frame, 20, 20)];
 	
