@@ -28,6 +28,9 @@
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBD4F5B1CCE419C00A0912B /* pkPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */; };
+		CDC75E011CEB18F0004393EE /* add debugView.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC75DFE1CEB18F0004393EE /* add debugView.png */; };
+		CDC75E021CEB18F0004393EE /* new Debug.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC75DFF1CEB18F0004393EE /* new Debug.png */; };
+		CDC75E031CEB18F0004393EE /* old Debug.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC75E001CEB18F0004393EE /* old Debug.png */; };
 		CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,9 @@
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
 		CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkPropertyEnumerator.h; sourceTree = "<group>"; };
 		CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkPropertyEnumerator.m; sourceTree = "<group>"; };
+		CDC75DFE1CEB18F0004393EE /* add debugView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add debugView.png"; sourceTree = "<group>"; };
+		CDC75DFF1CEB18F0004393EE /* new Debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new Debug.png"; sourceTree = "<group>"; };
+		CDC75E001CEB18F0004393EE /* old Debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "old Debug.png"; sourceTree = "<group>"; };
 		CDE848D71CCE75E900DD5A00 /* pkSecondObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkSecondObject.h; sourceTree = "<group>"; };
 		CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkSecondObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +127,7 @@
 				CD2762421B0E30210000BB5D /* Test Application */,
 				CD2761ED1B0E1C050000BB5D /* pkDebugFramework */,
 				CD2761EC1B0E1C050000BB5D /* Products */,
+				CDC75DFD1CEB18F0004393EE /* Doc */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +224,16 @@
 				CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */,
 			);
 			name = "Property Enumerator";
+			sourceTree = "<group>";
+		};
+		CDC75DFD1CEB18F0004393EE /* Doc */ = {
+			isa = PBXGroup;
+			children = (
+				CDC75DFE1CEB18F0004393EE /* add debugView.png */,
+				CDC75DFF1CEB18F0004393EE /* new Debug.png */,
+				CDC75E001CEB18F0004393EE /* old Debug.png */,
+			);
+			path = Doc;
 			sourceTree = "<group>";
 		};
 		CDD76DDB1CCEB2DE00AD5E8F /* Settings */ = {
@@ -334,10 +351,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC75E011CEB18F0004393EE /* add debugView.png in Resources */,
+				CDC75E021CEB18F0004393EE /* new Debug.png in Resources */,
 				CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */,
 				CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */,
 				CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */,
 				CD5796411CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist in Resources */,
+				CDC75E031CEB18F0004393EE /* old Debug.png in Resources */,
 				CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */,
 				CD57963D1CC56CD40014BFD0 /* image.png in Resources */,
 			);

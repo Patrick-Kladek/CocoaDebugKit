@@ -12,17 +12,9 @@
 
 @implementation Person
 
-- (NSString *)debugDescription
-{
-	pkDebugDescription *description = [[pkDebugDescription alloc] init];
-	
-	return [description descriptionForObject:self];
-}
-
 - (id)debugQuickLookObject
 {
 	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self includeSubclasses:YES];
-	[view setFrameColor:[NSColor purpleColor]];
 	
 	return view;
 }
