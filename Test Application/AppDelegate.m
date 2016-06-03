@@ -93,7 +93,8 @@
 	// second call
 	[obj debugQuickLookObject];
 
-	
+
+
 
 	Person *person = [[Person alloc] init];
 	[person setImage:[NSImage imageNamed:NSImageNameUser]];
