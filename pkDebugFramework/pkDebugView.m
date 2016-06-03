@@ -21,7 +21,7 @@
 	NSInteger rightWidth;
 	
 	NSTextField *titleTextField;
-	
+	NSTextField *defaultTextField;
 	
 	pkPropertyEnumerator *propertyEnumerator;
 }
@@ -138,9 +138,12 @@
 		rightWidth				= 0;
 		pos						= 30;
 		_title					= @"pkDebugView";
+		
+		
+		[self setFrame:NSMakeRect(0, 0, 20, 55)];
 		[self setTitle:_title];
 		
-		
+		[self setDefaultApperance];
 		
 		
 		self.layer = _layer;
@@ -196,6 +199,28 @@
 
 #pragma mark - Apperance
 
+- (void)setDefaultApperance
+{
+	[self removeDefaultApperance];
+	
+	defaultTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(10, pos, self.frame.size.width - 20, 20)];
+	[defaultTextField setStringValue:@"No Variables"];
+	[defaultTextField setTextColor:[NSColor grayColor]];
+	[defaultTextField setAlignment:NSCenterTextAlignment];
+	[defaultTextField setBordered:NO];
+	[defaultTextField setEditable:NO];
+	[defaultTextField setBackgroundColor:[NSColor clearColor]];
+	[self addSubview:defaultTextField];
+}
+
+- (void)removeDefaultApperance
+{
+	if (defaultTextField) {
+		[defaultTextField removeFromSuperview];
+		defaultTextField = nil;
+	}
+}
+
 - (void)setTitle:(NSString *)title
 {
 	_title = title;
@@ -211,7 +236,18 @@
 	[titleTextField setTextColor:_titleColor];
 	[titleTextField sizeToFit];
 	
+	if (titleTextField.frame.size.width + 10 > self.frame.size.width) {
+		[self setFrame:NSMakeRect(self.frame.origin.x, self.frame.origin.y, titleTextField.frame.size.width + 10, self.frame.size.height)];
+	}
+	
 	[self addSubview:titleTextField];
+	
+	if (pos == 30) {
+		[self setDefaultApperance];
+	} else {
+		[self removeDefaultApperance];
+	}
+	
 	[self setNeedsDisplay:YES];
 }
 
@@ -685,6 +721,8 @@
 
 - (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor leftFont:(NSFont *)lFont rightFont:(NSFont *)rfont
 {
+	[self removeDefaultApperance];
+	
 	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
 	
 	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
