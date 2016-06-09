@@ -529,8 +529,20 @@
 	{
 		// not working for CoreData because lazy loading
 		// should access data with getter (self.property)
-		id property = [obj valueForKey:propertyName];
+		id property;
 
+		// TEST: should work with Core Data
+		if ([obj isKindOfClass:[NSManagedObject class]])
+		{
+			NSManagedObject *mObj = (NSManagedObject *)obj;
+			property = [mObj primitiveValueForKey:propertyName];
+		}
+		else
+		{
+			property = [obj valueForKey:propertyName];
+		}
+		
+		
 		
 		if ([object isKindOfClass:[NSData class]])
 		{
