@@ -12,6 +12,8 @@
 #import <objc/runtime.h>
 #import "pkDebugSettings.h"
 #import "pkPropertyEnumerator.h"
+#import <Foundation/Foundation.h>
+
 
 
 @interface pkDebugView ()
@@ -177,13 +179,9 @@
 	[self.layer setBorderColor:[_frameColor CGColor]];
 	[self.layer setBorderWidth:1];
 	[self setLayer:self.layer];
-	
 	[self.layer setBackgroundColor:[_backgroundColor CGColor]];
 	
 	NSRect rect = NSMakeRect(0, 0, dirtyRect.size.width, 23);
-//	[_frameColor set];
-//	NSRectFill(rect);
-	
 	
 	NSColor *startingColor = [NSColor colorWithRed:_frameColor.redComponent green:_frameColor.greenComponent blue:_frameColor.blueComponent alpha:0.75];
 	NSGradient *aGradient = [[NSGradient alloc] initWithStartingColor:startingColor endingColor:_frameColor];
@@ -468,11 +466,17 @@
 	}
 }
 
-- (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image
+- (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
 {
+	[self removeDefaultApperance];
+	
+	
 	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
-//	[left setStringValue:[left.stringValue capitalizedString]];		// all other letters will be lowercase
-	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
+
+	if (desc) {
+		[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
+	}
+	
 	
 	
 	[left setIdentifier:@"left"];
@@ -522,8 +526,147 @@
 
 #pragma mark - Intern
 
-- (void)addProperty:(NSString *)propertyName type:(NSString *)propertyType toObject:(NSObject *)obj
+- (void)addProperty:(NSString *)propertyName type:(NSString *)propertyType toObject:(id)obj
 {
+	Class class = NSClassFromString(propertyType);
+	
+	
+	// First check for Core Data Classes and ignore them
+	if ([class isSubclassOfClass:[NSManagedObject class]])
+	{
+		NSLog(@"Core Data Relationships currently not supported");
+		return;
+	}
+	
+	
+	if ([class isSubclassOfClass:[NSString class]])
+	{
+		NSString *property = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:property];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSData class]])
+	{
+		id property = [obj valueForKey:propertyName];
+		[self addDataProperty:property name:propertyName toObject:obj];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSDate class]])
+	{
+		id property = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] date:property];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSImage class]])
+	{
+		id property = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] image:property];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSURL class]])
+	{
+		NSURL *url = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:[url absoluteString]];
+		return;
+
+	}
+	
+	if ([class isSubclassOfClass:[NSSet class]])
+	{
+		// try enumerate through set
+		NSSet *set = [obj valueForKey:propertyName];
+		
+		/*
+		[set enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+			
+			if ([obj respondsToSelector:@selector(debugQuickLookObject)])
+			{
+				NSView *view = [obj performSelector:@selector(debugQuickLookObject) withObject:nil];
+//				NSImage *image = [self imageFromView:view];
+//				[self addLineWithDescription:[self lineFromString:propertyName] image:image size:view.bounds.size];
+				
+				// try adding view directly
+			}
+		}];
+		 */
+		
+		
+		[self addLineWithDescription:[self lineFromString:propertyName] string:[set description]];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSArray class]])
+	{
+		NSArray *set = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:[set description]];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSColor class]])
+	{
+		NSColor *color = [obj valueForKey:propertyName];
+		NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 15, 15)];
+		[view setWantsLayer:YES];
+		[[view layer] setBackgroundColor:[color CGColor]];
+		NSImage *image = [self imageFromView:view];
+		
+		[self addLineWithDescription:propertyName image:image];
+		return;
+	}
+	
+	if ([class isSubclassOfClass:[NSError class]])
+	{
+		// TODO: add NSError, ...
+	}
+	
+	
+	if ([propertyType isEqualToString:@"id"])
+	{
+		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
+		return;
+	}
+	
+	if ([self addPrimitiveProperty:propertyName type:propertyType toObject:obj])
+	{
+		return;
+	}
+	
+	if ([propertyName isEqualToString:@"bool"])
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] boolean:[number boolValue]];
+		return;
+	}
+	
+	if ([propertyType isEqualToString:@"void"])		// char * (pointer)
+	{
+		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
+		return;
+	}
+
+	// probably a delegate
+	if ([self propertyUsesProtocol:propertyType])
+	{
+		[self addLineWithDescription:propertyName string:propertyType];
+	}
+
+	
+	// probably something else, use description method
+	
+	id property = [[obj valueForKey:propertyName] description];
+	[self addLineWithDescription:[self lineFromString:propertyName] string:property];
+	
+	return;
+
+	
+	
+	/*
 	id object = [[NSClassFromString(propertyType) alloc] init];		// every Obj-C Object ...
 	if (object)
 	{
@@ -534,7 +677,13 @@
 		// TEST: should work with Core Data
 		if ([obj isKindOfClass:[NSManagedObject class]])
 		{
+			// <---
+			
+			Class myClass = NSClassFromString(propertyType);
 			NSManagedObject *mObj = (NSManagedObject *)obj;
+			
+			
+			
 			property = [mObj primitiveValueForKey:propertyName];
 		}
 		else
@@ -544,8 +693,10 @@
 		
 		
 		
-		if ([object isKindOfClass:[NSData class]])
+		if ([NSClassFromString(propertyType) isKindOfClass:[NSData class]])
 		{
+			[self addDataProperty:propertyType name:propertyName toObject:obj];
+			
 			if (_convertDataToImage && _propertyNameContains.count > 0)
 			{
 				BOOL contains = false;
@@ -584,21 +735,26 @@
 				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
 			}
 		}
-		else if ([object isKindOfClass:[NSDate class]])
+		else if ([NSClassFromString(propertyType) isKindOfClass:[NSDate class]])
 		{
 			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] date:property];
 		}
-		else if ([object isKindOfClass:[NSImage class]])
+		else if ([NSClassFromString(propertyType) isKindOfClass:[NSImage class]])
 		{
 			if (property)
 			{
 				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:property];
 			}
 		}
+		else if ([NSClassFromString(propertyType) isKindOfClass:[NSManagedObject class]])
+		{
+			
+		}
 		else
 		{
 			NSString *string = [NSString stringWithFormat:@"%@", property];
 			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+			return;
 		}
 		
 	}
@@ -618,19 +774,7 @@
 	}
 	else if ([propertyType isEqualToString:@"char"])										// Char & bool
 	{
-		// char
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%c", [[obj valueForKey:propertyName] charValue]]];
-		
-		
-//		NSNumber *number = [obj valueForKey:propertyName];
-//		if ([number boolValue] == true)
-//		{
-//			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:YES];
-//		}
-//		else
-//		{
-//			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:NO];
-//		}
 	}
 	else if ([propertyType isEqualToString:@"int"])										// Int
 	{
@@ -711,25 +855,152 @@
 	else
 	{
 		// if first char == '<' and last char == '>' then some delegate ...
-		NSString *firstChar = [propertyType substringToIndex:1];
-		NSString *lastChar = [propertyType substringFromIndex:propertyType.length-1];
-		
-		if ([firstChar isEqualToString:@"<"] && [lastChar isEqualToString:@">"])
+		if (propertyType.length > 2)
 		{
-			// Delegate ...
-			[self addLineWithDescription:propertyName string:propertyType];
+			NSString *firstChar = [propertyType substringToIndex:1];
+			NSString *lastChar = [propertyType substringFromIndex:propertyType.length-1];
+			
+			if ([firstChar isEqualToString:@"<"] && [lastChar isEqualToString:@">"])
+			{
+				// Delegate ...
+				[self addLineWithDescription:propertyName string:propertyType];
+			}
 		}
+	}
+	 */
+}
+
+
+#pragma mark - Custom Type Properties
+
+- (void)addDataProperty:(NSString *)property name:(NSString *)propertyName toObject:(id)obj
+{
+	if (_convertDataToImage && _propertyNameContains.count > 0)
+	{
+		BOOL contains = false;
+		
+		for (NSString *name in _propertyNameContains)
+		{
+			if ([propertyName rangeOfString:name options:NSCaseInsensitiveSearch].location != NSNotFound)
+			{
+				contains = true;
+				break;
+			}
+		}
+		
+		
+		
+		if (contains)
+		{
+			// image Variable encoded as data
+			NSData *data = (NSData *)property;
+			
+			NSImage *image = [[NSImage alloc] initWithData:data];
+			
+			if (image) {
+				[self addLineWithDescription:[self lineFromString:propertyName] image:image];
+			} else {
+				NSData *data = (NSData *)property;
+				NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+				[self addLineWithDescription:[self lineFromString:propertyName] string:string];
+			}
+		}
+	}
+	else
+	{
+		NSData *data = (NSData *)property;
+		NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
 	}
 }
 
-- (void)syncroniseHeightOfView:(NSView *)left secondView:(NSView *)right
+- (BOOL)addPrimitiveProperty:(NSString *)propertyName type:(NSString *)propertyType toObject:(id)obj
 {
-	CGFloat height = fmaxf(left.frame.size.height, right.frame.size.height);
-	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, height)];
-	[right setFrame:NSMakeRect(right.frame.origin.x, right.frame.origin.y, right.frame.size.width, height)];
+	if ([propertyType isEqualToString:@"char"])										// Char & bool
+	{
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%c", [[obj valueForKey:propertyName] charValue]]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"int"])										// Int
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number integerValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"short"])										// Short
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number shortValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"long"])										// long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number longValue]];
+		return YES;
+	}
+
+	if ([propertyType isEqualToString:@"long long"])										// long long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] longnumber:[number longLongValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"unsigned char"])										// unsigned char
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		char mchar = [number charValue];
+		NSString *string = [NSString stringWithFormat:@"%c", mchar];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"unsigned int"])										// unsigned Int
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedIntegerValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"unsigned short"])										// unsigned Short
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number unsignedShortValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"unsigned long"])										// unsigned long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedLongValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"unsigned long long"])										// unsigned long long
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedLongnumber:[number unsignedLongLongValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"float"])										// float
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number floatValue]];
+		return YES;
+	}
+	
+	return NO;
 }
 
 
+
+
+#pragma mark - private
 
 - (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor leftFont:(NSFont *)lFont rightFont:(NSFont *)rfont
 {
@@ -773,6 +1044,50 @@
 	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
 }
 
+
+
+#pragma mark - Helpers
+
+/**
+ *	returns a string with ":" as last character
+ */
+- (NSString *)lineFromString:(NSString *)string
+{
+	return [NSString stringWithFormat:@"%@:", string];
+}
+
+- (BOOL)propertyUsesProtocol:(NSString *)property
+{
+	if (property.length > 2)
+	{
+		NSString *firstChar = [property substringToIndex:1];
+		NSString *lastChar = [property substringFromIndex:property.length-1];
+		
+		if ([firstChar isEqualToString:@"<"] && [lastChar isEqualToString:@">"])
+		{
+			return YES;
+		}
+	}
+	
+	return NO;
+}
+
+- (NSImage *)imageFromView:(NSView *)view
+{
+	NSBitmapImageRep *imageRep = [view bitmapImageRepForCachingDisplayInRect:[view bounds]];
+	[view cacheDisplayInRect:[view bounds] toBitmapImageRep:imageRep];
+	NSImage *renderedImage = [[NSImage alloc] initWithSize:[imageRep size]];
+	[renderedImage addRepresentation:imageRep];
+	return renderedImage;
+}
+
+- (void)syncroniseHeightOfView:(NSView *)left secondView:(NSView *)right
+{
+	CGFloat height = fmaxf(left.frame.size.height, right.frame.size.height);
+	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, height)];
+	[right setFrame:NSMakeRect(right.frame.origin.x, right.frame.origin.y, right.frame.size.width, height)];
+}
+
 - (NSTextField *)defaultLabelWithString:(NSString *)string point:(NSPoint)point textAlignment:(NSTextAlignment)align
 {
 	NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(point.x, point.y, 100, 100)];
@@ -781,7 +1096,10 @@
 	[textField setSelectable:YES];
 	[textField setAlignment:align];
 	[textField setBackgroundColor:[NSColor clearColor]];
-	[textField setStringValue:string];
+
+	if (string) {
+		[textField setStringValue:string];
+	}
 
 	return textField;
 }

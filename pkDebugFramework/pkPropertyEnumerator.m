@@ -141,7 +141,7 @@ static const char *getPropertyType(objc_property_t property)
 	return "";
 }
 
-- (void)enumerateProperties:(Class)objectClass allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *name))callbackBlock
+- (void)enumerateProperties:(Class)objectClass allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *value))callbackBlock
 {
 	// get all properties and Display them in DebugView ...
 	unsigned int outCount, i;

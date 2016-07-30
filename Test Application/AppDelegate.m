@@ -78,10 +78,12 @@
 	[obj setLnum:64000];
 	[obj setCcheck:'r'];
 	[obj setUrl:[NSURL URLWithString:@"file:///Users/patrick/Desktop/"]];
+	[obj setColor:[NSColor purpleColor]];
 	
 	pkTestObject *obj2 = [[pkTestObject alloc] init];
 	[obj2 setName:@"hugo"];
 	[obj setObject:obj2];
+
 	
 	
 	NSView *newView = [obj debugQuickLookObject];
@@ -89,9 +91,9 @@
 	[[[self window] contentView] addSubview:newView];
 //	NSLog(@"%@", [obj debugDescription]);
 	
-	printf("%s\n", [[obj debugDescription] UTF8String]);
+//	printf("%s\n", [[obj debugDescription] UTF8String]);
 	// second call
-	[obj debugQuickLookObject];
+//	[obj debugQuickLookObject];
 
 
 
