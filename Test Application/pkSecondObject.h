@@ -11,5 +11,6 @@
 @interface pkSecondObject : pkTestObject
 
 @property (nonatomic) NSString *hallo;
+@property (nonatomic) NSColor *color;
 
 @end
