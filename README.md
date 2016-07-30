@@ -8,7 +8,7 @@ Lets say we have a custom Object called "Person" and want to inspect all variabl
 
 ![alt text](https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/old%20Debug.png "Logo Title Text 1")
 
-With this framework it will look like this:
+With this framework it can look like this:
 
 ![alt text](https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/new%20Debug.png "Logo Title Text 1")
 
