@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Patrick Kladek. All rights reserved.
 //
 
-// TODO: calculate hight of labels and resize ...
-
 #import "pkDebugView.h"
 #import <objc/runtime.h>
 #import "pkDebugSettings.h"
@@ -519,6 +517,29 @@
 	[self addLineWithDescription:desc string:dateString];
 }
 
+- (void)addLineWithDescription:(NSString *)desc view:(NSView *)view
+{
+	// add left label
+	NSTextField *left = [self _addLeftLabel:desc color:_propertyNameColor font:_propertyNameFont];
+	
+	// add right view
+	[view setFrameOrigin:NSMakePoint(10 + leftWidth + 20, pos)];
+	[view setIdentifier:@"rightImage"];
+	
+	
+	if (view.frame.size.width > rightWidth) {
+		rightWidth = view.frame.size.width;
+	}
+	
+	
+//	[self syncroniseHeightOfView:left secondView:right];
+	pos = pos + fmaxf(left.frame.size.height, view.frame.size.height) + _lineSpace;
+	[self addSubview:view];
+	[self resizeLeftTextViews];
+	[self resizeRightTextViews];
+	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
+}
+
 - (void)addSeperator
 {
 	// draw dashed line here
@@ -609,18 +630,19 @@
 	if ([class isSubclassOfClass:[NSColor class]])
 	{
 		NSColor *color = [obj valueForKey:propertyName];
-		NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 15, 15)];
-		[view setWantsLayer:YES];
-		[[view layer] setBackgroundColor:[color CGColor]];
-		NSImage *image = [self imageFromView:view];
+		NSView *view = [self detailViewFromColor:color];
+		[self addLineWithDescription:[self lineFromString:propertyName] view:view];
 		
-		[self addLineWithDescription:propertyName image:image];
 		return;
 	}
 	
 	if ([class isSubclassOfClass:[NSError class]])
 	{
-		// TODO: add NSError, ...
+		NSError *error = [obj valueForKey:propertyName];
+		NSView *view = [self detailViewFromError:error];
+		[self addLineWithDescription:[self lineFromString:propertyName] view:view];
+		
+		return;
 	}
 	
 	
@@ -650,8 +672,7 @@
 		return;
 	}
 
-	// probably a delegate
-	if ([self propertyUsesProtocol:propertyType])
+	if ([self propertyUsesProtocol:propertyType])	// delegate, uses protocol
 	{
 		[self addLineWithDescription:propertyName string:propertyType];
 	}
@@ -663,213 +684,90 @@
 	[self addLineWithDescription:[self lineFromString:propertyName] string:property];
 	
 	return;
-
-	
-	
-	/*
-	id object = [[NSClassFromString(propertyType) alloc] init];		// every Obj-C Object ...
-	if (object)
-	{
-		// not working for CoreData because lazy loading
-		// should access data with getter (self.property)
-		id property;
-
-		// TEST: should work with Core Data
-		if ([obj isKindOfClass:[NSManagedObject class]])
-		{
-			// <---
-			
-			Class myClass = NSClassFromString(propertyType);
-			NSManagedObject *mObj = (NSManagedObject *)obj;
-			
-			
-			
-			property = [mObj primitiveValueForKey:propertyName];
-		}
-		else
-		{
-			property = [obj valueForKey:propertyName];
-		}
-		
-		
-		
-		if ([NSClassFromString(propertyType) isKindOfClass:[NSData class]])
-		{
-			[self addDataProperty:propertyType name:propertyName toObject:obj];
-			
-			if (_convertDataToImage && _propertyNameContains.count > 0)
-			{
-				BOOL contains = false;
-				
-				for (NSString *name in _propertyNameContains)
-				{
-					if ([propertyName rangeOfString:name options:NSCaseInsensitiveSearch].location != NSNotFound)
-					{
-						contains = true;
-						break;
-					}
-				}
-				
-				
-				
-				if (contains)
-				{
-					// image Variable encoded as data
-					NSData *data = (NSData *)property;
-					
-					NSImage *image = [[NSImage alloc] initWithData:data];
-					
-					if (image) {
-						[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:image];
-					} else {
-						NSData *data = (NSData *)property;
-						NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-						[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-					}
-				}
-			}
-			else
-			{
-				NSData *data = (NSData *)property;
-				NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-			}
-		}
-		else if ([NSClassFromString(propertyType) isKindOfClass:[NSDate class]])
-		{
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] date:property];
-		}
-		else if ([NSClassFromString(propertyType) isKindOfClass:[NSImage class]])
-		{
-			if (property)
-			{
-				[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] image:property];
-			}
-		}
-		else if ([NSClassFromString(propertyType) isKindOfClass:[NSManagedObject class]])
-		{
-			
-		}
-		else
-		{
-			NSString *string = [NSString stringWithFormat:@"%@", property];
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-			return;
-		}
-		
-	}
-	else if ([propertyType isEqualToString:@"id"])										// id
-	{
-		id property = [obj valueForKey:propertyName];
-		
-		NSString *string = [NSString stringWithFormat:@"%@", property];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-	}
-	else if ([propertyType isEqualToString:@"NSURL"])									// NSURL
-	{
-		id property = [obj valueForKey:propertyName];
-		
-		NSString *string = [NSString stringWithFormat:@"%@", property];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-	}
-	else if ([propertyType isEqualToString:@"char"])										// Char & bool
-	{
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%c", [[obj valueForKey:propertyName] charValue]]];
-	}
-	else if ([propertyType isEqualToString:@"int"])										// Int
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number integerValue]];
-	}
-	else if ([propertyType isEqualToString:@"short"])										// Short
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number shortValue]];
-	}
-	else if ([propertyType isEqualToString:@"long"])										// long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number longValue]];
-	}
-	else if ([propertyType isEqualToString:@"long long"])										// long long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] longnumber:[number longLongValue]];
-	}
-	else if ([propertyType isEqualToString:@"unsigned char"])										// unsigned char
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		char mchar = [number charValue];
-		NSString *string = [NSString stringWithFormat:@"%c", mchar];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:string];
-	}
-	else if ([propertyType isEqualToString:@"unsigned int"])										// unsigned Int
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedIntegerValue]];
-	}
-	else if ([propertyType isEqualToString:@"unsigned short"])										// unsigned Short
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number unsignedShortValue]];
-	}
-	else if ([propertyType isEqualToString:@"unsigned long"])										// unsigned long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedLongValue]];
-	}
-	else if ([propertyType isEqualToString:@"unsigned long long"])										// unsigned long long
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedLongnumber:[number unsignedLongLongValue]];
-	}
-	else if ([propertyType isEqualToString:@"float"])										// float
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number floatValue]];
-	}
-	else if ([propertyType isEqualToString:@"double"])										// double
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number doubleValue]];
-	}
-	else if ([propertyName isEqualToString:@"bool"])
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		if ([number boolValue] == true)
-		{
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:YES];
-		}
-		else
-		{
-			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] boolean:NO];
-		}
-
-	}
-	else if ([propertyType isEqualToString:@"void"])										// char * (pointer)
-	{
-		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
-		
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%@", string]];
-	}
-	else
-	{
-		// if first char == '<' and last char == '>' then some delegate ...
-		if (propertyType.length > 2)
-		{
-			NSString *firstChar = [propertyType substringToIndex:1];
-			NSString *lastChar = [propertyType substringFromIndex:propertyType.length-1];
-			
-			if ([firstChar isEqualToString:@"<"] && [lastChar isEqualToString:@">"])
-			{
-				// Delegate ...
-				[self addLineWithDescription:propertyName string:propertyType];
-			}
-		}
-	}
-	 */
 }
 
+// TODO: determine if 8bit colorspace
+- (NSView *)detailViewFromColor:(NSColor *)color
+{
+	NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 120, 80)];
+
+	NSView *colorView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 20, 80)];
+	[colorView setWantsLayer:YES];
+	[[colorView layer] setBackgroundColor:[color CGColor]];
+	[view addSubview:colorView];
+	
+	NSTextField *red = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 60, 80, 20)];
+	[red setTextColor:[NSColor grayColor]];
+	[red setBezeled:NO];
+	[red setEditable:NO];
+	[red setSelectable:YES];
+	[red setFont:_propertyNameFont];
+	[red setStringValue:[NSString stringWithFormat:@"Red:   %.0f", [color redComponent] * 255]];
+	[view addSubview:red];
+	
+	NSTextField *green = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 40, 80, 20)];
+	[green setTextColor:[NSColor grayColor]];
+	[green setBezeled:NO];
+	[green setEditable:NO];
+	[green setSelectable:YES];
+	[green setFont:_propertyNameFont];
+	[green setStringValue:[NSString stringWithFormat:@"Green: %.0f", [color greenComponent] * 255]];
+	[view addSubview:green];
+	
+	NSTextField *blue = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 20, 80, 20)];
+	[blue setTextColor:[NSColor grayColor]];
+	[blue setBezeled:NO];
+	[blue setEditable:NO];
+	[blue setSelectable:YES];
+	[blue setFont:_propertyNameFont];
+	[blue setStringValue:[NSString stringWithFormat:@"Blue:  %.0f", [color blueComponent] * 255]];
+	[view addSubview:blue];
+	
+	NSTextField *alpha = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 0, 80, 20)];
+	[alpha setTextColor:[NSColor grayColor]];
+	[alpha setBezeled:NO];
+	[alpha setEditable:NO];
+	[alpha setSelectable:YES];
+	[alpha setFont:_propertyNameFont];
+	[alpha setStringValue:[NSString stringWithFormat:@"Alpha: %.0f", [color alphaComponent] * 255]];
+	[view addSubview:alpha];
+	
+	return view;
+}
+
+// TODO: title should resize, maybe use xib with autolayout (dont´t forget deployment version)
+- (NSView *)detailViewFromError:(NSError *)error
+{
+	if (!error) {
+		return nil;
+	}
+	
+	NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 80)];
+	
+	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 10, 60, 60)];
+	[imageView setImage:[NSImage imageNamed:NSImageNameCaution]];
+	[imageView setImageScaling:NSImageScaleProportionallyUpOrDown];
+	[imageView setEditable:NO];
+	[imageView setEnabled:NO];
+	[view addSubview:imageView];
+	
+	NSTextField *title = [[NSTextField alloc] initWithFrame:NSMakeRect(60, 60, 240, 20)];
+	[title setEditable:NO];
+	[title setSelectable:YES];
+	[title setBezeled:NO];
+	[title setStringValue:[error localizedDescription]];
+	[title setFont:[NSFont boldSystemFontOfSize:12]];
+	[view addSubview:title];
+	
+	NSTextField *info = [[NSTextField alloc] initWithFrame:NSMakeRect(60, 0, 240, 60)];
+	[info setEditable:NO];
+	[info setSelectable:YES];
+	[info setBezeled:NO];
+	[info setStringValue:[error localizedRecoverySuggestion]];
+	[view addSubview:info];
+	
+	return view;
+}
 
 #pragma mark - Custom Type Properties
 
@@ -1006,25 +904,10 @@
 {
 	[self removeDefaultApperance];
 	
-	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
+	// add left Label
+	NSTextField *left = [self _addLeftLabel:desc color:leftColor font:lFont];
 	
-	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
-	
-	
-	[left setIdentifier:@"left"];
-	[left setTextColor:leftColor];
-	[left setFont:lFont];
-	[left sizeToFit];
-	
-//	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, left.frame.size.height)];
-	
-	if (left.frame.size.width > leftWidth) {
-		leftWidth = left.frame.size.width;
-	}
-	[self addSubview:left];
-	
-	
-	
+	// add right label
 	NSTextField *right = [self defaultLabelWithString:value point:NSMakePoint(10 + leftWidth + 20, pos) textAlignment:NSLeftTextAlignment];
 	[right setIdentifier:@"right"];
 	[right setTextColor:rightColor];
@@ -1042,6 +925,24 @@
 	[self resizeLeftTextViews];
 	[self resizeRightTextViews];
 	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
+}
+
+- (NSTextField *)_addLeftLabel:(NSString *)desc color:(NSColor *)color font:(NSFont *)font
+{
+	NSTextField *left = [self defaultLabelWithString:desc point:NSMakePoint(10, pos) textAlignment:NSRightTextAlignment];
+	[left setStringValue:[left.stringValue stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[left.stringValue substringToIndex:1] capitalizedString]]];
+	[left setIdentifier:@"left"];
+	[left setTextColor:color];
+	[left setFont:font];
+	[left sizeToFit];
+	
+	
+	if (left.frame.size.width > leftWidth) {
+		leftWidth = left.frame.size.width;
+	}
+	[self addSubview:left];
+	
+	return left;
 }
 
 
