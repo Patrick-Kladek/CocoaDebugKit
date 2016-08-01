@@ -78,12 +78,21 @@
 	[obj setLnum:64000];
 	[obj setCcheck:'r'];
 	[obj setUrl:[NSURL URLWithString:@"file:///Users/patrick/Desktop/"]];
-	[obj setColor:[NSColor purpleColor]];
+	[obj setColor:[NSColor colorWithCalibratedRed:0.461 green:1.000 blue:0.962 alpha:0.540]];
+	[obj setError:[NSError errorWithDomain:@"com.kladek.pkDebugFramework" code:5645 userInfo:@{ NSLocalizedFailureReasonErrorKey:@"LocalizedFailureReason",
+																								NSLocalizedDescriptionKey:@"Something went wrong",
+																								NSLocalizedRecoverySuggestionErrorKey:@"LocalizedRecoverySuggestion, do some thing, need some text for testing, do something more to reproduce this error",
+																								NSLocalizedRecoveryOptionsErrorKey:@"LocalizedRecoveryOptions",
+																								NSRecoveryAttempterErrorKey:@"RecoveryAttempter",
+																								NSHelpAnchorErrorKey:@"HelpAnchor",
+																								NSStringEncodingErrorKey:@"NSStringEncodingError",
+																								NSURLErrorKey:@"NSURLError",
+																								NSFilePathErrorKey:@" NSFilePathError"
+																								}]];
 	
 	pkTestObject *obj2 = [[pkTestObject alloc] init];
 	[obj2 setName:@"hugo"];
 	[obj setObject:obj2];
-
 	
 	
 	NSView *newView = [obj debugQuickLookObject];

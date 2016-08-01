@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSString *hallo;
 @property (nonatomic) NSColor *color;
+@property (nonatomic) NSError *error;
 
 @end
