@@ -35,7 +35,7 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *test;
 
-@property (nonatomic, getter=isCheck) BOOL check;
+@property (nonatomic, getter=isCheck) BOOL check_bool;
 @property (nonatomic) unsigned char ccheck;
 @property (nonatomic) int inum;
 @property (nonatomic) long lnum;
