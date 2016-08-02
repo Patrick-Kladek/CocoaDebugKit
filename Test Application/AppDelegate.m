@@ -29,7 +29,25 @@
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.pkDebugFramework.settings.default" withExtension:@"plist"];
 	[[pkDebugSettings sharedSettings] loadSettings:url];
 	
+	[self createStaticDebugView];
+	
+	[self createDynamicDebugView];
+	
+	[self createDynamicDebugViewPerson];
+}
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+	return YES;
+}
+
+
+
+// -----------------------------
+#pragma mark - DebugViews
+
+- (void)createStaticDebugView
+{
 	pkDebugView *view = [pkDebugView debugView];
 	[view setTitle:@"ClassName"];
 	[view setFrameColor:[NSColor purpleColor]];
@@ -58,9 +76,10 @@
 	
 	[view setFrame:NSOffsetRect(view.frame, 20, 212)];
 	[[[self window] contentView] addSubview:view];
+}
 
-	
-	// ------------------------------------------------------------------------
+- (void)createDynamicDebugView
+{
 	pkSecondObject *obj = [[pkSecondObject alloc] init];
 	[obj setDelegate:self];
 	[obj setDate:[NSDate date]];
@@ -73,7 +92,7 @@
 	[obj setImage:image];
 	[obj setTest:@"Hallo World"];
 	[obj setName:@"Name yxcvb"];
-	[obj setCheck:YES];
+	[obj setCheck_bool:YES];
 	[obj setInum:32000];
 	[obj setLnum:64000];
 	[obj setCcheck:'r'];
@@ -89,7 +108,6 @@
 																								NSURLErrorKey:@"NSURLError",
 																								NSFilePathErrorKey:@" NSFilePathError"
 																								}]];
-	
 	pkTestObject *obj2 = [[pkTestObject alloc] init];
 	[obj2 setName:@"hugo"];
 	[obj setObject:obj2];
@@ -98,50 +116,30 @@
 	NSView *newView = [obj debugQuickLookObject];
 	[newView setFrame:NSOffsetRect(newView.frame, 602, 39)];
 	[[[self window] contentView] addSubview:newView];
-//	NSLog(@"%@", [obj debugDescription]);
-	
-//	printf("%s\n", [[obj debugDescription] UTF8String]);
-	// second call
-//	[obj debugQuickLookObject];
+}
 
-
-
-
+- (void)createDynamicDebugViewPerson
+{
 	Person *person = [[Person alloc] init];
 	[person setImage:[NSImage imageNamed:NSImageNameUser]];
 	[person setFirstName:@"Mark"];
 	[person setLastName:@"Johnson"];
 	[person setBirthday:[NSDate date]];
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	NSView *view2 = [person debugQuickLookObject];
 	[view2 setFrame:NSOffsetRect(view2.frame, 20, 20)];
 	
 	[[[self window] contentView] addSubview:view2];
-
-
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
-{
-	return YES;
-}
 
-- (void)smt
+/**
+ *	pkTestObjectDelegate
+ */
+-(void)smt
 {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
 }
+
 
 @end

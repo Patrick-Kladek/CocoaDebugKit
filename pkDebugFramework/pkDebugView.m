@@ -552,13 +552,13 @@
 	Class class = NSClassFromString(propertyType);
 	
 	
+	
 	// First check for Core Data Classes and ignore them
 	if ([class isSubclassOfClass:[NSManagedObject class]])
 	{
 		NSLog(@"Core Data Relationships currently not supported");
 		return;
 	}
-	
 	
 	if ([class isSubclassOfClass:[NSString class]])
 	{
@@ -658,7 +658,7 @@
 		return;
 	}
 	
-	if ([propertyName isEqualToString:@"bool"])
+	if ([propertyType isEqualToString:@"bool"])
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[self lineFromString:propertyName] boolean:[number boolValue]];
@@ -816,7 +816,14 @@
 {
 	if ([propertyType isEqualToString:@"char"])										// Char & bool
 	{
-		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%c", [[obj valueForKey:propertyName] charValue]]];
+		char character = [[obj valueForKey:propertyName] charValue];
+		
+		if (character == YES || character == true || character == NO || character == false) {
+			[self addLineWithDescription:[self lineFromString:propertyName] boolean:character];
+		} else {
+			[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] string:[NSString stringWithFormat:@"%c", [[obj valueForKey:propertyName] charValue]]];
+		}
+		
 		return YES;
 	}
 	
