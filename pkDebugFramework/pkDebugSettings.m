@@ -92,6 +92,7 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_propertyNameContains 	= [NSArray array];
 		
 		_dateFormat				= @"yyyy-MM-dd 'at' HH:mm";
+		_numberOfBitsPerColorComponent = 8;
 		
 		_save = NO;
 		_saveUrl = [NSURL fileURLWithPath:[@"~/Desktop" stringByExpandingTildeInPath]];
@@ -205,6 +206,9 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_frameColor = NSColorFromHexString([settings valueForKeyPath:@"debugView.appearance.frameColor"]);
 	}
 	
+	if ([settings valueForKeyPath:@"debugView.appearance.numberOfBitsPerColorComponent"]) {
+		_numberOfBitsPerColorComponent = [[settings valueForKeyPath:@"debugView.appearance.numberOfBitsPerColorComponent"] integerValue];
+	}
 	
 	
 	

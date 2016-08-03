@@ -17,6 +17,9 @@
 		CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD27624A1B0E30210000BB5D /* Images.xcassets */; };
 		CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27624C1B0E30210000BB5D /* MainMenu.xib */; };
 		CD2762611B0E30580000BB5D /* pkDebugFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */; };
+		CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79861D5284A50016CC16 /* Build Badge.png */; };
+		CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79871D5284A50016CC16 /* Compatibility Badge.png */; };
+		CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79881D5284A50016CC16 /* Tested Badge.png */; };
 		CD57962D1CC5262E0014BFD0 /* pkDebugFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD57963D1CC56CD40014BFD0 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = CD57963C1CC56CD40014BFD0 /* image.png */; };
 		CD5796411CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD5796401CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist */; };
@@ -73,6 +76,9 @@
 		CD2762481B0E30210000BB5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD27624A1B0E30210000BB5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD27624D1B0E30210000BB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CD3C79861D5284A50016CC16 /* Build Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Build Badge.png"; sourceTree = "<group>"; };
+		CD3C79871D5284A50016CC16 /* Compatibility Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Compatibility Badge.png"; sourceTree = "<group>"; };
+		CD3C79881D5284A50016CC16 /* Tested Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tested Badge.png"; sourceTree = "<group>"; };
 		CD57963C1CC56CD40014BFD0 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		CD5796401CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.kladek.pkDebugFramework.settings.default.plist; path = "Test Application/com.kladek.pkDebugFramework.settings.default.plist"; sourceTree = SOURCE_ROOT; };
 		CD5796421CC585CA0014BFD0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -232,6 +238,9 @@
 				CDC75DFE1CEB18F0004393EE /* add debugView.png */,
 				CDC75DFF1CEB18F0004393EE /* new Debug.png */,
 				CDC75E001CEB18F0004393EE /* old Debug.png */,
+				CD3C79861D5284A50016CC16 /* Build Badge.png */,
+				CD3C79871D5284A50016CC16 /* Compatibility Badge.png */,
+				CD3C79881D5284A50016CC16 /* Tested Badge.png */,
 			);
 			path = Doc;
 			sourceTree = "<group>";
@@ -354,12 +363,15 @@
 				CDC75E011CEB18F0004393EE /* add debugView.png in Resources */,
 				CDC75E021CEB18F0004393EE /* new Debug.png in Resources */,
 				CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */,
+				CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */,
+				CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */,
 				CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */,
 				CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */,
 				CD5796411CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist in Resources */,
 				CDC75E031CEB18F0004393EE /* old Debug.png in Resources */,
 				CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */,
 				CD57963D1CC56CD40014BFD0 /* image.png in Resources */,
+				CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

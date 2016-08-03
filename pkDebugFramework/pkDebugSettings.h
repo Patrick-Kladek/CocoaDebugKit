@@ -60,6 +60,9 @@
 @property (nonatomic) NSMutableDictionary *debuggedObjects;
 
 
+@property (nonatomic) NSInteger numberOfBitsPerColorComponent;
+
+
 
 
 - (BOOL)loadSettings:(NSURL *)url;

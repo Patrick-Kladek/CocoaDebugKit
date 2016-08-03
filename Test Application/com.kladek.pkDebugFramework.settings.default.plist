@@ -27,6 +27,8 @@
 			<string>~/Desktop/debugView</string>
 			<key>usePDF</key>
 			<false/>
+			<key>numberOfBitsPerColorComponent</key>
+			<integer>8</integer>
 		</dict>
 		<key>propertyName</key>
 		<dict>
