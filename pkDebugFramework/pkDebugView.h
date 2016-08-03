@@ -37,6 +37,7 @@
 @property (nonatomic) NSSize imageSize;
 @property (nonatomic) BOOL convertDataToImage;
 @property (nonatomic) NSMutableArray *propertyNameContains;
+@property (nonatomic) NSInteger numberOfBitsPerColorComponent;
 
 @property (nonatomic) NSString *dateFormat;
 

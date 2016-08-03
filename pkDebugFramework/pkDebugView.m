@@ -127,7 +127,7 @@
 		self.saveAsPDF				= settings.saveAsPDF;
 		
 		self.dateFormat				= settings.dateFormat;
-	
+		self.numberOfBitsPerColorComponent = settings.numberOfBitsPerColorComponent;
 		
 		
 		
@@ -686,9 +686,13 @@
 	return;
 }
 
-// TODO: determine if 8bit colorspace
 - (NSView *)detailViewFromColor:(NSColor *)color
 {
+	if (self.numberOfBitsPerColorComponent < 1 || self.numberOfBitsPerColorComponent > 16) {
+		@throw @"numberOfBitsPerColorComponent out of range (1 - 16)";
+		return nil;
+	}
+	
 	NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 120, 80)];
 
 	NSView *colorView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 20, 80)];
@@ -702,7 +706,7 @@
 	[red setEditable:NO];
 	[red setSelectable:YES];
 	[red setFont:_propertyNameFont];
-	[red setStringValue:[NSString stringWithFormat:@"Red:   %.0f", [color redComponent] * 255]];
+	[red setStringValue:[NSString stringWithFormat:@"Red:   %.0f", [color redComponent] * (pow(2, self.numberOfBitsPerColorComponent)-1)]];
 	[view addSubview:red];
 	
 	NSTextField *green = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 40, 80, 20)];
@@ -711,7 +715,7 @@
 	[green setEditable:NO];
 	[green setSelectable:YES];
 	[green setFont:_propertyNameFont];
-	[green setStringValue:[NSString stringWithFormat:@"Green: %.0f", [color greenComponent] * 255]];
+	[green setStringValue:[NSString stringWithFormat:@"Green: %.0f", [color greenComponent] * (pow(2, self.numberOfBitsPerColorComponent)-1)]];
 	[view addSubview:green];
 	
 	NSTextField *blue = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 20, 80, 20)];
@@ -720,7 +724,7 @@
 	[blue setEditable:NO];
 	[blue setSelectable:YES];
 	[blue setFont:_propertyNameFont];
-	[blue setStringValue:[NSString stringWithFormat:@"Blue:  %.0f", [color blueComponent] * 255]];
+	[blue setStringValue:[NSString stringWithFormat:@"Blue:  %.0f", [color blueComponent] * (pow(2, self.numberOfBitsPerColorComponent)-1)]];
 	[view addSubview:blue];
 	
 	NSTextField *alpha = [[NSTextField alloc] initWithFrame:NSMakeRect(25, 0, 80, 20)];
@@ -729,7 +733,7 @@
 	[alpha setEditable:NO];
 	[alpha setSelectable:YES];
 	[alpha setFont:_propertyNameFont];
-	[alpha setStringValue:[NSString stringWithFormat:@"Alpha: %.0f", [color alphaComponent] * 255]];
+	[alpha setStringValue:[NSString stringWithFormat:@"Alpha: %.0f", [color alphaComponent] * (pow(2, self.numberOfBitsPerColorComponent)-1)]];
 	[view addSubview:alpha];
 	
 	return view;
