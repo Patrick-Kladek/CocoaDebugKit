@@ -55,7 +55,7 @@
  *	creates a new debugView with all properties from Object
  *	@param include:	includes properties from subclasses if true, otherwise only properties from current class
  */
-+ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include;
++ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
 
 /**
  *	works only with current class, not objects/variables from subclasses
@@ -66,7 +66,7 @@
 
 
 - (void)addProperties:(NSString *)string fromObject:(NSObject *)obj;
-- (void)addAllPropertiesFromObject:(NSObject *)obj includeSubclasses:(BOOL)include;
+- (void)addAllPropertiesFromObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
 
 - (void)addLineWithDescription:(NSString *)desc string:(NSString *)value;
 - (void)addLineWithDescription:(NSString *)desc integer:(NSInteger)integer;

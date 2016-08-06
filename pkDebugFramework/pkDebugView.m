@@ -49,7 +49,7 @@
 	return result;
 }
 
-+ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSubclasses:(BOOL)include
++ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include
 {
 	pkDebugView *view = [[pkDebugView alloc] init];
 	[view setObj:obj];
@@ -60,7 +60,7 @@
 		[view setTitle:[obj className]];
 	}
 	
-	[view addAllPropertiesFromObject:obj includeSubclasses:include];
+	[view addAllPropertiesFromObject:obj includeSuperclasses:include];
 	
 	if ([view save]) {
 		[view saveDebugView];
@@ -325,7 +325,7 @@
 
 #pragma mark - Add Data
 
-- (void)addAllPropertiesFromObject:(NSObject *)obj includeSubclasses:(BOOL)include
+- (void)addAllPropertiesFromObject:(NSObject *)obj includeSuperclasses:(BOOL)include
 {
 	[self traceSuperClassesOfObject:obj];
 	

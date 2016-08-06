@@ -27,6 +27,8 @@
 		CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* pkDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796461CC625F10014BFD0 /* pkDebugSettings.m */; };
 		CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */; };
+		CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
+		CD6F17CC1D5661030064D7AF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
 		CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */; };
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,6 +89,8 @@
 		CD5796461CC625F10014BFD0 /* pkDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pkDebugSettings.m; path = pkDebugFramework/pkDebugSettings.m; sourceTree = SOURCE_ROOT; };
 		CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.dusk.plist; sourceTree = "<group>"; };
 		CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "objc types.pdf"; sourceTree = "<group>"; };
+		CD6F17C91D5661030064D7AF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		CD6F17CA1D5661030064D7AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.basic.plist; sourceTree = "<group>"; };
 		CDBBC8451B70E31600923E3E /* pkTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkTestObject.h; sourceTree = "<group>"; };
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 		CDC75DFD1CEB18F0004393EE /* Doc */ = {
 			isa = PBXGroup;
 			children = (
+				CD6F17C91D5661030064D7AF /* LICENSE.md */,
+				CD6F17CA1D5661030064D7AF /* README.md */,
 				CDC75DFE1CEB18F0004393EE /* add debugView.png */,
 				CDC75DFF1CEB18F0004393EE /* new Debug.png */,
 				CDC75E001CEB18F0004393EE /* old Debug.png */,
@@ -425,7 +431,9 @@
 				CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */,
 				CD2762491B0E30210000BB5D /* main.m in Sources */,
 				CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */,
+				CD6F17CC1D5661030064D7AF /* README.md in Sources */,
 				CD5796441CC585CA0014BFD0 /* Person.m in Sources */,
+				CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */,
 				CD2762471B0E30210000BB5D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
