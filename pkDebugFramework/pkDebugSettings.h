@@ -19,53 +19,53 @@
 
 
 
-@property (nonatomic) NSInteger lineSpace;
-@property (nonatomic) BOOL highlightKeywords;
-@property (nonatomic) BOOL highlightNumbers;
+@property (nonatomic) NSInteger lineSpace;			
+@property (nonatomic) BOOL highlightKeywords;		
+@property (nonatomic) BOOL highlightNumbers;		
 
 
-@property (nonatomic) NSColor *textColor;
-@property (nonatomic) NSFont *textFont;
+@property (nonatomic) NSColor *textColor;			
+@property (nonatomic) NSFont *textFont;				
 
-@property (nonatomic) NSColor *keywordColor;
-@property (nonatomic) NSFont *keywordFont;
+@property (nonatomic) NSColor *keywordColor;		
+@property (nonatomic) NSFont *keywordFont;			
 
-@property (nonatomic) NSColor *numberColor;
+@property (nonatomic) NSColor *numberColor;			
 @property (nonatomic) NSFont *numberFont;
 
-@property (nonatomic) NSColor *propertyNameColor;
-@property (nonatomic) NSFont *propertyNameFont;
+@property (nonatomic) NSColor *propertyNameColor;	
+@property (nonatomic) NSFont *propertyNameFont;		
 
-@property (nonatomic) NSColor *titleColor;
-@property (nonatomic) NSFont *titleFont;
+@property (nonatomic) NSColor *titleColor;			
+@property (nonatomic) NSFont *titleFont;			
 
-@property (nonatomic) NSColor *frameColor;
-@property (nonatomic) NSColor *backgroundColor;
-@property (nonatomic) NSSize imageSize;
+@property (nonatomic) NSColor *frameColor;			
+@property (nonatomic) NSColor *backgroundColor;		
+@property (nonatomic) NSSize imageSize;				
 
-@property (nonatomic) NSString *dateFormat;
-
-
-
-@property (nonatomic) NSNumber *maxDataLenght;
-@property (nonatomic) BOOL convertDataToImage;
-@property (nonatomic) NSArray *propertyNameContains;
-
-
-@property (nonatomic) BOOL save;
-@property (nonatomic) NSURL *saveUrl;
-@property (nonatomic) BOOL saveAsPDF;
-
-
-@property (nonatomic) NSMutableDictionary *debuggedObjects;
-
-
-@property (nonatomic) NSInteger numberOfBitsPerColorComponent;
+@property (nonatomic) NSString *dateFormat;			
 
 
 
+@property (nonatomic) NSNumber *maxDataLenght;			
+@property (nonatomic) BOOL convertDataToImage;			
+@property (nonatomic) NSArray *propertyNameContains;	
 
-- (BOOL)loadSettings:(NSURL *)url;
-- (BOOL)saveSettings:(NSURL *)url;
+
+@property (nonatomic) BOOL save;			
+@property (nonatomic) NSURL *saveUrl;		
+@property (nonatomic) BOOL saveAsPDF;		
+
+
+@property (nonatomic) NSMutableDictionary *debuggedObjects;		// currently not used
+
+
+@property (nonatomic) NSInteger numberOfBitsPerColorComponent;		
+
+
+
+
+- (BOOL)loadSettings:(NSURL *)url;		
+- (BOOL)saveSettings:(NSURL *)url;		
 
 @end
