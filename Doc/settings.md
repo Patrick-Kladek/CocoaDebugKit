@@ -29,7 +29,7 @@ This property stores the color for all textfields.
 ```
 Propertylist-Key:`debugView.text.color`
 
-<img src=/Users/patrick/Desktop/Color%20Text%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Text%20Badge.png height=25>
 
 ### Text Font
 This property stores the Font of all Textfield.
@@ -42,7 +42,7 @@ Propertylist-Keys:
 * `debugView.text.font`
 * `debugView.text.size`
 
-<img src=/Users/patrick/Desktop/Default%20Font%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
 
 
 ##Keywords
@@ -59,7 +59,7 @@ Currently the following keywords are highlighted:
 ```
 Propertylist-Key:`debugView.numbers.highlight` 
 
-<img src=/Users/patrick/Desktop/Defualt%20YES%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Defualt%20YES%20Badge.png height=25>
 
 
 ### Keyword Color
@@ -71,7 +71,7 @@ This property stores the color of all keywords.
 
 Propertylist-Key:`debugView.keywords.color`
 
-<img src=/Users/patrick/Desktop/Color%20Keyword%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Keyword%20Badge.png height=25>
 
 
 ### Keyword Font
@@ -85,7 +85,7 @@ Propertylist-Keys:
 * `debugView.keywords.font`
 * `debugView.keywords.size`
 
-<img src=/Users/patrick/Desktop/Default%20Font%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
 
 
 
@@ -100,7 +100,7 @@ If set all numbers will be colored in a different color.
 ```
 Propertlist-Key `debugView.numbers.highlight `
 
-<img src=/Users/patrick/Desktop/Defualt%20YES%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Defualt%20YES%20Badge.png height=25>
 
 
 ### Number Color
@@ -111,7 +111,7 @@ This property stores the Color of all numbers.
 ```
 Propertylist-Key: `debugView.number.color`
 
-<img src=/Users/patrick/Desktop/Color%20Number%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Number%20Badge.png height=25>
 
 
 
@@ -127,13 +127,13 @@ Propertylist-Keys:
 * `debugView.number.font`
 * `debugView.number.size`
 
-<img src=/Users/patrick/Desktop/Default%20Font%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
 
 
 ## Property Name
 Propertynames (Keys) are drawn at the left side, while values are displayed on the right. Usually they have a lighter color so they are visually subtile while keys are more aggresive and a litle darker.
 
-<img src=/Users/patrick/Desktop/Person.png>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Person.png>
 
 ### Property Name Color
 This property stores the Color of all numbers.
@@ -143,7 +143,7 @@ This property stores the Color of all numbers.
 ```
 Propertylist-Key: `debugView.propertyName.color`
 
-<img src=/Users/patrick/Desktop/Color%20PropertyName%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20PropertyName%20Badge.png height=25>
 
 ### Property Name Font
 This property stores the font of all Property Names
@@ -157,7 +157,7 @@ Propertylist-Keys:
 * `debugView.propertyName.font`
 * `debugView.propertyName.size`
 
-<img src=/Users/patrick/Desktop/Default%20Font%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
 
 
 ## Title
@@ -171,7 +171,7 @@ This property stores the color of the title. Please keep in mind that this color
 ```
 Propertylist-Key:`debugView.title.color`
 
-<img src=/Users/patrick/Desktop/Color%20Title%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Title%20Badge.png height=25>
 
 
 ### Title Font
@@ -186,7 +186,7 @@ Propertylist-Keys:
 * `debugView.title.font `
 * `debugView.title.size `
 
-<img src=/Users/patrick/Desktop/Title%20Font%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Title%20Font%20Badge.png height=25>
 
 ## Data & Image
 Now here comes the magic. Lets say you have an NSData property (which represent an image) in a Core Data application. To inspect the image/data you have to write some code, rebuild and navigate where you left. Or you could name your variable something like `imageData` and add `image` to the searchlist. Now every NSData object with `image` in its propertyName will be displayed as image and not as raw data.
@@ -199,7 +199,7 @@ To enable this feature this property must be set to TRUE.
 ```
 Propertylist-Key `debugView.image.dataToImage`
 
-<img src=/Users/patrick/Desktop/Defualt%20YES%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Defualt%20YES%20Badge.png height=25>
 
 ### Property Name Contains
 Furthermore this array must contain at least one entry otherwise the conversation won´t work.
@@ -222,7 +222,7 @@ This property limits the size of an image. Use a resonable value or you are wast
 
 Propertylist-Key: `debugView.image.size`
 
-<img src=/Users/patrick/Desktop/Image%20Size%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Image%20Size%20Badge.png height=25>
 
 
 ### Max Data Lenght
@@ -235,7 +235,7 @@ You can cut a data objects lenght so it won´t produce a lot useless information
 
 Propertylist-Key: `debugDescription.NSData.cutLenght`
 
-<img src=/Users/patrick/Desktop/Max%20Lenght%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Max%20Lenght%20Badge.png height=25>
 
 
 ## Appearance
@@ -250,7 +250,7 @@ This property stores the line space. The textfields are aligned vertically with 
 
 Propertylist-Key: `debugView.appearance.lineSpace`
 
-<img src=/Users/patrick/Desktop/Line%20Spacing%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Line%20Spacing%20Badge.png height=25>
 
 
 ### Background Color
@@ -261,7 +261,7 @@ This property stores the backgroundcolor information which can even be changed a
 ```
 Propertylist-Key: `debugView.appearance.backgroundColor`
 
-<img src=/Users/patrick/Desktop/Background%20Color%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Background%20Color%20Badge.png height=25>
 
 ### Frame Color
 This property stores the Frame Color from which the frame gradient is created. The Gradient uses the frame color plus the same color with 20% more white. So it´s better to use some darker colors.
@@ -271,13 +271,13 @@ This property stores the Frame Color from which the frame gradient is created. T
 ```
 Propertylist-Key: `debugView.appearance.frameColor`
 
-<img src=/Users/patrick/Desktop/Frame%20Color%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Frame%20Color%20Badge.png height=25>
 
 
 ### Color
 Colors are rendered as follows:
 
-<img src=/Users/patrick/Desktop/NSColor.png>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/NSColor.png>
 
 Because NSColor saves each rgb-channel as a float value we have to calculate the 8bit value. If you are using something other than a 8 bit colorspace you shoudld change this.
 
@@ -287,7 +287,7 @@ Because NSColor saves each rgb-channel as a float value we have to calculate the
 
 Propertylist-Key: `debugView.appearance.numberOfBitsPerColorComponent`
 
-<img src=/Users/patrick/Desktop/Color%20Bits%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Bits%20Badge.png height=25>
 
 
 ### Date
@@ -315,7 +315,7 @@ This property stores if the view is saved or not.
 
 Propertylist-Key: `debugView.appearance.save`
 
-<img src=/Users/patrick/Desktop/Auto%20Save%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Auto%20Save%20Badge.png height=25>
 
 ### Save Path
 This property store the filepath where the view is saved.
@@ -335,7 +335,7 @@ Because of the naming structure you should use a automated versioning tool. See 
 
 Propertylist-Key: `debugView.appearance.path`
 
-<img src=/Users/patrick/Desktop/Save%20Url%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Save%20Url%20Badge.png height=25>
 
 ### PDF
 This property stores if the saved file is a pdf or a png file.
@@ -346,7 +346,7 @@ This property stores if the saved file is a pdf or a png file.
 
 Propertylist-Key: `debugView.appearance.usePDF`
 
-<img src=/Users/patrick/Desktop/Auto%20Save%20Badge.png height=25>
+<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Auto%20Save%20Badge.png height=25>
 
 
 
