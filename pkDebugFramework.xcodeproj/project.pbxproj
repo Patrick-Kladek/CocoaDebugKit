@@ -29,6 +29,27 @@
 		CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */; };
 		CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
 		CD6F17CC1D5661030064D7AF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
+		CD6F17E21D5698EC0064D7AF /* Color PropertyName Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D01D5698EC0064D7AF /* Color PropertyName Badge.png */; };
+		CD6F17E31D5698EC0064D7AF /* Color Keyword Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D11D5698EC0064D7AF /* Color Keyword Badge.png */; };
+		CD6F17E41D5698EC0064D7AF /* Max Lenght Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D21D5698EC0064D7AF /* Max Lenght Badge.png */; };
+		CD6F17E51D5698EC0064D7AF /* Frame Color Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D31D5698EC0064D7AF /* Frame Color Badge.png */; };
+		CD6F17E61D5698EC0064D7AF /* Default Font Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D41D5698EC0064D7AF /* Default Font Badge.png */; };
+		CD6F17E71D5698EC0064D7AF /* Color Title Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D51D5698EC0064D7AF /* Color Title Badge.png */; };
+		CD6F17E81D5698EC0064D7AF /* Color Bits Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D61D5698EC0064D7AF /* Color Bits Badge.png */; };
+		CD6F17E91D5698EC0064D7AF /* Color Text Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D71D5698EC0064D7AF /* Color Text Badge.png */; };
+		CD6F17EA1D5698EC0064D7AF /* Line Spacing Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D81D5698EC0064D7AF /* Line Spacing Badge.png */; };
+		CD6F17EB1D5698EC0064D7AF /* Background Color Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D91D5698EC0064D7AF /* Background Color Badge.png */; };
+		CD6F17EC1D5698EC0064D7AF /* Color Number Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17DA1D5698EC0064D7AF /* Color Number Badge.png */; };
+		CD6F17ED1D5698EC0064D7AF /* Defualt YES Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17DB1D5698EC0064D7AF /* Defualt YES Badge.png */; };
+		CD6F17EE1D5698EC0064D7AF /* NSColor.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17DC1D5698EC0064D7AF /* NSColor.png */; };
+		CD6F17EF1D5698EC0064D7AF /* Image Size Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17DD1D5698EC0064D7AF /* Image Size Badge.png */; };
+		CD6F17F01D5698EC0064D7AF /* Auto Save Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17DE1D5698EC0064D7AF /* Auto Save Badge.png */; };
+		CD6F17F11D5698EC0064D7AF /* Title Font Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17DF1D5698EC0064D7AF /* Title Font Badge.png */; };
+		CD6F17F21D5698EC0064D7AF /* Person.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17E01D5698EC0064D7AF /* Person.png */; };
+		CD6F17F31D5698EC0064D7AF /* Save Url Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17E11D5698EC0064D7AF /* Save Url Badge.png */; };
+		CD6F17F71D5699020064D7AF /* Auto Versioning.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F41D5699020064D7AF /* Auto Versioning.md */; };
+		CD6F17F81D5699020064D7AF /* Home.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F51D5699020064D7AF /* Home.md */; };
+		CD6F17F91D5699020064D7AF /* settings.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17F61D5699020064D7AF /* settings.md */; };
 		CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */; };
 		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +112,27 @@
 		CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "objc types.pdf"; sourceTree = "<group>"; };
 		CD6F17C91D5661030064D7AF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		CD6F17CA1D5661030064D7AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CD6F17D01D5698EC0064D7AF /* Color PropertyName Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color PropertyName Badge.png"; sourceTree = "<group>"; };
+		CD6F17D11D5698EC0064D7AF /* Color Keyword Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color Keyword Badge.png"; sourceTree = "<group>"; };
+		CD6F17D21D5698EC0064D7AF /* Max Lenght Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Max Lenght Badge.png"; sourceTree = "<group>"; };
+		CD6F17D31D5698EC0064D7AF /* Frame Color Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frame Color Badge.png"; sourceTree = "<group>"; };
+		CD6F17D41D5698EC0064D7AF /* Default Font Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Font Badge.png"; sourceTree = "<group>"; };
+		CD6F17D51D5698EC0064D7AF /* Color Title Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color Title Badge.png"; sourceTree = "<group>"; };
+		CD6F17D61D5698EC0064D7AF /* Color Bits Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color Bits Badge.png"; sourceTree = "<group>"; };
+		CD6F17D71D5698EC0064D7AF /* Color Text Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color Text Badge.png"; sourceTree = "<group>"; };
+		CD6F17D81D5698EC0064D7AF /* Line Spacing Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line Spacing Badge.png"; sourceTree = "<group>"; };
+		CD6F17D91D5698EC0064D7AF /* Background Color Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background Color Badge.png"; sourceTree = "<group>"; };
+		CD6F17DA1D5698EC0064D7AF /* Color Number Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color Number Badge.png"; sourceTree = "<group>"; };
+		CD6F17DB1D5698EC0064D7AF /* Defualt YES Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defualt YES Badge.png"; sourceTree = "<group>"; };
+		CD6F17DC1D5698EC0064D7AF /* NSColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NSColor.png; sourceTree = "<group>"; };
+		CD6F17DD1D5698EC0064D7AF /* Image Size Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Image Size Badge.png"; sourceTree = "<group>"; };
+		CD6F17DE1D5698EC0064D7AF /* Auto Save Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Auto Save Badge.png"; sourceTree = "<group>"; };
+		CD6F17DF1D5698EC0064D7AF /* Title Font Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Title Font Badge.png"; sourceTree = "<group>"; };
+		CD6F17E01D5698EC0064D7AF /* Person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person.png; sourceTree = "<group>"; };
+		CD6F17E11D5698EC0064D7AF /* Save Url Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Save Url Badge.png"; sourceTree = "<group>"; };
+		CD6F17F41D5699020064D7AF /* Auto Versioning.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Auto Versioning.md"; sourceTree = "<group>"; };
+		CD6F17F51D5699020064D7AF /* Home.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Home.md; sourceTree = "<group>"; };
+		CD6F17F61D5699020064D7AF /* settings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = settings.md; sourceTree = "<group>"; };
 		CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.basic.plist; sourceTree = "<group>"; };
 		CDBBC8451B70E31600923E3E /* pkTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkTestObject.h; sourceTree = "<group>"; };
 		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
@@ -227,6 +269,42 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		CD6F17CF1D5698E40064D7AF /* Wiki */ = {
+			isa = PBXGroup;
+			children = (
+				CD6F17F41D5699020064D7AF /* Auto Versioning.md */,
+				CD6F17F51D5699020064D7AF /* Home.md */,
+				CD6F17F61D5699020064D7AF /* settings.md */,
+				CD6F17FA1D5699060064D7AF /* Images */,
+			);
+			name = Wiki;
+			sourceTree = "<group>";
+		};
+		CD6F17FA1D5699060064D7AF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CD6F17D01D5698EC0064D7AF /* Color PropertyName Badge.png */,
+				CD6F17D11D5698EC0064D7AF /* Color Keyword Badge.png */,
+				CD6F17D21D5698EC0064D7AF /* Max Lenght Badge.png */,
+				CD6F17D31D5698EC0064D7AF /* Frame Color Badge.png */,
+				CD6F17D41D5698EC0064D7AF /* Default Font Badge.png */,
+				CD6F17D51D5698EC0064D7AF /* Color Title Badge.png */,
+				CD6F17D61D5698EC0064D7AF /* Color Bits Badge.png */,
+				CD6F17D71D5698EC0064D7AF /* Color Text Badge.png */,
+				CD6F17D81D5698EC0064D7AF /* Line Spacing Badge.png */,
+				CD6F17D91D5698EC0064D7AF /* Background Color Badge.png */,
+				CD6F17DA1D5698EC0064D7AF /* Color Number Badge.png */,
+				CD6F17DB1D5698EC0064D7AF /* Defualt YES Badge.png */,
+				CD6F17DC1D5698EC0064D7AF /* NSColor.png */,
+				CD6F17DD1D5698EC0064D7AF /* Image Size Badge.png */,
+				CD6F17DE1D5698EC0064D7AF /* Auto Save Badge.png */,
+				CD6F17DF1D5698EC0064D7AF /* Title Font Badge.png */,
+				CD6F17E01D5698EC0064D7AF /* Person.png */,
+				CD6F17E11D5698EC0064D7AF /* Save Url Badge.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		CDBD4F5C1CCE419F00A0912B /* Property Enumerator */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +317,7 @@
 		CDC75DFD1CEB18F0004393EE /* Doc */ = {
 			isa = PBXGroup;
 			children = (
+				CD6F17CF1D5698E40064D7AF /* Wiki */,
 				CD6F17C91D5661030064D7AF /* LICENSE.md */,
 				CD6F17CA1D5661030064D7AF /* README.md */,
 				CDC75DFE1CEB18F0004393EE /* add debugView.png */,
@@ -366,17 +445,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6F17E21D5698EC0064D7AF /* Color PropertyName Badge.png in Resources */,
+				CD6F17E81D5698EC0064D7AF /* Color Bits Badge.png in Resources */,
 				CDC75E011CEB18F0004393EE /* add debugView.png in Resources */,
 				CDC75E021CEB18F0004393EE /* new Debug.png in Resources */,
 				CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */,
+				CD6F17EE1D5698EC0064D7AF /* NSColor.png in Resources */,
 				CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */,
+				CD6F17E51D5698EC0064D7AF /* Frame Color Badge.png in Resources */,
+				CD6F17E61D5698EC0064D7AF /* Default Font Badge.png in Resources */,
+				CD6F17E31D5698EC0064D7AF /* Color Keyword Badge.png in Resources */,
+				CD6F17F31D5698EC0064D7AF /* Save Url Badge.png in Resources */,
 				CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */,
+				CD6F17F71D5699020064D7AF /* Auto Versioning.md in Resources */,
+				CD6F17E91D5698EC0064D7AF /* Color Text Badge.png in Resources */,
+				CD6F17EA1D5698EC0064D7AF /* Line Spacing Badge.png in Resources */,
+				CD6F17EC1D5698EC0064D7AF /* Color Number Badge.png in Resources */,
 				CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */,
+				CD6F17EB1D5698EC0064D7AF /* Background Color Badge.png in Resources */,
+				CD6F17F01D5698EC0064D7AF /* Auto Save Badge.png in Resources */,
 				CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */,
 				CD5796411CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist in Resources */,
+				CD6F17F11D5698EC0064D7AF /* Title Font Badge.png in Resources */,
+				CD6F17ED1D5698EC0064D7AF /* Defualt YES Badge.png in Resources */,
+				CD6F17E71D5698EC0064D7AF /* Color Title Badge.png in Resources */,
+				CD6F17E41D5698EC0064D7AF /* Max Lenght Badge.png in Resources */,
 				CDC75E031CEB18F0004393EE /* old Debug.png in Resources */,
 				CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */,
+				CD6F17F21D5698EC0064D7AF /* Person.png in Resources */,
 				CD57963D1CC56CD40014BFD0 /* image.png in Resources */,
+				CD6F17F81D5699020064D7AF /* Home.md in Resources */,
+				CD6F17EF1D5698EC0064D7AF /* Image Size Badge.png in Resources */,
 				CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +530,7 @@
 				CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */,
 				CD2762491B0E30210000BB5D /* main.m in Sources */,
 				CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */,
+				CD6F17F91D5699020064D7AF /* settings.md in Sources */,
 				CD6F17CC1D5661030064D7AF /* README.md in Sources */,
 				CD5796441CC585CA0014BFD0 /* Person.m in Sources */,
 				CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */,

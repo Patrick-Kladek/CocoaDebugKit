@@ -1,4 +1,8 @@
 # pkDebugFramework
+<img src="https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Build%20Badge.png" height="25">
+<img src="https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Compatibility%20Badge.png" height="25">
+<img src="https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Tested%20Badge.png" height="25">
+
 Tools for debugging with Xcode
 
 

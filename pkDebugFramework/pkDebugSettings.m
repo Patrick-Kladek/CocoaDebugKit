@@ -96,6 +96,7 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		
 		_save = NO;
 		_saveUrl = [NSURL fileURLWithPath:[@"~/Desktop" stringByExpandingTildeInPath]];
+		_saveAsPDF = NO;
 		
 		_debuggedObjects 		= [NSMutableDictionary dictionary];
 	}
@@ -235,7 +236,7 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 		_saveUrl = [NSURL fileURLWithPath:[[settings valueForKeyPath:@"debugView.appearance.path"] stringByExpandingTildeInPath]];
 	}
 	
-	if ([settings valueForKeyPath:@"debugView.appearance.save"]) {
+	if ([settings valueForKeyPath:@"debugView.appearance.usePDF"]) {
 		_saveAsPDF = [[settings valueForKeyPath:@"debugView.appearance.usePDF"] boolValue];
 	}
 	
