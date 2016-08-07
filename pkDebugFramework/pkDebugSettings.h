@@ -57,7 +57,7 @@
 @property (nonatomic) BOOL saveAsPDF;		
 
 
-@property (nonatomic) NSMutableDictionary *debuggedObjects;		// currently not used
+@property (nonatomic) NSMutableDictionary *debuggedObjects;		// used for numbering debugged views & descriptions
 
 
 @property (nonatomic) NSInteger numberOfBitsPerColorComponent;		

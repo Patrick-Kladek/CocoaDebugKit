@@ -67,7 +67,7 @@
 {
 	id value = [obj valueForKey:name];
 	
-	if ([type isEqualToString:@"NSData"])
+	if ([NSClassFromString(type) isSubclassOfClass:[NSData class]])
 	{
 		// cut lenght to 100 byte
 		if ([(NSData *)value length] > self.dataMaxLenght.integerValue)

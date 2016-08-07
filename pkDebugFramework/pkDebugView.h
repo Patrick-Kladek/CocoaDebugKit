@@ -77,6 +77,7 @@
 - (void)addLineWithDescription:(NSString *)desc boolean:(BOOL)boolean;
 - (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
 - (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date;
+- (void)addLineWithDescription:(NSString *)desc view:(NSView *)view;
 
 - (void)saveDebugView;
 - (BOOL)saveDebugViewToUrl:(NSURL *)url;
