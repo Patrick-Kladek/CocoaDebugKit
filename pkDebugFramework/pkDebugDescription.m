@@ -17,6 +17,8 @@
 	NSString *myDescription;
 }
 
+- (void)addAllPropertiesFromObject:(NSObject *)obj;
+
 @end
 
 
