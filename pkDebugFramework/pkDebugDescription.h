@@ -19,7 +19,6 @@
 
 
 
-- (void)addAllPropertiesFromObject:(NSObject *)obj;
 - (NSString *)descriptionForObject:(NSObject *)object;
 
 

@@ -130,6 +130,11 @@
 	[view2 setFrame:NSOffsetRect(view2.frame, 20, 20)];
 	
 	[[[self window] contentView] addSubview:view2];
+	
+	
+	pkDebugDescription *desc = [[pkDebugDescription alloc] init];
+	NSString *str = [desc descriptionForObject:person];
+	NSLog(@"%@", str);
 }
 
 
