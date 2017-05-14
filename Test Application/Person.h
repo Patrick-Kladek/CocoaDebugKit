@@ -1,6 +1,6 @@
 //
 //  Person.h
-//  pkDebugFramework
+//  CocoaDebugFramework
 //
 //  Created by Patrick Kladek on 18.04.16.
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.

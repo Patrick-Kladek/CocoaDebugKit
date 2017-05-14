@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import <pkDebugFramework/pkDebugFramework.h>
-#import "pkTestObject.h"
+#import <CocoaDebugFramework/CocoaDebugFramework.h>
+#import "TestObject.h"
 #import "Person.h"
-#import "pkSecondObject.h"
+#import "SecondObject.h"
 
-@interface AppDelegate () <pkTestObjectDelegate>
+@interface AppDelegate () <TestObjectDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @end
@@ -26,8 +26,8 @@
 	// Insert code here to initialize your application
 	
 	// init debugFramework
-	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.pkDebugFramework.settings.default" withExtension:@"plist"];
-	[[pkDebugSettings sharedSettings] loadSettings:url];
+	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.CocoaDebugFramework.settings.default" withExtension:@"plist"];
+	[[CocoaDebugSettings sharedSettings] loadSettings:url];
 	
 	[self createStaticDebugView];
 	
@@ -48,8 +48,8 @@
 
 - (void)createStaticDebugView
 {
-	pkDebugView *view = [pkDebugView debugView];
-	[view setTitle:@"ClassName"];
+	CocoaDebugView *view = [CocoaDebugView debugView];
+	[view setTitle:@"ClassName : Hugo Boss : NSObject : Class ISA : sjfkahdkfhaskdjfhfdashkfjhasdjfhklashdkfjdsfasdfadsfasdf"];
 	[view setFrameColor:[NSColor purpleColor]];
 	
 	
@@ -80,11 +80,11 @@
 
 - (void)createDynamicDebugView
 {
-	pkSecondObject *obj = [[pkSecondObject alloc] init];
+	SecondObject *obj = [[SecondObject alloc] init];
 	[obj setDelegate:self];
 	[obj setDate:[NSDate date]];
 	
-	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image" ofType:@"png"]];
+	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image" ofType:@"jpg"]];
 	[obj setDataImage:[image TIFFRepresentation]];
 	
 	
@@ -108,7 +108,7 @@
 																								NSURLErrorKey:@"NSURLError",
 																								NSFilePathErrorKey:@" NSFilePathError"
 																								}]];
-	pkTestObject *obj2 = [[pkTestObject alloc] init];
+	TestObject *obj2 = [[TestObject alloc] init];
 	[obj2 setName:@"hugo"];
 	[obj setObject:obj2];
 	
@@ -121,10 +121,10 @@
 - (void)createDynamicDebugViewPerson
 {
 	Person *person = [[Person alloc] init];
-	[person setImage:[NSImage imageNamed:NSImageNameUser]];
-	[person setFirstName:@"Mark"];
-	[person setLastName:@"Johnson"];
-	[person setBirthday:[NSDate date]];
+	[person setImage:[NSImage imageNamed:@"image.jpg"]];
+	[person setFirstName:@"Patrick"];
+	[person setLastName:@"Kladek"];
+	[person setBirthday:[NSDate dateWithString:@"1996-07-04 01:00:00 +0100"]];
 	
 	NSView *view2 = [person debugQuickLookObject];
 	[view2 setFrame:NSOffsetRect(view2.frame, 20, 20)];
@@ -132,14 +132,14 @@
 	[[[self window] contentView] addSubview:view2];
 	
 	
-	pkDebugDescription *desc = [[pkDebugDescription alloc] init];
+	CocoaDebugDescription *desc = [[CocoaDebugDescription alloc] init];
 	NSString *str = [desc descriptionForObject:person];
 	NSLog(@"%@", str);
 }
 
 
 /**
- *	pkTestObjectDelegate
+ *	CocoaTestObjectDelegate
  */
 -(void)smt
 {

@@ -6,14 +6,14 @@
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.
 //
 
-#import "pkDebugDescription.h"
-#import "pkPropertyEnumerator.h"
-#import "pkDebugSettings.h"
+#import "CocoaDebugDescription.h"
+#import "CocoaPropertyEnumerator.h"
+#import "CocoaDebugSettings.h"
 
 
-@interface pkDebugDescription ()
+@interface CocoaDebugDescription ()
 {
-	pkPropertyEnumerator *propertyEnumerator;
+	CocoaPropertyEnumerator *propertyEnumerator;
 	NSString *myDescription;
 }
 
@@ -23,11 +23,11 @@
 
 
 
-@implementation pkDebugDescription
+@implementation CocoaDebugDescription
 
-+ (pkDebugDescription *)debugDescription
++ (CocoaDebugDescription *)debugDescription
 {
-	pkDebugDescription *description = [[pkDebugDescription alloc] init];
+	CocoaDebugDescription *description = [[CocoaDebugDescription alloc] init];
 	return description;
 }
 
@@ -36,10 +36,10 @@
 	self = [super init];
 	if (self)
 	{
-		propertyEnumerator = [[pkPropertyEnumerator alloc] init];
+		propertyEnumerator = [[CocoaPropertyEnumerator alloc] init];
 		myDescription = @"";
 		
-		pkDebugSettings *settings = [pkDebugSettings sharedSettings];
+		CocoaDebugSettings *settings = [CocoaDebugSettings sharedSettings];
 		
 		self.dataMaxLenght	= settings.maxDataLenght;
 		self.save			= settings.save;
@@ -120,7 +120,7 @@
 		return;
 	}
 	
-	NSDictionary *debuggedObjects = [[pkDebugSettings sharedSettings] debuggedObjects];
+	NSDictionary *debuggedObjects = [[CocoaDebugSettings sharedSettings] debuggedObjects];
 	NSInteger debuggedNr = [[debuggedObjects valueForKey:[_obj className]] integerValue];
 	debuggedNr++;
 	[debuggedObjects setValue:[NSNumber numberWithInteger:debuggedNr] forKey:[_obj className]];

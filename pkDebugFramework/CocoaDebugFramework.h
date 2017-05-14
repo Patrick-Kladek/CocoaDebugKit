@@ -9,15 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 //! Project version number for pkDebugFramework.
-FOUNDATION_EXPORT double pkDebugFrameworkVersionNumber;
+FOUNDATION_EXPORT double CocoaDebugFrameworkVersionNumber;
 
 //! Project version string for pkDebugFramework.
-FOUNDATION_EXPORT const unsigned char pkDebugFrameworkVersionString[];
+FOUNDATION_EXPORT const unsigned char CocoaDebugFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <pkDebugFramework/PublicHeader.h>
 
 
-#import "pkDebugView.h"
-#import "pkDebugSettings.h"
-#import "pkDebugDescription.h"
-#import "pkPropertyEnumerator.h"
+#import "CocoaDebugView.h"
+#import "CocoaDebugSettings.h"
+#import "CocoaDebugDescription.h"
+#import "CocoaPropertyEnumerator.h"

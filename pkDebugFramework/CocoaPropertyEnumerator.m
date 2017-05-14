@@ -6,10 +6,10 @@
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.
 //
 
-#import "pkPropertyEnumerator.h"
+#import "CocoaPropertyEnumerator.h"
 #import <objc/runtime.h>
 
-@implementation pkPropertyEnumerator
+@implementation CocoaPropertyEnumerator
 
 static const char *getPropertyType(objc_property_t property)
 {
@@ -18,37 +18,38 @@ static const char *getPropertyType(objc_property_t property)
 	strcpy(buffer, attributes);
 	char *state = buffer, *attribute;
 	
-//	printf("%s\n", attributes);
-//	T@"NSString",&,N,V_hallo
-//	T@"<pkTestObjectDelegate>",W,N,V_delegate
-//	T@"NSData",&,N,V_data
-//	T@"NSDate",&,N,V_date
-//	T@"NSImage",&,N,V_image
-//	T@,&,N,V_prop
-//	T@"NSSet",&,N,V_set
-//	T@"NSString",&,N,V_name
-//	T@"NSString",&,N,V_test
-//	Tc,N,GisCheck,V_check
-//	TC,N,V_ccheck
-//	Ti,N,V_inum
-//	Tq,N,V_lnum
-//	T@"NSURL",&,N,V_url
-//	T@"pkTestObject",&,N,V_object
-//	T@"NSString",&,N,V_hallo
-//	T@"<pkTestObjectDelegate>",W,N,V_delegate
-//	T@"NSData",&,N,V_data
-//	T@"NSDate",&,N,V_date
-//	T@"NSImage",&,N,V_image
-//	T@,&,N,V_prop
-//	T@"NSSet",&,N,V_set
-//	T@"NSString",&,N,V_name
-//	T@"NSString",&,N,V_test
-//	Tc,N,GisCheck,V_check
-//	TC,N,V_ccheck
-//	Ti,N,V_inum
-//	Tq,N,V_lnum
-//	T@"NSURL",&,N,V_url
-//	T@"pkTestObject",&,N,V_object
+	/*
+	T@"NSString",&,N,V_hallo
+	T@"<pkTestObjectDelegate>",W,N,V_delegate
+	T@"NSData",&,N,V_data
+	T@"NSDate",&,N,V_date
+	T@"NSImage",&,N,V_image
+	T@,&,N,V_prop
+	T@"NSSet",&,N,V_set
+	T@"NSString",&,N,V_name
+	T@"NSString",&,N,V_test
+	Tc,N,GisCheck,V_check
+	TC,N,V_ccheck
+	Ti,N,V_inum
+	Tq,N,V_lnum
+	T@"NSURL",&,N,V_url
+	T@"pkTestObject",&,N,V_object
+	T@"NSString",&,N,V_hallo
+	T@"<pkTestObjectDelegate>",W,N,V_delegate
+	T@"NSData",&,N,V_data
+	T@"NSDate",&,N,V_date
+	T@"NSImage",&,N,V_image
+	T@,&,N,V_prop
+	T@"NSSet",&,N,V_set
+	T@"NSString",&,N,V_name
+	T@"NSString",&,N,V_test
+	Tc,N,GisCheck,V_check
+	TC,N,V_ccheck
+	Ti,N,V_inum
+	Tq,N,V_lnum
+	T@"NSURL",&,N,V_url
+	T@"pkTestObject",&,N,V_object
+	*/
 	
 	while ((attribute = strsep(&state, ",")) != NULL)
 	{

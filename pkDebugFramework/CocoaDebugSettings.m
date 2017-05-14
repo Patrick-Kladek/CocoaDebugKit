@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.
 //
 
-#import "pkDebugSettings.h"
+#import "CocoaDebugSettings.h"
 
 
 static NSColor *NSColorFromHexString(NSString *inColorString)
@@ -30,7 +30,7 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 }
 
 
-@interface pkDebugSettings ()
+@interface CocoaDebugSettings ()
 {
 	NSDictionary *settings;
 }
@@ -39,22 +39,18 @@ static NSColor *NSColorFromHexString(NSString *inColorString)
 
 
 
-@implementation pkDebugSettings
+@implementation CocoaDebugSettings
 
-+ (pkDebugSettings *)sharedSettings
++ (CocoaDebugSettings *)sharedSettings
 {
-	// structure used to test whether the block has completed or not
-	static dispatch_once_t p = 0;
-	
-	// initialize sharedObject as nil (first call only)
 	__strong static id _sharedObject = nil;
 	
-	// executes a block object once and only once for the lifetime of an application
+	static dispatch_once_t p = 0;
+
 	dispatch_once(&p, ^{
 		_sharedObject = [[self alloc] init];
 	});
 	
-	// returns the same object each time
 	return _sharedObject;
 }
 

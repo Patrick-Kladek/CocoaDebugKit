@@ -74,6 +74,11 @@
 			<key>size</key>
 			<string>12</string>
 		</dict>
+		<key>NSDate</key>
+		<dict>
+			<key>format</key>
+			<string>yyyy-MM-dd</string>
+		</dict>
 	</dict>
 	<key>debugDescription</key>
 	<dict>

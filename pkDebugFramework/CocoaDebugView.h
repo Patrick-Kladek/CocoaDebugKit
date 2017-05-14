@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface pkDebugView : NSView
+@interface CocoaDebugView : NSView
 
 @property (nonatomic) NSObject *obj;
 
@@ -47,22 +47,31 @@
 
 
 /**
- *	creates a new debugView with no information
+ *	Creates a new debugView with no information
  */
-+ (pkDebugView *)debugView;
++ (CocoaDebugView *)debugView;
 
 /**
- *	creates a new debugView with all properties from Object
- *	@param include:	includes properties from subclasses if true, otherwise only properties from current class
+ *	Creates a new debugView with all properties from Object.
+ *	@param obj: the object for which the debugView will be created.
+ *	@param include:	includes properties from Superclasses if true, otherwise only properties from current class.
  */
-+ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
++ (CocoaDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
 
 /**
- *	works only with current class, not objects/variables from subclasses
+ *	Works only with current class, not objects/variables from subclasses.
+ *	Pass properties in format: @code property1, property2, property3 @endcode
+ *	@param properties: properties which will be added to the debugView.
+ *	@param obj: the object for which the debugView will be created.
+ *	@todo use property enumerator and check every property before adding them.
  */
-+ (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj;
++ (CocoaDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj;
 
-
+/**
+ *	Creates a new debugView with all properties from Object excluding named properties.
+ *	@param properties: exclude properties from debugView.
+ */
++ (CocoaDebugView *)debugViewExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
 
 
 - (void)addProperties:(NSString *)string fromObject:(NSObject *)obj;

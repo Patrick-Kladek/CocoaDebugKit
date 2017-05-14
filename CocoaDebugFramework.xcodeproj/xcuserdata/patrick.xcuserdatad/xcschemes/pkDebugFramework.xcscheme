@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-               BuildableName = "pkDebugFramework.framework"
-               BlueprintName = "pkDebugFramework"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               BuildableName = "CocoaDebugFramework.framework"
+               BlueprintName = "CocoaDebugFramework"
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "CD2761F51B0E1C050000BB5D"
                BuildableName = "pkDebugFrameworkTests.xctest"
                BlueprintName = "pkDebugFrameworkTests"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
                BlueprintIdentifier = "CD2761F51B0E1C050000BB5D"
                BuildableName = "pkDebugFrameworkTests.xctest"
                BlueprintName = "pkDebugFrameworkTests"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-            BuildableName = "pkDebugFramework.framework"
-            BlueprintName = "pkDebugFramework"
-            ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            BuildableName = "CocoaDebugFramework.framework"
+            BlueprintName = "CocoaDebugFramework"
+            ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-            BuildableName = "pkDebugFramework.framework"
-            BlueprintName = "pkDebugFramework"
-            ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            BuildableName = "CocoaDebugFramework.framework"
+            BlueprintName = "CocoaDebugFramework"
+            ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-            BuildableName = "pkDebugFramework.framework"
-            BlueprintName = "pkDebugFramework"
-            ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            BuildableName = "CocoaDebugFramework.framework"
+            BlueprintName = "CocoaDebugFramework"
+            ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,20 +1,20 @@
 //
-//  pkDebugView.m
+//  CocoaDebugView.m
 //  pkDebugFramework
 //
 //  Created by Patrick Kladek on 21.05.15.
 //  Copyright (c) 2015 Patrick Kladek. All rights reserved.
 //
 
-#import "pkDebugView.h"
+#import "CocoaDebugView.h"
 #import <objc/runtime.h>
-#import "pkDebugSettings.h"
-#import "pkPropertyEnumerator.h"
+#import "CocoaDebugSettings.h"
+#import "CocoaPropertyEnumerator.h"
 #import <Foundation/Foundation.h>
 
 
 
-@interface pkDebugView ()
+@interface CocoaDebugView ()
 {
 	NSInteger pos;
 	NSInteger leftWidth;
@@ -23,7 +23,7 @@
 	NSTextField *titleTextField;
 	NSTextField *defaultTextField;
 	
-	pkPropertyEnumerator *propertyEnumerator;
+	CocoaPropertyEnumerator *propertyEnumerator;
 }
 
 - (void)_addLineWithDescription:(NSString *)desc string:(NSString *)value leftColor:(NSColor *)leftColor rightColor:(NSColor *)rightColor leftFont:(NSFont *)lFont rightFont:(NSFont *)rfont;
@@ -32,12 +32,12 @@
 
 
 
-@implementation pkDebugView
+@implementation CocoaDebugView
 
 
-+ (pkDebugView *)debugView
++ (CocoaDebugView *)debugView
 {
-	pkDebugView *view = [[pkDebugView alloc] init];
+	CocoaDebugView *view = [[CocoaDebugView alloc] init];
 	return view;
 }
 
@@ -49,13 +49,13 @@
 	return result;
 }
 
-+ (pkDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include
++ (CocoaDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include
 {
-	pkDebugView *view = [[pkDebugView alloc] init];
+	CocoaDebugView *view = [[CocoaDebugView alloc] init];
 	[view setObj:obj];
 	
 	if (include) {
-		[view traceSuperClassesOfObject:obj];
+		[view setTitle:[view traceSuperClassesOfObject:obj]];
 	} else {
 		[view setTitle:[obj className]];
 	}
@@ -69,16 +69,57 @@
 	return view;
 }
 
-+ (pkDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj
++ (CocoaDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj
 {
-	pkDebugView *view = [[pkDebugView alloc] init];
+	CocoaDebugView *view = [[CocoaDebugView alloc] init];
 	[view setObj:obj];
 	
-	[view traceSuperClassesOfObject:obj];
+	[view setTitle:[view traceSuperClassesOfObject:obj]];
 	[view addProperties:properties fromObject:obj];
 	
 	if ([view save]) {
 		[view saveDebugView];
+	}
+	
+	return view;
+}
+
++ (CocoaDebugView *)debugViewExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj includeSuperclasses:(BOOL)include
+{
+	CocoaDebugView *view = [CocoaDebugView debugView];
+	[view setObj:obj];
+
+	if (include) {
+		[view setTitle:[view traceSuperClassesOfObject:obj]];
+	} else {
+		[view setTitle:[obj className]];
+	}
+	
+	CocoaPropertyEnumerator *enumerator = [[CocoaPropertyEnumerator alloc] init];
+	Class currentClass = [obj class];
+	
+	while (currentClass != nil) {
+		
+		[enumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+			BOOL found = false;
+			for (NSString *propertie in properties)
+			{
+				if ([propertie isEqualToString:name]) {
+					found = true;
+					break;
+				}
+			}
+			
+			if (!found) {
+				[view addProperty:name type:type toObject:obj];
+			}
+		}];
+		
+		if (include) {
+			currentClass = [currentClass superclass];
+		} else {
+			break;
+		}
 	}
 	
 	return view;
@@ -94,7 +135,7 @@
 	self = [super init];
 	if (self)
 	{
-		pkDebugSettings *settings = [pkDebugSettings sharedSettings];
+		CocoaDebugSettings *settings = [CocoaDebugSettings sharedSettings];
 		
 		self.lineSpace				= settings.lineSpace;
 		self.highlightKeywords		= settings.highlightKeywords;
@@ -131,13 +172,13 @@
 		
 		
 		
-		propertyEnumerator = [[pkPropertyEnumerator alloc] init];
+		propertyEnumerator = [[CocoaPropertyEnumerator alloc] init];
 		
 		
 		leftWidth				= 0;
 		rightWidth				= 0;
 		pos						= 30;
-		_title					= @"pkDebugView";
+		_title					= @"CocoaDebugView";
 		
 		
 		[self setFrame:NSMakeRect(0, 0, 20, 55)];
@@ -166,11 +207,11 @@
 {
 	[super drawRect:dirtyRect];
 	
-	// TODO: change this
-	if (titleTextField.frame.size.width + 20 > self.frame.size.width)	// +20 => | 10 --- label ----- 10 |
-	{
-		[self setFrame:NSMakeRect(self.frame.origin.x, self.frame.origin.y, titleTextField.frame.size.width + 20, self.frame.size.height)];
-	}
+	// Uncomment this to resize view based on title lenght
+//	if (titleTextField.frame.size.width + 20 > self.frame.size.width)	// +20 => | 10 --- label ----- 10 |
+//	{
+//		[self setFrame:NSMakeRect(self.frame.origin.x, self.frame.origin.y, titleTextField.frame.size.width + 20, self.frame.size.height)];
+//	}
 	
 	[self setWantsLayer:YES];
 	[self.layer setCornerRadius:5];
@@ -255,7 +296,7 @@
 
 
 
-- (void)traceSuperClassesOfObject:(NSObject *)obj
+- (NSString *)traceSuperClassesOfObject:(NSObject *)obj
 {
 	Class currentClass = [obj class];
 	NSString *classStructure = NSStringFromClass(currentClass);
@@ -267,7 +308,7 @@
 		classStructure = [classStructure stringByAppendingString:[NSString stringWithFormat:@" : %@", NSStringFromClass(currentClass)]];
 	}
 	
-	[self setTitle:classStructure];
+	return classStructure;
 }
 
 #pragma mark - Save
@@ -289,7 +330,7 @@
 		return;
 	}
 	
-	NSDictionary *debuggedObjects = [[pkDebugSettings sharedSettings] debuggedObjects];
+	NSDictionary *debuggedObjects = [[CocoaDebugSettings sharedSettings] debuggedObjects];
 	NSInteger debuggedNr = [[debuggedObjects valueForKey:[_obj className]] integerValue];
 	debuggedNr++;
 	[debuggedObjects setValue:[NSNumber numberWithInteger:debuggedNr] forKey:[_obj className]];
@@ -327,11 +368,9 @@
 
 - (void)addAllPropertiesFromObject:(NSObject *)obj includeSuperclasses:(BOOL)include
 {
-	[self traceSuperClassesOfObject:obj];
-	
 	if (include)
 	{
-		// enumerate all subclasses "class_copyPropertyList(...)"
+		// enumerate all superclasses "class_copyPropertyList(...)"
 		Class currentClass = [obj class];
 		
 		while (currentClass != nil)
@@ -355,21 +394,19 @@
 
 - (void)addProperties:(NSString *)string fromObject:(NSObject *)obj
 {
-	if (string && string.length > 0)
-	{
-		NSArray *properties = [string componentsSeparatedByString:@", "];
-		
-		if (!properties)
-		{
-			@throw @"malformed properties parameter!";
-		}
-		
-		[properties enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
-			
-			// TODO: enumerate subclasses
-			[self addProperty:key type:[propertyEnumerator propertyTypeFromName:key object:obj] toObject:obj];
-		}];
+	if (string && string.length == 0) {
+		return;
 	}
+	
+	NSArray *properties = [string componentsSeparatedByString:@", "];
+	
+	if (!properties) {
+		@throw @"malformed properties parameter!";
+	}
+	
+	[properties enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
+		[self addProperty:key type:[propertyEnumerator propertyTypeFromName:key object:obj] toObject:obj];
+	}];
 }
 
 
@@ -657,29 +694,16 @@
 	{
 		return;
 	}
-	
-	if ([propertyType isEqualToString:@"bool"])
-	{
-		NSNumber *number = [obj valueForKey:propertyName];
-		[self addLineWithDescription:[self lineFromString:propertyName] boolean:[number boolValue]];
-		return;
-	}
-	
-	if ([propertyType isEqualToString:@"void"])		// char * (pointer)
-	{
-		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
-		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
-		return;
-	}
 
 	if ([self propertyUsesProtocol:propertyType])	// delegate, uses protocol
 	{
-		[self addLineWithDescription:propertyName string:propertyType];
+		id property = [[obj valueForKey:propertyName] description];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:property];
+		return;
 	}
 
 	
 	// probably something else, use description method
-	
 	id property = [[obj valueForKey:propertyName] description];
 	[self addLineWithDescription:[self lineFromString:propertyName] string:property];
 	
@@ -739,7 +763,7 @@
 	return view;
 }
 
-// TODO: title should resize, maybe use xib with autolayout (dont´t forget deployment version)
+// TODO: title should resize, maybe use custom subclass with -layoutSubviews
 - (NSView *)detailViewFromError:(NSError *)error
 {
 	if (!error) {
@@ -747,6 +771,12 @@
 	}
 	
 	NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 80)];
+	[view setWantsLayer:YES];
+	[[view layer] setMasksToBounds:YES];
+	[[view layer] setBorderWidth:1.0f];
+	[view.layer setBorderColor:[[NSColor lightGrayColor] CGColor]];
+	
+	
 	
 	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 10, 60, 60)];
 	[imageView setImage:[NSImage imageNamed:NSImageNameCaution]];
@@ -755,7 +785,7 @@
 	[imageView setEnabled:NO];
 	[view addSubview:imageView];
 	
-	NSTextField *title = [[NSTextField alloc] initWithFrame:NSMakeRect(60, 60, 240, 20)];
+	NSTextField *title = [[NSTextField alloc] initWithFrame:NSMakeRect(60, 55, 240, 20)];
 	[title setEditable:NO];
 	[title setSelectable:YES];
 	[title setBezeled:NO];
@@ -801,19 +831,19 @@
 			
 			if (image) {
 				[self addLineWithDescription:[self lineFromString:propertyName] image:image];
+				return;
 			} else {
-				NSData *data = (NSData *)property;
-				NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-				[self addLineWithDescription:[self lineFromString:propertyName] string:string];
+//				NSData *data = (NSData *)property;
+//				NSString *string = [NSString stringWithFormat:@"%@ ...", [CocoaDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+//				[self addLineWithDescription:[self lineFromString:propertyName] string:string];
 			}
+			return;
 		}
 	}
-	else
-	{
-		NSData *data = (NSData *)property;
-		NSString *string = [NSString stringWithFormat:@"%@ ...", [pkDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
-	}
+
+	NSData *data = (NSData *)property;
+	NSString *string = [NSString stringWithFormat:@"%@ ...", [CocoaDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+	[self addLineWithDescription:[self lineFromString:propertyName] string:string];
 }
 
 - (BOOL)addPrimitiveProperty:(NSString *)propertyName type:(NSString *)propertyType toObject:(id)obj
@@ -838,7 +868,7 @@
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"short"])										// Short
+	if ([propertyType isEqualToString:@"short"])									// Short
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number shortValue]];
@@ -852,14 +882,14 @@
 		return YES;
 	}
 
-	if ([propertyType isEqualToString:@"long long"])										// long long
+	if ([propertyType isEqualToString:@"long long"])								// long long
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] longnumber:[number longLongValue]];
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"unsigned char"])										// unsigned char
+	if ([propertyType isEqualToString:@"unsigned char"])							// unsigned char
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		char mchar = [number charValue];
@@ -868,38 +898,52 @@
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"unsigned int"])										// unsigned Int
+	if ([propertyType isEqualToString:@"unsigned int"])								// unsigned Int
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedIntegerValue]];
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"unsigned short"])										// unsigned Short
+	if ([propertyType isEqualToString:@"unsigned short"])							// unsigned Short
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] integer:[number unsignedShortValue]];
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"unsigned long"])										// unsigned long
+	if ([propertyType isEqualToString:@"unsigned long"])							// unsigned long
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedInteger:[number unsignedLongValue]];
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"unsigned long long"])										// unsigned long long
+	if ([propertyType isEqualToString:@"unsigned long long"])						// unsigned long long
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] unsignedLongnumber:[number unsignedLongLongValue]];
 		return YES;
 	}
 	
-	if ([propertyType isEqualToString:@"float"])										// float
+	if ([propertyType isEqualToString:@"float"])									// float
 	{
 		NSNumber *number = [obj valueForKey:propertyName];
 		[self addLineWithDescription:[NSString stringWithFormat:@"%@:", propertyName] floating:[number floatValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"bool"])										// bool
+	{
+		NSNumber *number = [obj valueForKey:propertyName];
+		[self addLineWithDescription:[self lineFromString:propertyName] boolean:[number boolValue]];
+		return YES;
+	}
+	
+	if ([propertyType isEqualToString:@"void"])										// char * (pointer)
+	{
+		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
 		return YES;
 	}
 	

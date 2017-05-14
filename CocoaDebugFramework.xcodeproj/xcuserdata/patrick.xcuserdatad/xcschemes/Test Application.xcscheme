@@ -17,7 +17,7 @@
                BlueprintIdentifier = "CD2762401B0E30210000BB5D"
                BuildableName = "Test Application.app"
                BlueprintName = "Test Application"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "CD2762521B0E30210000BB5D"
                BuildableName = "Test ApplicationTests.xctest"
                BlueprintName = "Test ApplicationTests"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "CD5796111CC522EB0014BFD0"
                BuildableName = "pkDebugFrameworkMobileTests.xctest"
                BlueprintName = "pkDebugFrameworkMobileTests"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -63,7 +63,7 @@
                BlueprintIdentifier = "CD2762521B0E30210000BB5D"
                BuildableName = "Test ApplicationTests.xctest"
                BlueprintName = "Test ApplicationTests"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -73,7 +73,7 @@
                BlueprintIdentifier = "CD5796111CC522EB0014BFD0"
                BuildableName = "pkDebugFrameworkMobileTests.xctest"
                BlueprintName = "pkDebugFrameworkMobileTests"
-               ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+               ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -83,7 +83,7 @@
             BlueprintIdentifier = "CD2762401B0E30210000BB5D"
             BuildableName = "Test Application.app"
             BlueprintName = "Test Application"
-            ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -103,7 +103,7 @@
             BlueprintIdentifier = "CD2762401B0E30210000BB5D"
             BuildableName = "Test Application.app"
             BlueprintName = "Test Application"
-            ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -122,7 +122,7 @@
             BlueprintIdentifier = "CD2762401B0E30210000BB5D"
             BuildableName = "Test Application.app"
             BlueprintName = "Test Application"
-            ReferencedContainer = "container:pkDebugFramework.xcodeproj">
+            ReferencedContainer = "container:CocoaDebugFramework.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

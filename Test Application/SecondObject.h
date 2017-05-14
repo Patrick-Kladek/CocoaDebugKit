@@ -1,14 +1,14 @@
 //
-//  pkSecondObject.h
-//  pkDebugFramework
+//  SecondObject.h
+//  CocoaDebugFramework
 //
 //  Created by Patrick Kladek on 25.04.16.
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.
 //
 
-#import "pkTestObject.h"
+#import "TestObject.h"
 
-@interface pkSecondObject : pkTestObject
+@interface SecondObject : TestObject
 
 @property (nonatomic) NSString *hallo;
 @property (nonatomic) NSColor *color;
