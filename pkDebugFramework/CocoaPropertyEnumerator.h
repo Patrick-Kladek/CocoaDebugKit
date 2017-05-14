@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface pkPropertyEnumerator : NSObject
+@interface CocoaPropertyEnumerator : NSObject
 
 - (void)enumerateProperties:(Class)objectClass allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *name))callbackBlock;
 

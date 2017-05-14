@@ -1,17 +1,16 @@
 //
-//  pkTestObject.h
-//  pkDebugFramework
+//  TestObject.h
+//  CocoaDebugFramework
 //
 //  Created by Patrick Kladek on 04.08.15.
 //  Copyright (c) 2015 Patrick Kladek. All rights reserved.
 //
 
-//#import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-@class pkTestObject;
+@class TestObject;
 
-@protocol pkTestObjectDelegate <NSObject>
+@protocol TestObjectDelegate <NSObject>
 
 -(void)smt;
 
@@ -20,9 +19,9 @@
 
 
 
-@interface pkTestObject : NSObject
+@interface TestObject : NSObject
 
-@property (nonatomic, weak) id<pkTestObjectDelegate> delegate;
+@property (nonatomic, weak) id<TestObjectDelegate> delegate;
 
 @property (nonatomic) NSData *dataImage;
 
@@ -44,7 +43,7 @@
 
 
 
-@property (nonatomic) pkTestObject *object;
+@property (nonatomic) TestObject *object;
 
 - (id)debugQuickLookObject;
 

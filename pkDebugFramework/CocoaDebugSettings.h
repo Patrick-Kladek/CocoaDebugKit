@@ -10,9 +10,9 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface pkDebugSettings : NSObject
+@interface CocoaDebugSettings : NSObject
 
-+ (pkDebugSettings *)sharedSettings;
++ (CocoaDebugSettings *)sharedSettings;
 
 @property (nonatomic, readonly) NSURL *url;
 @property (nonatomic, readonly) BOOL hasSettings;

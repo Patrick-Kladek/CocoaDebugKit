@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface pkDebugDescription : NSObject
+@interface CocoaDebugDescription : NSObject
 
 
 @property (nonatomic) NSObject *obj;

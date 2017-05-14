@@ -7,26 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD01A8A51CC6653300DE196C /* pkDebugDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = CD01A8A31CC6653300DE196C /* pkDebugDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD01A8A61CC6653300DE196C /* pkDebugDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01A8A41CC6653300DE196C /* pkDebugDescription.m */; };
-		CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2762071B0E1DB50000BB5D /* pkDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD27620A1B0E1DB50000BB5D /* pkDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762081B0E1DB50000BB5D /* pkDebugView.m */; };
+		CD01A8A51CC6653300DE196C /* CocoaDebugDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = CD01A8A31CC6653300DE196C /* CocoaDebugDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD01A8A61CC6653300DE196C /* CocoaDebugDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01A8A41CC6653300DE196C /* CocoaDebugDescription.m */; };
+		CD21815F1EC897D200D84381 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD21815E1EC897D200D84381 /* image.jpg */; };
+		CD2761F11B0E1C050000BB5D /* CocoaDebugFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2761F01B0E1C050000BB5D /* CocoaDebugFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD2762091B0E1DB50000BB5D /* CocoaDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2762071B0E1DB50000BB5D /* CocoaDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD27620A1B0E1DB50000BB5D /* CocoaDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762081B0E1DB50000BB5D /* CocoaDebugView.m */; };
 		CD2762471B0E30210000BB5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762461B0E30210000BB5D /* AppDelegate.m */; };
 		CD2762491B0E30210000BB5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762481B0E30210000BB5D /* main.m */; };
 		CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD27624A1B0E30210000BB5D /* Images.xcassets */; };
 		CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27624C1B0E30210000BB5D /* MainMenu.xib */; };
-		CD2762611B0E30580000BB5D /* pkDebugFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */; };
+		CD2762611B0E30580000BB5D /* CocoaDebugFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */; };
 		CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79861D5284A50016CC16 /* Build Badge.png */; };
 		CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79871D5284A50016CC16 /* Compatibility Badge.png */; };
 		CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79881D5284A50016CC16 /* Tested Badge.png */; };
-		CD57962D1CC5262E0014BFD0 /* pkDebugFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CD57963D1CC56CD40014BFD0 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = CD57963C1CC56CD40014BFD0 /* image.png */; };
-		CD5796411CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD5796401CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist */; };
+		CD52E4001EC8DCC5001255F1 /* settings.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F61D5699020064D7AF /* settings.md */; };
+		CD52E4011EC8DCC5001255F1 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
+		CD52E4021EC8DCC5001255F1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
+		CD57962D1CC5262E0014BFD0 /* CocoaDebugFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD5796411CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD5796401CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist */; };
 		CD5796441CC585CA0014BFD0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796431CC585CA0014BFD0 /* Person.m */; };
-		CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* pkDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796461CC625F10014BFD0 /* pkDebugSettings.m */; };
-		CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */; };
+		CD5796471CC625F10014BFD0 /* CocoaDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD5796481CC625F10014BFD0 /* CocoaDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796461CC625F10014BFD0 /* CocoaDebugSettings.m */; };
+		CD57964B1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist */; };
 		CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
 		CD6F17CC1D5661030064D7AF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
 		CD6F17E21D5698EC0064D7AF /* Color PropertyName Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D01D5698EC0064D7AF /* Color PropertyName Badge.png */; };
@@ -50,14 +53,14 @@
 		CD6F17F71D5699020064D7AF /* Auto Versioning.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F41D5699020064D7AF /* Auto Versioning.md */; };
 		CD6F17F81D5699020064D7AF /* Home.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F51D5699020064D7AF /* Home.md */; };
 		CD6F17F91D5699020064D7AF /* settings.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17F61D5699020064D7AF /* settings.md */; };
-		CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */; };
-		CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* pkTestObject.m */; };
-		CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CDBD4F5B1CCE419C00A0912B /* pkPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */; };
+		CD8962DD1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist */; };
+		CDBBC8471B70E31600923E3E /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* TestObject.m */; };
+		CDBD4F5A1CCE419C00A0912B /* CocoaPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* CocoaPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDBD4F5B1CCE419C00A0912B /* CocoaPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBD4F591CCE419C00A0912B /* CocoaPropertyEnumerator.m */; };
 		CDC75E011CEB18F0004393EE /* add debugView.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC75DFE1CEB18F0004393EE /* add debugView.png */; };
 		CDC75E021CEB18F0004393EE /* new Debug.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC75DFF1CEB18F0004393EE /* new Debug.png */; };
 		CDC75E031CEB18F0004393EE /* old Debug.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC75E001CEB18F0004393EE /* old Debug.png */; };
-		CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */; };
+		CDE848D91CCE75E900DD5A00 /* SecondObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE848D81CCE75E900DD5A00 /* SecondObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD57962D1CC5262E0014BFD0 /* pkDebugFramework.framework in Embed Frameworks */,
+				CD57962D1CC5262E0014BFD0 /* CocoaDebugFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,13 +88,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CD01A8A31CC6653300DE196C /* pkDebugDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkDebugDescription.h; sourceTree = "<group>"; };
-		CD01A8A41CC6653300DE196C /* pkDebugDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkDebugDescription.m; sourceTree = "<group>"; };
-		CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pkDebugFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD01A8A31CC6653300DE196C /* CocoaDebugDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugDescription.h; sourceTree = "<group>"; };
+		CD01A8A41CC6653300DE196C /* CocoaDebugDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugDescription.m; sourceTree = "<group>"; };
+		CD21815E1EC897D200D84381 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebugFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2761EF1B0E1C050000BB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkDebugFramework.h; sourceTree = "<group>"; };
-		CD2762071B0E1DB50000BB5D /* pkDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkDebugView.h; sourceTree = "<group>"; };
-		CD2762081B0E1DB50000BB5D /* pkDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkDebugView.m; sourceTree = "<group>"; };
+		CD2761F01B0E1C050000BB5D /* CocoaDebugFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebugFramework.h; sourceTree = "<group>"; };
+		CD2762071B0E1DB50000BB5D /* CocoaDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugView.h; sourceTree = "<group>"; };
+		CD2762081B0E1DB50000BB5D /* CocoaDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugView.m; sourceTree = "<group>"; };
 		CD2762411B0E30210000BB5D /* Test Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2762441B0E30210000BB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD2762451B0E30210000BB5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,13 +106,12 @@
 		CD3C79861D5284A50016CC16 /* Build Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Build Badge.png"; sourceTree = "<group>"; };
 		CD3C79871D5284A50016CC16 /* Compatibility Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Compatibility Badge.png"; sourceTree = "<group>"; };
 		CD3C79881D5284A50016CC16 /* Tested Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tested Badge.png"; sourceTree = "<group>"; };
-		CD57963C1CC56CD40014BFD0 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
-		CD5796401CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.kladek.pkDebugFramework.settings.default.plist; path = "Test Application/com.kladek.pkDebugFramework.settings.default.plist"; sourceTree = SOURCE_ROOT; };
+		CD5796401CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.kladek.CocoaDebugFramework.settings.default.plist; path = "Test Application/com.kladek.CocoaDebugFramework.settings.default.plist"; sourceTree = SOURCE_ROOT; };
 		CD5796421CC585CA0014BFD0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		CD5796431CC585CA0014BFD0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		CD5796451CC625F10014BFD0 /* pkDebugSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pkDebugSettings.h; path = pkDebugFramework/pkDebugSettings.h; sourceTree = SOURCE_ROOT; };
-		CD5796461CC625F10014BFD0 /* pkDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pkDebugSettings.m; path = pkDebugFramework/pkDebugSettings.m; sourceTree = SOURCE_ROOT; };
-		CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.dusk.plist; sourceTree = "<group>"; };
+		CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaDebugSettings.h; path = pkDebugFramework/CocoaDebugSettings.h; sourceTree = SOURCE_ROOT; };
+		CD5796461CC625F10014BFD0 /* CocoaDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaDebugSettings.m; path = pkDebugFramework/CocoaDebugSettings.m; sourceTree = SOURCE_ROOT; };
+		CD57964A1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.CocoaDebugFramework.settings.dusk.plist; sourceTree = "<group>"; };
 		CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "objc types.pdf"; sourceTree = "<group>"; };
 		CD6F17C91D5661030064D7AF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		CD6F17CA1D5661030064D7AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -133,16 +136,16 @@
 		CD6F17F41D5699020064D7AF /* Auto Versioning.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Auto Versioning.md"; sourceTree = "<group>"; };
 		CD6F17F51D5699020064D7AF /* Home.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Home.md; sourceTree = "<group>"; };
 		CD6F17F61D5699020064D7AF /* settings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = settings.md; sourceTree = "<group>"; };
-		CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.pkDebugFramework.settings.basic.plist; sourceTree = "<group>"; };
-		CDBBC8451B70E31600923E3E /* pkTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkTestObject.h; sourceTree = "<group>"; };
-		CDBBC8461B70E31600923E3E /* pkTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkTestObject.m; sourceTree = "<group>"; };
-		CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkPropertyEnumerator.h; sourceTree = "<group>"; };
-		CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkPropertyEnumerator.m; sourceTree = "<group>"; };
+		CD8962DC1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.CocoaDebugFramework.settings.basic.plist; sourceTree = "<group>"; };
+		CDBBC8451B70E31600923E3E /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
+		CDBBC8461B70E31600923E3E /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
+		CDBD4F581CCE419C00A0912B /* CocoaPropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaPropertyEnumerator.h; sourceTree = "<group>"; };
+		CDBD4F591CCE419C00A0912B /* CocoaPropertyEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaPropertyEnumerator.m; sourceTree = "<group>"; };
 		CDC75DFE1CEB18F0004393EE /* add debugView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add debugView.png"; sourceTree = "<group>"; };
 		CDC75DFF1CEB18F0004393EE /* new Debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new Debug.png"; sourceTree = "<group>"; };
 		CDC75E001CEB18F0004393EE /* old Debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "old Debug.png"; sourceTree = "<group>"; };
-		CDE848D71CCE75E900DD5A00 /* pkSecondObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkSecondObject.h; sourceTree = "<group>"; };
-		CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pkSecondObject.m; sourceTree = "<group>"; };
+		CDE848D71CCE75E900DD5A00 /* SecondObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondObject.h; sourceTree = "<group>"; };
+		CDE848D81CCE75E900DD5A00 /* SecondObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD2762611B0E30580000BB5D /* pkDebugFramework.framework in Frameworks */,
+				CD2762611B0E30580000BB5D /* CocoaDebugFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,8 +170,8 @@
 		CD01A8A71CC6653700DE196C /* Debug Description */ = {
 			isa = PBXGroup;
 			children = (
-				CD01A8A31CC6653300DE196C /* pkDebugDescription.h */,
-				CD01A8A41CC6653300DE196C /* pkDebugDescription.m */,
+				CD01A8A31CC6653300DE196C /* CocoaDebugDescription.h */,
+				CD01A8A41CC6653300DE196C /* CocoaDebugDescription.m */,
 			);
 			name = "Debug Description";
 			sourceTree = "<group>";
@@ -186,7 +189,7 @@
 		CD2761EC1B0E1C050000BB5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */,
+				CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */,
 				CD2762411B0E30210000BB5D /* Test Application.app */,
 			);
 			name = Products;
@@ -195,7 +198,7 @@
 		CD2761ED1B0E1C050000BB5D /* pkDebugFramework */ = {
 			isa = PBXGroup;
 			children = (
-				CD2761F01B0E1C050000BB5D /* pkDebugFramework.h */,
+				CD2761F01B0E1C050000BB5D /* CocoaDebugFramework.h */,
 				CD5796491CC625F60014BFD0 /* Settings */,
 				CDBD4F5C1CCE419F00A0912B /* Property Enumerator */,
 				CD57963E1CC56F620014BFD0 /* DebugView */,
@@ -219,7 +222,7 @@
 			children = (
 				CD2762451B0E30210000BB5D /* AppDelegate.h */,
 				CD2762461B0E30210000BB5D /* AppDelegate.m */,
-				CD57963F1CC570170014BFD0 /* Test Object */,
+				CD57963F1CC570170014BFD0 /* Test Objects */,
 				CD27624A1B0E30210000BB5D /* Images.xcassets */,
 				CD27624C1B0E30210000BB5D /* MainMenu.xib */,
 				CD2762431B0E30210000BB5D /* Supporting Files */,
@@ -231,8 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				CDD76DDB1CCEB2DE00AD5E8F /* Settings */,
-				CD57963C1CC56CD40014BFD0 /* image.png */,
 				CD2762441B0E30210000BB5D /* Info.plist */,
+				CD21815E1EC897D200D84381 /* image.jpg */,
 				CD2762481B0E30210000BB5D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -241,30 +244,30 @@
 		CD57963E1CC56F620014BFD0 /* DebugView */ = {
 			isa = PBXGroup;
 			children = (
-				CD2762071B0E1DB50000BB5D /* pkDebugView.h */,
-				CD2762081B0E1DB50000BB5D /* pkDebugView.m */,
+				CD2762071B0E1DB50000BB5D /* CocoaDebugView.h */,
+				CD2762081B0E1DB50000BB5D /* CocoaDebugView.m */,
 			);
 			name = DebugView;
 			sourceTree = "<group>";
 		};
-		CD57963F1CC570170014BFD0 /* Test Object */ = {
+		CD57963F1CC570170014BFD0 /* Test Objects */ = {
 			isa = PBXGroup;
 			children = (
-				CDBBC8451B70E31600923E3E /* pkTestObject.h */,
-				CDBBC8461B70E31600923E3E /* pkTestObject.m */,
-				CDE848D71CCE75E900DD5A00 /* pkSecondObject.h */,
-				CDE848D81CCE75E900DD5A00 /* pkSecondObject.m */,
+				CDBBC8451B70E31600923E3E /* TestObject.h */,
+				CDBBC8461B70E31600923E3E /* TestObject.m */,
+				CDE848D71CCE75E900DD5A00 /* SecondObject.h */,
+				CDE848D81CCE75E900DD5A00 /* SecondObject.m */,
 				CD5796421CC585CA0014BFD0 /* Person.h */,
 				CD5796431CC585CA0014BFD0 /* Person.m */,
 			);
-			name = "Test Object";
+			name = "Test Objects";
 			sourceTree = "<group>";
 		};
 		CD5796491CC625F60014BFD0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CD5796451CC625F10014BFD0 /* pkDebugSettings.h */,
-				CD5796461CC625F10014BFD0 /* pkDebugSettings.m */,
+				CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */,
+				CD5796461CC625F10014BFD0 /* CocoaDebugSettings.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -308,8 +311,8 @@
 		CDBD4F5C1CCE419F00A0912B /* Property Enumerator */ = {
 			isa = PBXGroup;
 			children = (
-				CDBD4F581CCE419C00A0912B /* pkPropertyEnumerator.h */,
-				CDBD4F591CCE419C00A0912B /* pkPropertyEnumerator.m */,
+				CDBD4F581CCE419C00A0912B /* CocoaPropertyEnumerator.h */,
+				CDBD4F591CCE419C00A0912B /* CocoaPropertyEnumerator.m */,
 			);
 			name = "Property Enumerator";
 			sourceTree = "<group>";
@@ -333,9 +336,9 @@
 		CDD76DDB1CCEB2DE00AD5E8F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CD5796401CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist */,
-				CD57964A1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist */,
-				CD8962DC1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist */,
+				CD5796401CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist */,
+				CD57964A1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist */,
+				CD8962DC1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -347,20 +350,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD01A8A51CC6653300DE196C /* pkDebugDescription.h in Headers */,
-				CD5796471CC625F10014BFD0 /* pkDebugSettings.h in Headers */,
-				CD2762091B0E1DB50000BB5D /* pkDebugView.h in Headers */,
-				CD2761F11B0E1C050000BB5D /* pkDebugFramework.h in Headers */,
-				CDBD4F5A1CCE419C00A0912B /* pkPropertyEnumerator.h in Headers */,
+				CD01A8A51CC6653300DE196C /* CocoaDebugDescription.h in Headers */,
+				CD5796471CC625F10014BFD0 /* CocoaDebugSettings.h in Headers */,
+				CD2762091B0E1DB50000BB5D /* CocoaDebugView.h in Headers */,
+				CD2761F11B0E1C050000BB5D /* CocoaDebugFramework.h in Headers */,
+				CDBD4F5A1CCE419C00A0912B /* CocoaPropertyEnumerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CD2761EA1B0E1C050000BB5D /* pkDebugFramework */ = {
+		CD2761EA1B0E1C050000BB5D /* CocoaDebugFramework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "pkDebugFramework" */;
+			buildConfigurationList = CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "CocoaDebugFramework" */;
 			buildPhases = (
 				CD2761E61B0E1C050000BB5D /* Sources */,
 				CD2761E71B0E1C050000BB5D /* Frameworks */,
@@ -372,9 +375,9 @@
 			);
 			dependencies = (
 			);
-			name = pkDebugFramework;
+			name = CocoaDebugFramework;
 			productName = pkDebugFramework;
-			productReference = CD2761EB1B0E1C050000BB5D /* pkDebugFramework.framework */;
+			productReference = CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CD2762401B0E30210000BB5D /* Test Application */ = {
@@ -414,7 +417,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "pkDebugFramework" */;
+			buildConfigurationList = CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "CocoaDebugFramework" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -428,7 +431,7 @@
 			projectRoot = "";
 			targets = (
 				CD2762401B0E30210000BB5D /* Test Application */,
-				CD2761EA1B0E1C050000BB5D /* pkDebugFramework */,
+				CD2761EA1B0E1C050000BB5D /* CocoaDebugFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -445,11 +448,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD52E4001EC8DCC5001255F1 /* settings.md in Resources */,
+				CD52E4011EC8DCC5001255F1 /* LICENSE.md in Resources */,
+				CD52E4021EC8DCC5001255F1 /* README.md in Resources */,
 				CD6F17E21D5698EC0064D7AF /* Color PropertyName Badge.png in Resources */,
 				CD6F17E81D5698EC0064D7AF /* Color Bits Badge.png in Resources */,
 				CDC75E011CEB18F0004393EE /* add debugView.png in Resources */,
 				CDC75E021CEB18F0004393EE /* new Debug.png in Resources */,
-				CD8962DD1CC63B2C001E6749 /* com.kladek.pkDebugFramework.settings.basic.plist in Resources */,
+				CD8962DD1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist in Resources */,
 				CD6F17EE1D5698EC0064D7AF /* NSColor.png in Resources */,
 				CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */,
 				CD6F17E51D5698EC0064D7AF /* Frame Color Badge.png in Resources */,
@@ -461,19 +467,19 @@
 				CD6F17E91D5698EC0064D7AF /* Color Text Badge.png in Resources */,
 				CD6F17EA1D5698EC0064D7AF /* Line Spacing Badge.png in Resources */,
 				CD6F17EC1D5698EC0064D7AF /* Color Number Badge.png in Resources */,
-				CD57964B1CC632D40014BFD0 /* com.kladek.pkDebugFramework.settings.dusk.plist in Resources */,
+				CD57964B1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist in Resources */,
 				CD6F17EB1D5698EC0064D7AF /* Background Color Badge.png in Resources */,
 				CD6F17F01D5698EC0064D7AF /* Auto Save Badge.png in Resources */,
 				CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */,
-				CD5796411CC576A40014BFD0 /* com.kladek.pkDebugFramework.settings.default.plist in Resources */,
+				CD5796411CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist in Resources */,
 				CD6F17F11D5698EC0064D7AF /* Title Font Badge.png in Resources */,
 				CD6F17ED1D5698EC0064D7AF /* Defualt YES Badge.png in Resources */,
 				CD6F17E71D5698EC0064D7AF /* Color Title Badge.png in Resources */,
 				CD6F17E41D5698EC0064D7AF /* Max Lenght Badge.png in Resources */,
 				CDC75E031CEB18F0004393EE /* old Debug.png in Resources */,
 				CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */,
+				CD21815F1EC897D200D84381 /* image.jpg in Resources */,
 				CD6F17F21D5698EC0064D7AF /* Person.png in Resources */,
-				CD57963D1CC56CD40014BFD0 /* image.png in Resources */,
 				CD6F17F81D5699020064D7AF /* Home.md in Resources */,
 				CD6F17EF1D5698EC0064D7AF /* Image Size Badge.png in Resources */,
 				CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */,
@@ -516,10 +522,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD27620A1B0E1DB50000BB5D /* pkDebugView.m in Sources */,
-				CD01A8A61CC6653300DE196C /* pkDebugDescription.m in Sources */,
-				CD5796481CC625F10014BFD0 /* pkDebugSettings.m in Sources */,
-				CDBD4F5B1CCE419C00A0912B /* pkPropertyEnumerator.m in Sources */,
+				CD27620A1B0E1DB50000BB5D /* CocoaDebugView.m in Sources */,
+				CD01A8A61CC6653300DE196C /* CocoaDebugDescription.m in Sources */,
+				CD5796481CC625F10014BFD0 /* CocoaDebugSettings.m in Sources */,
+				CDBD4F5B1CCE419C00A0912B /* CocoaPropertyEnumerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,9 +533,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDE848D91CCE75E900DD5A00 /* pkSecondObject.m in Sources */,
+				CDE848D91CCE75E900DD5A00 /* SecondObject.m in Sources */,
 				CD2762491B0E30210000BB5D /* main.m in Sources */,
-				CDBBC8471B70E31600923E3E /* pkTestObject.m in Sources */,
+				CDBBC8471B70E31600923E3E /* TestObject.m in Sources */,
 				CD6F17F91D5699020064D7AF /* settings.md in Sources */,
 				CD6F17CC1D5661030064D7AF /* README.md in Sources */,
 				CD5796441CC585CA0014BFD0 /* Person.m in Sources */,
@@ -543,7 +549,7 @@
 /* Begin PBXTargetDependency section */
 		CD57962F1CC5262E0014BFD0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD2761EA1B0E1C050000BB5D /* pkDebugFramework */;
+			target = CD2761EA1B0E1C050000BB5D /* CocoaDebugFramework */;
 			targetProxy = CD57962E1CC5262E0014BFD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -655,7 +661,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CocoaDebugFramework;
 				SDKROOT = macosx10.9;
 				SKIP_INSTALL = YES;
 			};
@@ -676,7 +682,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CocoaDebugFramework;
 				SDKROOT = macosx10.9;
 				SKIP_INSTALL = YES;
 			};
@@ -717,7 +723,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "pkDebugFramework" */ = {
+		CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "CocoaDebugFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD2761FF1B0E1C050000BB5D /* Debug */,
@@ -726,7 +732,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "pkDebugFramework" */ = {
+		CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "CocoaDebugFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD2762021B0E1C050000BB5D /* Debug */,
