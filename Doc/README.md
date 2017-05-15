@@ -1,4 +1,4 @@
-# pkDebugFramework
+# CocoaDebugKit
 <img src="https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Build%20Badge.png" height="25">
 <img src="https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Compatibility%20Badge.png" height="25">
 <img src="https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Tested%20Badge.png" height="25">
@@ -21,14 +21,14 @@ So how can we achieve this goal? It´s easy just add this Framework to your Proj
 
 ```objective-c
 #import "Person.h"
-#import <pkDebugFramework/pkDebugFramework.h>
+#import <CocoaDebugKit/CocoaDebugKit.h>
 
 
 @implementation Person
 
 - (id)debugQuickLookObject
 {
-	pkDebugView *view = [pkDebugView debugViewWithAllPropertiesOfObject:self includeSubclasses:YES];
+	CocoaDebugView *view = [CocoaDebugView debugViewWithAllPropertiesOfObject:self includeSuperclasses:YES];
 	
 	return view;
 }
