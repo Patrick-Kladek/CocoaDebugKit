@@ -7,7 +7,7 @@
 //
 
 #import "TestObject.h"
-#import <CocoaDebugFramework/CocoaDebugFramework.h>
+#import <CocoaDebugKit/CocoaDebugKit.h>
 
 @implementation TestObject
 

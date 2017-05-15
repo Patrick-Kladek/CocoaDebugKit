@@ -7,6 +7,7 @@
 //
 
 #import "SecondObject.h"
+// We don´t need to include the framework because we already did in the superclass
 
 @implementation SecondObject
 
