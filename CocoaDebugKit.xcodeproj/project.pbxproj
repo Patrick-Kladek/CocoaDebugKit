@@ -10,21 +10,21 @@
 		CD01A8A51CC6653300DE196C /* CocoaDebugDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = CD01A8A31CC6653300DE196C /* CocoaDebugDescription.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD01A8A61CC6653300DE196C /* CocoaDebugDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = CD01A8A41CC6653300DE196C /* CocoaDebugDescription.m */; };
 		CD21815F1EC897D200D84381 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD21815E1EC897D200D84381 /* image.jpg */; };
-		CD2761F11B0E1C050000BB5D /* CocoaDebugFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2761F01B0E1C050000BB5D /* CocoaDebugFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD2761F11B0E1C050000BB5D /* CocoaDebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2761F01B0E1C050000BB5D /* CocoaDebugKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD2762091B0E1DB50000BB5D /* CocoaDebugView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD2762071B0E1DB50000BB5D /* CocoaDebugView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD27620A1B0E1DB50000BB5D /* CocoaDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762081B0E1DB50000BB5D /* CocoaDebugView.m */; };
 		CD2762471B0E30210000BB5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762461B0E30210000BB5D /* AppDelegate.m */; };
 		CD2762491B0E30210000BB5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2762481B0E30210000BB5D /* main.m */; };
 		CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD27624A1B0E30210000BB5D /* Images.xcassets */; };
 		CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27624C1B0E30210000BB5D /* MainMenu.xib */; };
-		CD2762611B0E30580000BB5D /* CocoaDebugFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */; };
+		CD2762611B0E30580000BB5D /* CocoaDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugKit.framework */; };
 		CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79861D5284A50016CC16 /* Build Badge.png */; };
 		CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79871D5284A50016CC16 /* Compatibility Badge.png */; };
 		CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79881D5284A50016CC16 /* Tested Badge.png */; };
 		CD52E4001EC8DCC5001255F1 /* settings.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F61D5699020064D7AF /* settings.md */; };
 		CD52E4011EC8DCC5001255F1 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
 		CD52E4021EC8DCC5001255F1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
-		CD57962D1CC5262E0014BFD0 /* CocoaDebugFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD57962D1CC5262E0014BFD0 /* CocoaDebugKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD5796411CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD5796401CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist */; };
 		CD5796441CC585CA0014BFD0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796431CC585CA0014BFD0 /* Person.m */; };
 		CD5796471CC625F10014BFD0 /* CocoaDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,7 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD57962D1CC5262E0014BFD0 /* CocoaDebugFramework.framework in Embed Frameworks */,
+				CD57962D1CC5262E0014BFD0 /* CocoaDebugKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,9 +91,9 @@
 		CD01A8A31CC6653300DE196C /* CocoaDebugDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugDescription.h; sourceTree = "<group>"; };
 		CD01A8A41CC6653300DE196C /* CocoaDebugDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugDescription.m; sourceTree = "<group>"; };
 		CD21815E1EC897D200D84381 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
-		CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebugFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD2761EB1B0E1C050000BB5D /* CocoaDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD2761EF1B0E1C050000BB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD2761F01B0E1C050000BB5D /* CocoaDebugFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebugFramework.h; sourceTree = "<group>"; };
+		CD2761F01B0E1C050000BB5D /* CocoaDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebugKit.h; sourceTree = "<group>"; };
 		CD2762071B0E1DB50000BB5D /* CocoaDebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugView.h; sourceTree = "<group>"; };
 		CD2762081B0E1DB50000BB5D /* CocoaDebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugView.m; sourceTree = "<group>"; };
 		CD2762411B0E30210000BB5D /* Test Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD2762611B0E30580000BB5D /* CocoaDebugFramework.framework in Frameworks */,
+				CD2762611B0E30580000BB5D /* CocoaDebugKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +189,7 @@
 		CD2761EC1B0E1C050000BB5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */,
+				CD2761EB1B0E1C050000BB5D /* CocoaDebugKit.framework */,
 				CD2762411B0E30210000BB5D /* Test Application.app */,
 			);
 			name = Products;
@@ -198,7 +198,7 @@
 		CD2761ED1B0E1C050000BB5D /* pkDebugFramework */ = {
 			isa = PBXGroup;
 			children = (
-				CD2761F01B0E1C050000BB5D /* CocoaDebugFramework.h */,
+				CD2761F01B0E1C050000BB5D /* CocoaDebugKit.h */,
 				CD5796491CC625F60014BFD0 /* Settings */,
 				CDBD4F5C1CCE419F00A0912B /* Property Enumerator */,
 				CD57963E1CC56F620014BFD0 /* DebugView */,
@@ -353,7 +353,7 @@
 				CD01A8A51CC6653300DE196C /* CocoaDebugDescription.h in Headers */,
 				CD5796471CC625F10014BFD0 /* CocoaDebugSettings.h in Headers */,
 				CD2762091B0E1DB50000BB5D /* CocoaDebugView.h in Headers */,
-				CD2761F11B0E1C050000BB5D /* CocoaDebugFramework.h in Headers */,
+				CD2761F11B0E1C050000BB5D /* CocoaDebugKit.h in Headers */,
 				CDBD4F5A1CCE419C00A0912B /* CocoaPropertyEnumerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,9 +361,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		CD2761EA1B0E1C050000BB5D /* CocoaDebugFramework */ = {
+		CD2761EA1B0E1C050000BB5D /* CocoaDebugKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "CocoaDebugFramework" */;
+			buildConfigurationList = CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "CocoaDebugKit" */;
 			buildPhases = (
 				CD2761E61B0E1C050000BB5D /* Sources */,
 				CD2761E71B0E1C050000BB5D /* Frameworks */,
@@ -375,9 +375,9 @@
 			);
 			dependencies = (
 			);
-			name = CocoaDebugFramework;
+			name = CocoaDebugKit;
 			productName = pkDebugFramework;
-			productReference = CD2761EB1B0E1C050000BB5D /* CocoaDebugFramework.framework */;
+			productReference = CD2761EB1B0E1C050000BB5D /* CocoaDebugKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CD2762401B0E30210000BB5D /* Test Application */ = {
@@ -417,7 +417,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "CocoaDebugFramework" */;
+			buildConfigurationList = CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "CocoaDebugKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -431,7 +431,7 @@
 			projectRoot = "";
 			targets = (
 				CD2762401B0E30210000BB5D /* Test Application */,
-				CD2761EA1B0E1C050000BB5D /* CocoaDebugFramework */,
+				CD2761EA1B0E1C050000BB5D /* CocoaDebugKit */,
 			);
 		};
 /* End PBXProject section */
@@ -549,7 +549,7 @@
 /* Begin PBXTargetDependency section */
 		CD57962F1CC5262E0014BFD0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD2761EA1B0E1C050000BB5D /* CocoaDebugFramework */;
+			target = CD2761EA1B0E1C050000BB5D /* CocoaDebugKit */;
 			targetProxy = CD57962E1CC5262E0014BFD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -661,7 +661,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = CocoaDebugFramework;
+				PRODUCT_NAME = CocoaDebugKit;
 				SDKROOT = macosx10.9;
 				SKIP_INSTALL = YES;
 			};
@@ -682,7 +682,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = CocoaDebugFramework;
+				PRODUCT_NAME = CocoaDebugKit;
 				SDKROOT = macosx10.9;
 				SKIP_INSTALL = YES;
 			};
@@ -723,7 +723,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "CocoaDebugFramework" */ = {
+		CD2761E51B0E1C050000BB5D /* Build configuration list for PBXProject "CocoaDebugKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD2761FF1B0E1C050000BB5D /* Debug */,
@@ -732,7 +732,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "CocoaDebugFramework" */ = {
+		CD2762011B0E1C050000BB5D /* Build configuration list for PBXNativeTarget "CocoaDebugKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD2762021B0E1C050000BB5D /* Debug */,

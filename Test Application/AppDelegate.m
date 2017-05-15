@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <CocoaDebugFramework/CocoaDebugFramework.h>
+#import <CocoaDebugKit/CocoaDebugKit.h>
 #import "TestObject.h"
 #import "Person.h"
 #import "SecondObject.h"
@@ -49,7 +49,7 @@
 - (void)createStaticDebugView
 {
 	CocoaDebugView *view = [CocoaDebugView debugView];
-	[view setTitle:@"ClassName : Hugo Boss : NSObject : Class ISA : sjfkahdkfhaskdjfhfdashkfjhasdjfhklashdkfjdsfasdfadsfasdf"];
+	[view setTitle:@"ClassName"];
 	[view setFrameColor:[NSColor purpleColor]];
 	
 	

@@ -373,7 +373,7 @@
 		// enumerate all superclasses "class_copyPropertyList(...)"
 		Class currentClass = [obj class];
 		
-		while (currentClass != nil)
+		while (currentClass != nil && currentClass != [NSObject class])
 		{
 			[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
 				[self addProperty:name type:type toObject:obj];
@@ -586,9 +586,20 @@
 
 - (void)addProperty:(NSString *)propertyName type:(NSString *)propertyType toObject:(id)obj
 {
+	if ([propertyType isEqualToString:@"id"])
+	{
+		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
+		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
+		return;
+	}
+	
+	if ([self addPrimitiveProperty:propertyName type:propertyType toObject:obj])
+	{
+		return;
+	}
+	
+	
 	Class class = NSClassFromString(propertyType);
-	
-	
 	
 	// First check for Core Data Classes and ignore them
 	if ([class isSubclassOfClass:[NSManagedObject class]])
@@ -682,14 +693,6 @@
 		return;
 	}
 	
-	
-	if ([propertyType isEqualToString:@"id"])
-	{
-		NSString *string = [NSString stringWithFormat:@"%@", [obj valueForKey:propertyName]];
-		[self addLineWithDescription:[self lineFromString:propertyName] string:string];
-		return;
-	}
-	
 	if ([self addPrimitiveProperty:propertyName type:propertyType toObject:obj])
 	{
 		return;
@@ -710,6 +713,7 @@
 	return;
 }
 
+// TODO: use float if self.numberOfBitsPerColorComponent <= 0
 - (NSView *)detailViewFromColor:(NSColor *)color
 {
 	if (self.numberOfBitsPerColorComponent < 1 || self.numberOfBitsPerColorComponent > 16) {
@@ -718,6 +722,11 @@
 	}
 	
 	NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 120, 80)];
+	[view setWantsLayer:YES];
+	[[view layer] setMasksToBounds:YES];
+	view.layer.borderColor = [[NSColor lightGrayColor] CGColor];
+	view.layer.borderWidth = 1 / [[NSScreen mainScreen] backingScaleFactor];
+	[view setNeedsDisplay:YES];
 
 	NSView *colorView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 20, 80)];
 	[colorView setWantsLayer:YES];
@@ -773,7 +782,7 @@
 	NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 80)];
 	[view setWantsLayer:YES];
 	[[view layer] setMasksToBounds:YES];
-	[[view layer] setBorderWidth:1.0f];
+	[[view layer] setBorderWidth:1.0f / [[NSScreen mainScreen] backingScaleFactor]];
 	[view.layer setBorderColor:[[NSColor lightGrayColor] CGColor]];
 	
 	
@@ -821,23 +830,16 @@
 		}
 		
 		
-		
 		if (contains)
 		{
 			// image Variable encoded as data
 			NSData *data = (NSData *)property;
-			
 			NSImage *image = [[NSImage alloc] initWithData:data];
 			
 			if (image) {
 				[self addLineWithDescription:[self lineFromString:propertyName] image:image];
 				return;
-			} else {
-//				NSData *data = (NSData *)property;
-//				NSString *string = [NSString stringWithFormat:@"%@ ...", [CocoaDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-//				[self addLineWithDescription:[self lineFromString:propertyName] string:string];
 			}
-			return;
 		}
 	}
 
