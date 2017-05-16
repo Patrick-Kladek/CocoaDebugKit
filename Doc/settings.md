@@ -9,9 +9,9 @@ You only need this class if you want to change the look of your debugViews. You 
 ```
 Use this method if you want to load settings from a plist file. You will find a complete list of supported keys on the end of this page. You can also use one of the default settings files in this repository. They all have different styles (inspired by the Xcode themes):
 
-* com.kladek.pkDebugFramework.settings.default.plist
-* com.kladek.pkDebugFramework.settings.dusk.plist
-* com.kladek.pkDebugFramework.settings.basic.plist
+* com.kladek.CocoaDebugKit.settings.default.plist
+* com.kladek.CocoaDebugKit.settings.dusk.plist
+* com.kladek.CocoaDebugKit.settings.basic.plist
 
 ##Save Settings:
 ```objective-c
@@ -21,34 +21,33 @@ Currently not supported.
 
 ## Text
 
-### Text Color
+### Text Color 
+![Color Text](https://img.shields.io/badge/Default-x000000-000000.svg) ![Key](https://img.shields.io/badge/Key-debugView.text.color-blue.svg)
+
 This property stores the color for all textfields.
 
 ```objective-v
 @property (nonatomic) NSColor *textColor;
 ```
-Propertylist-Key:`debugView.text.color`
 
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Text%20Badge.png height=25>
 
-### Text Font
+
+### Text Font 
+![Color Text](https://img.shields.io/badge/Default-Menlo%2012-grey.svg) ![Key](https://img.shields.io/badge/Key-debugView.text.font-blue.svg) ![Key](https://img.shields.io/badge/Default-debugView.text.size-blue.svg)
+
 This property stores the Font of all Textfield.
 
 ```objective-c
 @property (nonatomic) NSFont *textFont;
 ```
-Propertylist-Keys:
-
-* `debugView.text.font`
-* `debugView.text.size`
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
 
 
 ##Keywords
 The following Settings are for highlighting Keywords.
 
-###Highlight Keywords
+###Highlight Keywords 
+![Color Text](https://img.shields.io/badge/Default-Yes-green.svg) ![Key](https://img.shields.io/badge/Key-debugView.numbers.highlight-blue.svg)
+
 Currently the following keywords are highlighted:
 
 * nil, NULL, @"(null)"
@@ -57,107 +56,78 @@ Currently the following keywords are highlighted:
 ```objective-c
 @property (nonatomic) BOOL highlightKeywords;
 ```
-Propertylist-Key:`debugView.numbers.highlight` 
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Defualt%20YES%20Badge.png height=25>
-
 
 ### Keyword Color
+![Color Text](https://img.shields.io/badge/Default-xAA0D91-AA0D91.svg) ![Key](https://img.shields.io/badge/Key-debugView.keywords.color-blue.svg)
+
 This property stores the color of all keywords.
 
 ```objective-c
 @property (nonatomic) NSColor *keywordColor;
 ```
 
-Propertylist-Key:`debugView.keywords.color`
+### Keyword Font 
+![Color Text](https://img.shields.io/badge/Default-Menlo%2012-grey.svg) ![Key](https://img.shields.io/badge/Key-debugView.keywords.font-blue.svg) ![Key](https://img.shields.io/badge/Default-debugView.keywords.size-blue.svg)
 
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Keyword%20Badge.png height=25>
-
-
-### Keyword Font
 This property stores the Font of all keywords.
 
 ```objective-c
 @property (nonatomic) NSFont *keywordFont;
 ```
-Propertylist-Keys:
-
-* `debugView.keywords.font`
-* `debugView.keywords.size`
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
-
-
 
 
 ## Numbers
 
-### Highlight Numbers
-If set all numbers will be colored in a different color.
+### Highlight Numbers 
+![Color Text](https://img.shields.io/badge/Default-Yes-green.svg) ![Key](https://img.shields.io/badge/Key-debugView.numbers.highlight-blue.svg)
+
+If set numbers will be colored in a different color.
 
 ```objective-c
 @property (nonatomic) BOOL highlightNumbers;
 ```
-Propertlist-Key `debugView.numbers.highlight `
 
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Defualt%20YES%20Badge.png height=25>
+### Number Color 
+![Color Text](https://img.shields.io/badge/Default-x1C00CF-1C00CF.svg) ![Key](https://img.shields.io/badge/Key-debugView.number.color-blue.svg)
 
-
-### Number Color
 This property stores the Color of all numbers.
 
 ```objective-c
 @property (nonatomic) BOOL numberColor;
 ```
-Propertylist-Key: `debugView.number.color`
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20Number%20Badge.png height=25>
-
-
 
 ### Number Font
+![Color Text](https://img.shields.io/badge/Default-Menlo%2012-grey.svg) ![Key](https://img.shields.io/badge/Key-debugView.number.font-blue.svg) ![Key](https://img.shields.io/badge/Default-debugView.number.size-blue.svg)
+
+
 This property stores the font of all Numbers
 
 ```objective-c
 @property (nonatomic) NSFont numberFont;
 ```
 
-Propertylist-Keys:
-
-* `debugView.number.font`
-* `debugView.number.size`
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
-
-
 ## Property Name
-Propertynames (Keys) are drawn at the left side, while values are displayed on the right. Usually they have a lighter color so they are visually subtile while keys are more aggresive and a litle darker.
+Propertynames (Keys) are drawn at the left side, while values are displayed on the right. Usually they have a lighter color so they are visually subtile while keys are stronger and a litle darker.
 
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Person.png>
+![Example Image](https://raw.githubusercontent.com/Patrick-Kladek/CocoaDebugKit/master/Doc/Person.png)
 
 ### Property Name Color
-This property stores the Color of all numbers.
+![Color Text](https://img.shields.io/badge/Default-x5D5C58-5D5C58.svg) ![Key](https://img.shields.io/badge/Key-debugView.propertyName.color-blue.svg)
+
+This property stores the Color of all properties.
 
 ```objective-c
 @property (nonatomic) NSColor *propertyNameColor;
 ```
-Propertylist-Key: `debugView.propertyName.color`
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Color%20PropertyName%20Badge.png height=25>
 
 ### Property Name Font
+![Color Text](https://img.shields.io/badge/Default-Menlo%2012-grey.svg) ![Key](https://img.shields.io/badge/Key-debugView.propertyName.font-blue.svg) ![Key](https://img.shields.io/badge/Default-debugView.propertyName.size-blue.svg)
+
 This property stores the font of all Property Names
 
 ```objective-c
 @property (nonatomic) NSFont propertyNameFont;
 ```
-
-Propertylist-Keys:
-
-* `debugView.propertyName.font`
-* `debugView.propertyName.size`
-
-<img src=https://github.com/Patrick-Kladek/pkDebugFramework/blob/master/Doc/Default%20Font%20Badge.png height=25>
 
 
 ## Title

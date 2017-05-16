@@ -1,8 +1,8 @@
-#Welcome to the pkDebugFramework wiki!
+#Welcome to the CocoaDebugKit wiki!
 
 On the following pages you will see a complete documentation of all parts of this project.
 
-* pkSettings
-* pkPropertyEnumerator
-* pkDebugView
-* pkDebugDescription
+* CocoaDebugSettings
+* CocoaPropertyEnumerator
+* CocoaDebugView
+* CocoaDebugDescription

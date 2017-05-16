@@ -1,6 +1,6 @@
 //
-//  pkDebugSettings.h
-//  pkDebugFramework
+//  CocoaDebugSettings.h
+//  CocoaDebugKit
 //
 //  Created by Patrick Kladek on 19.04.16.
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.

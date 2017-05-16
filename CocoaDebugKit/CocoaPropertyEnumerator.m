@@ -1,6 +1,6 @@
 //
-//  pkPropertyEnumerator.m
-//  pkDebugFramework
+//  CocoaPropertyEnumerator.m
+//  CocoaDebugKit
 //
 //  Created by Patrick Kladek on 25.04.16.
 //  Copyright (c) 2016 Patrick Kladek. All rights reserved.
@@ -20,7 +20,7 @@ static const char *getPropertyType(objc_property_t property)
 	
 	/*
 	T@"NSString",&,N,V_hallo
-	T@"<pkTestObjectDelegate>",W,N,V_delegate
+	T@"<TestObjectDelegate>",W,N,V_delegate
 	T@"NSData",&,N,V_data
 	T@"NSDate",&,N,V_date
 	T@"NSImage",&,N,V_image
@@ -33,9 +33,9 @@ static const char *getPropertyType(objc_property_t property)
 	Ti,N,V_inum
 	Tq,N,V_lnum
 	T@"NSURL",&,N,V_url
-	T@"pkTestObject",&,N,V_object
+	T@"TestObject",&,N,V_object
 	T@"NSString",&,N,V_hallo
-	T@"<pkTestObjectDelegate>",W,N,V_delegate
+	T@"<TestObjectDelegate>",W,N,V_delegate
 	T@"NSData",&,N,V_data
 	T@"NSDate",&,N,V_date
 	T@"NSImage",&,N,V_image
@@ -48,7 +48,7 @@ static const char *getPropertyType(objc_property_t property)
 	Ti,N,V_inum
 	Tq,N,V_lnum
 	T@"NSURL",&,N,V_url
-	T@"pkTestObject",&,N,V_object
+	T@"TestObject",&,N,V_object
 	*/
 	
 	while ((attribute = strsep(&state, ",")) != NULL)
