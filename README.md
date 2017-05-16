@@ -1,4 +1,5 @@
-#CocoaDebugKit
+CocoaDebugKit
+============
 [![Twitter: @PatrickKladek](https://img.shields.io/badge/twitter-@PatrickKladek-orange.svg?style=flat)](https://twitter.com/PatrickKladek)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Patrick-Kladek/CocoaDebugKit/blob/master/LICENSE.md)
 ![Build](https://img.shields.io/badge/build-Xcode%206.2-blue.svg)
