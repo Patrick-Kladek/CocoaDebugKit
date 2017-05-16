@@ -9,7 +9,7 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "pkDebugFramework/CocoaPropertyEnumerator.m"
+            filePath = "CocoaDebugKit/CocoaPropertyEnumerator.m"
             timestampString = "516655478.258715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
