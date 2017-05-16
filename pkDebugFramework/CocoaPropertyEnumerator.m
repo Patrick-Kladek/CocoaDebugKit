@@ -142,7 +142,7 @@ static const char *getPropertyType(objc_property_t property)
 	return "";
 }
 
-- (void)enumerateProperties:(Class)objectClass allowed:(NSString *)allowed block:(void (^)(NSString *type, NSString *value))callbackBlock
+- (void)enumeratePropertiesFromClass:(Class)objectClass allowed:(NSArray *)allowed block:(void (^)(NSString *type, NSString *value))callbackBlock
 {
 	// get all properties and Display them in DebugView ...
 	unsigned int outCount, i;
@@ -159,12 +159,16 @@ static const char *getPropertyType(objc_property_t property)
 			NSString *propertyName = [NSString stringWithUTF8String:propName];
 			NSString *propertyType = [NSString stringWithUTF8String:type];
 			
-			if (allowed && ![allowed isEqualToString:propertyName])
+			if (allowed)
 			{
-				continue;
+				if ([self object:propertyName existsInArray:allowed]) {
+					callbackBlock(propertyType, propertyName);
+				}
 			}
-			
-			callbackBlock(propertyType, propertyName);
+			else
+			{
+				callbackBlock(propertyType, propertyName);
+			}
 		}
 	}
 	free(properties);
@@ -196,6 +200,19 @@ static const char *getPropertyType(objc_property_t property)
 	free(properties);
 	
 	return nil;
+}
+
+- (BOOL)object:(NSString *)object existsInArray:(NSArray *)array
+{
+	for (NSString *property in array)
+	{
+		if ([property isEqualToString:object])
+		{
+			return true;
+		}
+	}
+	
+	return false;
 }
 
 @end
