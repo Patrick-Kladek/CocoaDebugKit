@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-               BuildableName = "CocoaDebugFramework.framework"
+               BuildableName = "CocoaDebugKit.framework"
                BlueprintName = "CocoaDebugKit"
                ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-            BuildableName = "CocoaDebugFramework.framework"
+            BuildableName = "CocoaDebugKit.framework"
             BlueprintName = "CocoaDebugKit"
             ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-            BuildableName = "CocoaDebugFramework.framework"
+            BuildableName = "CocoaDebugKit.framework"
             BlueprintName = "CocoaDebugKit"
             ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD2761EA1B0E1C050000BB5D"
-            BuildableName = "CocoaDebugFramework.framework"
+            BuildableName = "CocoaDebugKit.framework"
             BlueprintName = "CocoaDebugKit"
             ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
          </BuildableReference>
