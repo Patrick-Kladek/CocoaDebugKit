@@ -74,7 +74,7 @@
 	[view addLineWithDescription:@"test" boolean:NO];
 	
 	
-	[view setFrame:NSOffsetRect(view.frame, 20, 212)];
+	[view setFrame:NSOffsetRect(view.frame, 460, 20)];
 	[[[self window] contentView] addSubview:view];
 }
 
@@ -87,7 +87,7 @@
 	NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image" ofType:@"jpg"]];
 	[obj setDataImage:[image TIFFRepresentation]];
 	
-	
+	[obj setHallo:@"Hello World"];
 	[obj setSet:[NSSet setWithObject:@"Hallo"]];
 	[obj setImage:image];
 	[obj setTest:@"Hallo World"];
@@ -114,7 +114,7 @@
 	
 	
 	NSView *newView = [obj debugQuickLookObject];
-	[newView setFrame:NSOffsetRect(newView.frame, 602, 39)];
+	[newView setFrame:NSOffsetRect(newView.frame, 20, 20)];
 	[[[self window] contentView] addSubview:newView];
 }
 
@@ -127,7 +127,7 @@
 	[person setBirthday:[NSDate dateWithString:@"1996-07-04 01:00:00 +0100"]];
 	
 	NSView *view2 = [person debugQuickLookObject];
-	[view2 setFrame:NSOffsetRect(view2.frame, 20, 20)];
+	[view2 setFrame:NSOffsetRect(view2.frame, 460, 385)];
 	
 	[[[self window] contentView] addSubview:view2];
 	

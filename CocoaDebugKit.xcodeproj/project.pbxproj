@@ -30,8 +30,6 @@
 		CD5796471CC625F10014BFD0 /* CocoaDebugSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD5796481CC625F10014BFD0 /* CocoaDebugSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5796461CC625F10014BFD0 /* CocoaDebugSettings.m */; };
 		CD57964B1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD57964A1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist */; };
-		CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
-		CD6F17CC1D5661030064D7AF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
 		CD6F17E21D5698EC0064D7AF /* Color PropertyName Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D01D5698EC0064D7AF /* Color PropertyName Badge.png */; };
 		CD6F17E31D5698EC0064D7AF /* Color Keyword Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D11D5698EC0064D7AF /* Color Keyword Badge.png */; };
 		CD6F17E41D5698EC0064D7AF /* Max Lenght Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17D21D5698EC0064D7AF /* Max Lenght Badge.png */; };
@@ -52,7 +50,6 @@
 		CD6F17F31D5698EC0064D7AF /* Save Url Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17E11D5698EC0064D7AF /* Save Url Badge.png */; };
 		CD6F17F71D5699020064D7AF /* Auto Versioning.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F41D5699020064D7AF /* Auto Versioning.md */; };
 		CD6F17F81D5699020064D7AF /* Home.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F51D5699020064D7AF /* Home.md */; };
-		CD6F17F91D5699020064D7AF /* settings.md in Sources */ = {isa = PBXBuildFile; fileRef = CD6F17F61D5699020064D7AF /* settings.md */; };
 		CD8962DD1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD8962DC1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist */; };
 		CDBBC8471B70E31600923E3E /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC8461B70E31600923E3E /* TestObject.m */; };
 		CDBD4F5A1CCE419C00A0912B /* CocoaPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBD4F581CCE419C00A0912B /* CocoaPropertyEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -536,10 +533,7 @@
 				CDE848D91CCE75E900DD5A00 /* SecondObject.m in Sources */,
 				CD2762491B0E30210000BB5D /* main.m in Sources */,
 				CDBBC8471B70E31600923E3E /* TestObject.m in Sources */,
-				CD6F17F91D5699020064D7AF /* settings.md in Sources */,
-				CD6F17CC1D5661030064D7AF /* README.md in Sources */,
 				CD5796441CC585CA0014BFD0 /* Person.m in Sources */,
-				CD6F17CB1D5661030064D7AF /* LICENSE.md in Sources */,
 				CD2762471B0E30210000BB5D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,7 +656,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = CocoaDebugKit;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -683,7 +677,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = CocoaDebugKit;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -702,7 +696,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -716,7 +710,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
