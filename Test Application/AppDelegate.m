@@ -26,7 +26,7 @@
 	// Insert code here to initialize your application
 	
 	// init debugFramework
-	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.CocoaDebugFramework.settings.default" withExtension:@"plist"];
+	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.CocoaDebugKit.settings.default" withExtension:@"plist"];
 	[[CocoaDebugSettings sharedSettings] loadSettings:url];
 	
 	[self createStaticDebugView];
@@ -98,7 +98,7 @@
 	[obj setCcheck:'r'];
 	[obj setUrl:[NSURL URLWithString:@"file:///Users/patrick/Desktop/"]];
 	[obj setColor:[NSColor colorWithCalibratedRed:0.461 green:1.000 blue:0.962 alpha:0.540]];
-	[obj setError:[NSError errorWithDomain:@"com.kladek.pkDebugFramework" code:5645 userInfo:@{ NSLocalizedFailureReasonErrorKey:@"LocalizedFailureReason",
+	[obj setError:[NSError errorWithDomain:@"com.kladek.CocoaDebugKit" code:5645 userInfo:@{ NSLocalizedFailureReasonErrorKey:@"LocalizedFailureReason",
 																								NSLocalizedDescriptionKey:@"Something went wrong",
 																								NSLocalizedRecoverySuggestionErrorKey:@"LocalizedRecoverySuggestion, do some thing, need some text for testing, do something more to reproduce this error",
 																								NSLocalizedRecoveryOptionsErrorKey:@"LocalizedRecoveryOptions",
