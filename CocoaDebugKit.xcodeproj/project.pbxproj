@@ -18,9 +18,6 @@
 		CD27624B1B0E30210000BB5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD27624A1B0E30210000BB5D /* Images.xcassets */; };
 		CD27624E1B0E30210000BB5D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27624C1B0E30210000BB5D /* MainMenu.xib */; };
 		CD2762611B0E30580000BB5D /* CocoaDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2761EB1B0E1C050000BB5D /* CocoaDebugKit.framework */; };
-		CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79861D5284A50016CC16 /* Build Badge.png */; };
-		CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79871D5284A50016CC16 /* Compatibility Badge.png */; };
-		CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3C79881D5284A50016CC16 /* Tested Badge.png */; };
 		CD52E4001EC8DCC5001255F1 /* settings.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17F61D5699020064D7AF /* settings.md */; };
 		CD52E4011EC8DCC5001255F1 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17C91D5661030064D7AF /* LICENSE.md */; };
 		CD52E4021EC8DCC5001255F1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6F17CA1D5661030064D7AF /* README.md */; };
@@ -100,18 +97,15 @@
 		CD2762481B0E30210000BB5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD27624A1B0E30210000BB5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD27624D1B0E30210000BB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		CD3C79861D5284A50016CC16 /* Build Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Build Badge.png"; sourceTree = "<group>"; };
-		CD3C79871D5284A50016CC16 /* Compatibility Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Compatibility Badge.png"; sourceTree = "<group>"; };
-		CD3C79881D5284A50016CC16 /* Tested Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tested Badge.png"; sourceTree = "<group>"; };
 		CD5796401CC576A40014BFD0 /* com.kladek.CocoaDebugFramework.settings.default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.kladek.CocoaDebugFramework.settings.default.plist; path = "Test Application/com.kladek.CocoaDebugFramework.settings.default.plist"; sourceTree = SOURCE_ROOT; };
 		CD5796421CC585CA0014BFD0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		CD5796431CC585CA0014BFD0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaDebugSettings.h; path = pkDebugFramework/CocoaDebugSettings.h; sourceTree = SOURCE_ROOT; };
-		CD5796461CC625F10014BFD0 /* CocoaDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaDebugSettings.m; path = pkDebugFramework/CocoaDebugSettings.m; sourceTree = SOURCE_ROOT; };
+		CD5796451CC625F10014BFD0 /* CocoaDebugSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaDebugSettings.h; path = CocoaDebugKit/CocoaDebugSettings.h; sourceTree = SOURCE_ROOT; };
+		CD5796461CC625F10014BFD0 /* CocoaDebugSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaDebugSettings.m; path = CocoaDebugKit/CocoaDebugSettings.m; sourceTree = SOURCE_ROOT; };
 		CD57964A1CC632D40014BFD0 /* com.kladek.CocoaDebugFramework.settings.dusk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.kladek.CocoaDebugFramework.settings.dusk.plist; sourceTree = "<group>"; };
 		CD5B602B1CCFCD4000EE3F31 /* objc types.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "objc types.pdf"; sourceTree = "<group>"; };
-		CD6F17C91D5661030064D7AF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		CD6F17CA1D5661030064D7AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CD6F17C91D5661030064D7AF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
+		CD6F17CA1D5661030064D7AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CD6F17D01D5698EC0064D7AF /* Color PropertyName Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color PropertyName Badge.png"; sourceTree = "<group>"; };
 		CD6F17D11D5698EC0064D7AF /* Color Keyword Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Color Keyword Badge.png"; sourceTree = "<group>"; };
 		CD6F17D21D5698EC0064D7AF /* Max Lenght Badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Max Lenght Badge.png"; sourceTree = "<group>"; };
@@ -177,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				CD2762421B0E30210000BB5D /* Test Application */,
-				CD2761ED1B0E1C050000BB5D /* pkDebugFramework */,
+				CD2761ED1B0E1C050000BB5D /* CocoaDebugKit */,
 				CD2761EC1B0E1C050000BB5D /* Products */,
 				CDC75DFD1CEB18F0004393EE /* Doc */,
 			);
@@ -192,7 +186,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CD2761ED1B0E1C050000BB5D /* pkDebugFramework */ = {
+		CD2761ED1B0E1C050000BB5D /* CocoaDebugKit */ = {
 			isa = PBXGroup;
 			children = (
 				CD2761F01B0E1C050000BB5D /* CocoaDebugKit.h */,
@@ -202,7 +196,7 @@
 				CD01A8A71CC6653700DE196C /* Debug Description */,
 				CD2761EE1B0E1C050000BB5D /* Supporting Files */,
 			);
-			path = pkDebugFramework;
+			path = CocoaDebugKit;
 			sourceTree = "<group>";
 		};
 		CD2761EE1B0E1C050000BB5D /* Supporting Files */ = {
@@ -323,9 +317,6 @@
 				CDC75DFE1CEB18F0004393EE /* add debugView.png */,
 				CDC75DFF1CEB18F0004393EE /* new Debug.png */,
 				CDC75E001CEB18F0004393EE /* old Debug.png */,
-				CD3C79861D5284A50016CC16 /* Build Badge.png */,
-				CD3C79871D5284A50016CC16 /* Compatibility Badge.png */,
-				CD3C79881D5284A50016CC16 /* Tested Badge.png */,
 			);
 			path = Doc;
 			sourceTree = "<group>";
@@ -366,7 +357,7 @@
 				CD2761E71B0E1C050000BB5D /* Frameworks */,
 				CD2761E81B0E1C050000BB5D /* Headers */,
 				CD2761E91B0E1C050000BB5D /* Resources */,
-				CD57962A1CC523830014BFD0 /* ShellScript */,
+				CD57962A1CC523830014BFD0 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -454,12 +445,10 @@
 				CDC75E021CEB18F0004393EE /* new Debug.png in Resources */,
 				CD8962DD1CC63B2C001E6749 /* com.kladek.CocoaDebugFramework.settings.basic.plist in Resources */,
 				CD6F17EE1D5698EC0064D7AF /* NSColor.png in Resources */,
-				CD3C798B1D5284A50016CC16 /* Tested Badge.png in Resources */,
 				CD6F17E51D5698EC0064D7AF /* Frame Color Badge.png in Resources */,
 				CD6F17E61D5698EC0064D7AF /* Default Font Badge.png in Resources */,
 				CD6F17E31D5698EC0064D7AF /* Color Keyword Badge.png in Resources */,
 				CD6F17F31D5698EC0064D7AF /* Save Url Badge.png in Resources */,
-				CD3C798A1D5284A50016CC16 /* Compatibility Badge.png in Resources */,
 				CD6F17F71D5699020064D7AF /* Auto Versioning.md in Resources */,
 				CD6F17E91D5698EC0064D7AF /* Color Text Badge.png in Resources */,
 				CD6F17EA1D5698EC0064D7AF /* Line Spacing Badge.png in Resources */,
@@ -479,7 +468,6 @@
 				CD6F17F21D5698EC0064D7AF /* Person.png in Resources */,
 				CD6F17F81D5699020064D7AF /* Home.md in Resources */,
 				CD6F17EF1D5698EC0064D7AF /* Image Size Badge.png in Resources */,
-				CD3C79891D5284A50016CC16 /* Build Badge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,13 +487,14 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
-		CD57962A1CC523830014BFD0 /* ShellScript */ = {
+		CD57962A1CC523830014BFD0 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,7 +640,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = pkDebugFramework/Info.plist;
+				INFOPLIST_FILE = CocoaDebugKit/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -672,7 +661,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = pkDebugFramework/Info.plist;
+				INFOPLIST_FILE = CocoaDebugKit/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
