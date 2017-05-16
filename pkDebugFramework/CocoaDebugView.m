@@ -69,7 +69,7 @@
 	return view;
 }
 
-+ (CocoaDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj
++ (CocoaDebugView *)debugViewWithProperties:(NSArray *)properties ofObject:(NSObject *)obj
 {
 	CocoaDebugView *view = [[CocoaDebugView alloc] init];
 	[view setObj:obj];
@@ -84,27 +84,22 @@
 	return view;
 }
 
-+ (CocoaDebugView *)debugViewExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj includeSuperclasses:(BOOL)include
++ (CocoaDebugView *)debugViewWithExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj
 {
 	CocoaDebugView *view = [CocoaDebugView debugView];
 	[view setObj:obj];
-
-	if (include) {
-		[view setTitle:[view traceSuperClassesOfObject:obj]];
-	} else {
-		[view setTitle:[obj className]];
-	}
+	[view setTitle:[view traceSuperClassesOfObject:obj]];
 	
 	CocoaPropertyEnumerator *enumerator = [[CocoaPropertyEnumerator alloc] init];
 	Class currentClass = [obj class];
 	
-	while (currentClass != nil) {
+	while (currentClass && currentClass != [NSObject class]) {
 		
-		[enumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+		[enumerator enumeratePropertiesFromClass:currentClass allowed:nil block:^(NSString *type, NSString *name) {
 			BOOL found = false;
-			for (NSString *propertie in properties)
+			for (NSString *property in properties)
 			{
-				if ([propertie isEqualToString:name]) {
+				if ([property isEqualToString:name]) {
 					found = true;
 					break;
 				}
@@ -115,11 +110,7 @@
 			}
 		}];
 		
-		if (include) {
-			currentClass = [currentClass superclass];
-		} else {
-			break;
-		}
+		currentClass = [currentClass superclass];
 	}
 	
 	return view;
@@ -375,7 +366,7 @@
 		
 		while (currentClass != nil && currentClass != [NSObject class])
 		{
-			[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+			[propertyEnumerator enumeratePropertiesFromClass:currentClass allowed:nil block:^(NSString *type, NSString *name) {
 				[self addProperty:name type:type toObject:obj];
 			}];
 			
@@ -386,27 +377,28 @@
 	}
 	else
 	{
-		[propertyEnumerator enumerateProperties:[obj class] allowed:nil block:^(NSString *type, NSString *name) {
+		[propertyEnumerator enumeratePropertiesFromClass:[obj class] allowed:nil block:^(NSString *type, NSString *name) {
 			[self addProperty:name type:type toObject:obj];
 		}];
 	}
 }
 
-- (void)addProperties:(NSString *)string fromObject:(NSObject *)obj
+- (void)addProperties:(NSArray *)array fromObject:(NSObject *)obj
 {
-	if (string && string.length == 0) {
+	if (!array || array.count == 0) {
 		return;
 	}
 	
-	NSArray *properties = [string componentsSeparatedByString:@", "];
+	Class currentClass = [obj class];
 	
-	if (!properties) {
-		@throw @"malformed properties parameter!";
+	while (currentClass && currentClass != [NSObject class])
+	{
+		[propertyEnumerator enumeratePropertiesFromClass:currentClass allowed:array block:^(NSString *type, NSString *name) {
+			[self addProperty:name type:type toObject:obj];
+		}];
+		
+		currentClass = [currentClass superclass];
 	}
-	
-	[properties enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
-		[self addProperty:key type:[propertyEnumerator propertyTypeFromName:key object:obj] toObject:obj];
-	}];
 }
 
 
@@ -538,7 +530,7 @@
 	}
 
 
-	[self syncroniseHeightOfView:left secondView:imageView];
+	[self synchroniseHeightOfView:left secondView:imageView];
 	pos = pos + imageView.frame.size.height + _lineSpace;
 	[self addSubview:imageView];
 	[self resizeLeftTextViews];
@@ -568,8 +560,6 @@
 		rightWidth = view.frame.size.width;
 	}
 	
-	
-//	[self syncroniseHeightOfView:left secondView:right];
 	pos = pos + fmaxf(left.frame.size.height, view.frame.size.height) + _lineSpace;
 	[self addSubview:view];
 	[self resizeLeftTextViews];
@@ -976,7 +966,7 @@
 	}
 	
 	
-	[self syncroniseHeightOfView:left secondView:right];
+	[self synchroniseHeightOfView:left secondView:right];
 	pos = pos + fmaxf(left.frame.size.height, right.frame.size.height) + _lineSpace;
 	[self addSubview:right];
 	[self resizeLeftTextViews];
@@ -1039,7 +1029,7 @@
 	return renderedImage;
 }
 
-- (void)syncroniseHeightOfView:(NSView *)left secondView:(NSView *)right
+- (void)synchroniseHeightOfView:(NSView *)left secondView:(NSView *)right
 {
 	CGFloat height = fmaxf(left.frame.size.height, right.frame.size.height);
 	[left setFrame:NSMakeRect(left.frame.origin.x, left.frame.origin.y, left.frame.size.width, height)];

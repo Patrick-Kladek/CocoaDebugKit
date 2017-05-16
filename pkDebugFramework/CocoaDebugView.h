@@ -53,28 +53,28 @@
 
 /**
  *	Creates a new debugView with all properties from Object.
+ *
  *	@param obj: the object for which the debugView will be created.
  *	@param include:	includes properties from Superclasses if true, otherwise only properties from current class.
  */
 + (CocoaDebugView *)debugViewWithAllPropertiesOfObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
 
 /**
- *	Works only with current class, not objects/variables from subclasses.
- *	Pass properties in format: @code property1, property2, property3 @endcode
- *	@param properties: properties which will be added to the debugView.
+ *	Creates a new debugView with all properties specified. Will also search in Superclasses.
+ *
+ *	@param properties: An array of properties (NSString) which will be added to the debugView.
  *	@param obj: the object for which the debugView will be created.
- *	@todo use property enumerator and check every property before adding them.
  */
-+ (CocoaDebugView *)debugViewWithProperties:(NSString *)properties ofObject:(NSObject *)obj;
++ (CocoaDebugView *)debugViewWithProperties:(NSArray *)properties ofObject:(NSObject *)obj;
 
 /**
  *	Creates a new debugView with all properties from Object excluding named properties.
  *	@param properties: exclude properties from debugView.
  */
-+ (CocoaDebugView *)debugViewExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
++ (CocoaDebugView *)debugViewWithExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj;
 
 
-- (void)addProperties:(NSString *)string fromObject:(NSObject *)obj;
+- (void)addProperties:(NSArray *)array fromObject:(NSObject *)obj;
 - (void)addAllPropertiesFromObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
 
 - (void)addLineWithDescription:(NSString *)desc string:(NSString *)value;

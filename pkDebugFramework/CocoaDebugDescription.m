@@ -57,7 +57,7 @@
 	
 	while (currentClass != nil)
 	{
-		[propertyEnumerator enumerateProperties:currentClass allowed:nil block:^(NSString *type, NSString *name) {
+		[propertyEnumerator enumeratePropertiesFromClass:currentClass allowed:nil block:^(NSString *type, NSString *name) {
 			[self addProperty:name type:type fromObject:obj];
 		}];
 		
