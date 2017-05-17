@@ -109,7 +109,6 @@
 																								NSFilePathErrorKey:@" NSFilePathError"
 																								}]];
 	TestObject *obj2 = [[TestObject alloc] init];
-	[obj2 setName:@"hugo"];
 	[obj setObject:obj2];
 	
 	

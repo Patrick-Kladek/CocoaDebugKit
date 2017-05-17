@@ -74,21 +74,28 @@
 + (CocoaDebugView *)debugViewWithExcludingProperties:(NSArray *)properties ofObject:(NSObject *)obj;
 
 
-- (void)addProperties:(NSArray *)array fromObject:(NSObject *)obj;
 - (void)addAllPropertiesFromObject:(NSObject *)obj includeSuperclasses:(BOOL)include;
+- (void)addProperties:(NSArray *)array fromObject:(NSObject *)obj;
 
 - (void)addLineWithDescription:(NSString *)desc string:(NSString *)value;
+- (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
+- (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date;
+- (void)addLineWithDescription:(NSString *)desc view:(NSView *)view;
+- (void)addLineWithDescription:(NSString *)desc color:(NSColor *)color;
+- (void)addLineWithDescription:(NSString *)desc error:(NSError *)error;
+- (void)addLineWithDescription:(NSString *)desc data:(NSData *)data;
+
 - (void)addLineWithDescription:(NSString *)desc integer:(NSInteger)integer;
 - (void)addLineWithDescription:(NSString *)desc unsignedInteger:(NSUInteger)uinteger;
 - (void)addLineWithDescription:(NSString *)desc longnumber:(long long)number;
 - (void)addLineWithDescription:(NSString *)desc unsignedLongnumber:(unsigned long long)number;
 - (void)addLineWithDescription:(NSString *)desc floating:(double)floating;
 - (void)addLineWithDescription:(NSString *)desc boolean:(BOOL)boolean;
-- (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
-- (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date;
-- (void)addLineWithDescription:(NSString *)desc view:(NSView *)view;
+
 
 - (void)saveDebugView;
 - (BOOL)saveDebugViewToUrl:(NSURL *)url;
+
+- (NSImage *)imageFromView:(NSView *)view;
 
 @end
