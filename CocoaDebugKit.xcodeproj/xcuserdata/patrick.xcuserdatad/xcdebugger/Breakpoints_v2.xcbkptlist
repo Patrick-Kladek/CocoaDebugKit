@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CocoaDebugKit/CocoaPropertyEnumerator.m"
-            timestampString = "516655478.258715"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-enumeratePropertiesFromClass:allowed:block:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Test Application/AppDelegate.m"
-            timestampString = "516742607.785871"
+            timestampString = "516742870.813059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-createDynamicDebugViewPerson"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-createDynamicDebugView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

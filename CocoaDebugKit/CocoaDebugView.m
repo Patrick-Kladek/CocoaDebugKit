@@ -410,43 +410,30 @@
 
 - (void)addLineWithDescription:(NSString *)desc image:(NSImage *)image;
 {
+	if (!image) {
+		[self addLineWithDescription:desc string:nil];
+		return;
+	}
+	
+	
 	NSString *upperCaseDescription = [desc stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[desc substringToIndex:1] capitalizedString]];
 	NSTextField *left = [self _addLeftLabel:upperCaseDescription color:_propertyNameColor font:_propertyNameFont];
 	
+	NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10 + leftWidth + 20, pos, _imageSize.width, _imageSize.height)];
+	[imageView setImage:image];
+	[imageView setIdentifier:@"rightImage"];
+	[imageView setImageScaling:NSImageScaleProportionallyUpOrDown];
+	[self addSubview:imageView];
 	
-	if (!image)
-	{
-		NSTextField *right;
-		if (self.highlightKeywords) {
-			right = [self _addRightLabel:@"nil" color:_keywordColor font:_keywordFont];
-		} else {
-			right = [self _addRightLabel:@"nil" color:_textColor font:_keywordFont];
-		}
-		
-		[self synchroniseHeightOfView:left secondView:right];
-		pos = pos + right.frame.size.height + _lineSpace;
-		[self resizeLeftTextViews];
-		[self resizeRightTextViews];
-		[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
+	if (imageView.frame.size.width > rightWidth) {
+		rightWidth = imageView.frame.size.width;
 	}
-	else
-	{
-		NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10 + leftWidth + 20, pos, _imageSize.width, _imageSize.height)];
-		[imageView setImage:image];
-		[imageView setIdentifier:@"rightImage"];
-		[imageView setImageScaling:NSImageScaleProportionallyUpOrDown];
-		[self addSubview:imageView];
-		
-		if (imageView.frame.size.width > rightWidth) {
-			rightWidth = imageView.frame.size.width;
-		}
-		
-		[self synchroniseHeightOfView:left secondView:imageView];
-		pos = pos + imageView.frame.size.height + _lineSpace;
-		[self resizeLeftTextViews];
-		[self resizeRightTextViews];
-		[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
-	}
+	
+	[self synchroniseHeightOfView:left secondView:imageView];
+	pos = pos + imageView.frame.size.height + _lineSpace;
+	[self resizeLeftTextViews];
+	[self resizeRightTextViews];
+	[self setFrame:NSMakeRect(0, 0, 10 + leftWidth + 20 + rightWidth + 10, pos)];
 }
 
 - (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date
@@ -459,19 +446,15 @@
 
 - (void)addLineWithDescription:(NSString *)desc view:(NSView *)view
 {
-	// add left label
-	NSTextField *left = [self _addLeftLabel:desc color:_propertyNameColor font:_propertyNameFont];
-	
-	if (!view)
-	{
-		if (self.highlightKeywords) {
-			[self _addRightLabel:@"nil" color:_keywordColor font:_textFont];
-		} else {
-			[self _addRightLabel:@"nil" color:_textColor font:_textFont];
-		}
+	if (!view) {
+		[self addLineWithDescription:desc string:nil];
 		return;
 	}
 	
+	
+	// add left label
+	NSTextField *left = [self _addLeftLabel:desc color:_propertyNameColor font:_propertyNameFont];
+		
 	// add right view
 	[view setFrameOrigin:NSMakePoint(10 + leftWidth + 20, pos)];
 	[view setIdentifier:@"rightImage"];
@@ -490,54 +473,35 @@
 
 - (void)addLineWithDescription:(NSString *)desc color:(NSColor *)color
 {
-	if (color)
-	{
-		NSView *view = [self detailViewFromColor:color];
-		[self addLineWithDescription:desc view:view];
+	if (!color) {
+		[self addLineWithDescription:desc string:nil];
+		return;
 	}
-	else
-	{
-		if (self.highlightKeywords) {
-			[self _addLineWithDescription:desc string:@"nil" leftColor:_propertyNameColor rightColor:_keywordColor leftFont:_textFont rightFont:_keywordFont];
-		} else {
-			[self _addLineWithDescription:desc string:@"nil" leftColor:_propertyNameColor rightColor:_textColor leftFont:_textFont rightFont:_keywordFont];
-		}
-	}
+	
+	NSView *view = [self detailViewFromColor:color];
+	[self addLineWithDescription:desc view:view];
 }
 
 - (void)addLineWithDescription:(NSString *)desc error:(NSError *)error
 {
-	if (error)
-	{
-		NSView *view = [self detailViewFromError:error];
-		[self addLineWithDescription:desc view:view];
+	if (!error) {
+		[self addLineWithDescription:desc string:nil];
+		return;
 	}
-	else
-	{
-		if (self.highlightKeywords) {
-			[self _addLineWithDescription:desc string:@"nil" leftColor:_propertyNameColor rightColor:_keywordColor leftFont:_textFont rightFont:_keywordFont];
-		} else {
-			[self _addLineWithDescription:desc string:@"nil" leftColor:_propertyNameColor rightColor:_textColor leftFont:_textFont rightFont:_keywordFont];
-		}
-	}
+	
+	NSView *view = [self detailViewFromError:error];
+	[self addLineWithDescription:desc view:view];
 }
 
 - (void)addLineWithDescription:(NSString *)desc data:(NSData *)data
 {
-	if (data)
-	{
-		NSString *string = [NSString stringWithFormat:@"%@ ...", [CocoaDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
-		[self addLineWithDescription:[self lineFromString:desc] string:string];
-	}
-	else
-	{
-		if (self.highlightKeywords) {
-			[self _addLineWithDescription:desc string:@"nil" leftColor:_propertyNameColor rightColor:_keywordColor leftFont:_textFont rightFont:_keywordFont];
-		} else {
-			[self _addLineWithDescription:desc string:@"nil" leftColor:_propertyNameColor rightColor:_textColor leftFont:_textFont rightFont:_keywordFont];
-		}
+	if (!data) {
+		[self addLineWithDescription:desc string:nil];
+		return;
 	}
 	
+	NSString *string = [NSString stringWithFormat:@"%@ ...", [CocoaDebugView getSubData:data withRange:NSMakeRange(0, 20)]];
+	[self addLineWithDescription:[self lineFromString:desc] string:string];
 }
 
 #pragma mark - add scalar properties
