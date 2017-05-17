@@ -349,7 +349,7 @@
 	NSBitmapImageRep *rep = [self bitmapImageRepForCachingDisplayInRect:self.bounds];
 	[self cacheDisplayInRect:self.bounds toBitmapImageRep:rep];
 	
-	NSData *data = [rep representationUsingType:NSPNGFileType properties:nil];
+	NSData *data = [rep representationUsingType:NSPNGFileType properties:@{}];
 	return [data writeToURL:url atomically:YES];
 }
 
