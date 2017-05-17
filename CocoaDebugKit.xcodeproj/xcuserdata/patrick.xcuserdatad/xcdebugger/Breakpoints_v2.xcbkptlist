@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test Application/AppDelegate.m"
-            timestampString = "516741200.79924"
+            timestampString = "516742607.785871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-createDynamicDebugView"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-createDynamicDebugViewPerson"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

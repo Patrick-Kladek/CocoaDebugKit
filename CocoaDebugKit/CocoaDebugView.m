@@ -451,21 +451,10 @@
 
 - (void)addLineWithDescription:(NSString *)desc date:(NSDate *)date
 {
-	if (date)
-	{
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:_dateFormat];
-		NSString *dateString = [dateFormatter stringFromDate:date];
-		[self addLineWithDescription:desc string:dateString];
-	}
-	else
-	{
-		if (self.highlightKeywords) {
-			[self _addRightLabel:@"nil" color:_keywordColor font:_textFont];
-		} else {
-			[self _addRightLabel:@"nil" color:_textColor font:_textFont];
-		}
-	}
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:_dateFormat];
+	NSString *dateString = [dateFormatter stringFromDate:date];
+	[self addLineWithDescription:desc string:dateString];
 }
 
 - (void)addLineWithDescription:(NSString *)desc view:(NSView *)view
