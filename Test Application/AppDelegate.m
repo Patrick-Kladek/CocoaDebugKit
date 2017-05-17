@@ -26,13 +26,13 @@
 	// Insert code here to initialize your application
 	
 	// init debugFramework
+	// Note: if sharedInstance is not initialized default values are used.
+	// Note: in this example every debugView is saved to ~/Desktop/debugView. You can turn this off by setting the key: debugView.appearance.key in plist to false.
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"com.kladek.CocoaDebugKit.settings.default" withExtension:@"plist"];
 	[[CocoaDebugSettings sharedSettings] loadSettings:url];
 	
 	[self createStaticDebugView];
-	
 	[self createDynamicDebugView];
-	
 	[self createDynamicDebugViewPerson];
 }
 
