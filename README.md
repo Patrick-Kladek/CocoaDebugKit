@@ -31,9 +31,9 @@ So how can we achieve this goal? It´s easy just add this Framework to your Proj
 
 - (id)debugQuickLookObject
 {
-	CocoaDebugView *view = [CocoaDebugView debugViewWithAllPropertiesOfObject:self includeSuperclasses:YES];
+    CocoaDebugView *view = [CocoaDebugView debugViewWithAllPropertiesOfObject:self includeSuperclasses:YES];
 	
-	return view;
+    return view;
 }
 
 @end
