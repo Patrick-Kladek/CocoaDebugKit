@@ -48,5 +48,3 @@ After that set a breakpoint in your code, select an object you want to inspect a
 ## Known Limitations
 - NSObject rootclass required
 - Cocoa Runtime
-- currently no iOS support
-
