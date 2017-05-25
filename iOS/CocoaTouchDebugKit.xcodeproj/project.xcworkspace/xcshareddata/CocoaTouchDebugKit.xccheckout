@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8B2872BC-AF1E-4415-89E1-B6F9D7AEC0FB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CocoaTouchDebugKit</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B46C11BBC29C4262BE69B4614EAB9753A8D96197</key>
+		<string>https://server.kladek.private/git/pkDebugFramework.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS/CocoaTouchDebugKit.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B46C11BBC29C4262BE69B4614EAB9753A8D96197</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://server.kladek.private/git/pkDebugFramework.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B46C11BBC29C4262BE69B4614EAB9753A8D96197</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B46C11BBC29C4262BE69B4614EAB9753A8D96197</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CocoaDebugKit</string>
+		</dict>
+	</array>
+</dict>
+</plist>
