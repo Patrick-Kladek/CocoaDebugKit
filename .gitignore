@@ -1,0 +1,5 @@
+.DS_Store
+UserInterfaceState.xcuserstate
+
+# Exclude personal Xcode user settings
+xcuserdata/ 
