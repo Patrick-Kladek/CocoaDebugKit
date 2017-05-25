@@ -1119,7 +1119,7 @@
 	CGImageRef cgRef = [image CGImageForProposedRect:NULL context:nil hints:nil];
 	NSBitmapImageRep *newRep = [[NSBitmapImageRep alloc] initWithCGImage:cgRef];
 	[newRep setSize:[image size]];   // if you want the same resolution
-	return [newRep representationUsingType:NSPNGFileType properties:nil];
+	return [newRep representationUsingType:NSPNGFileType properties:@{}];
 #endif
 }
 
