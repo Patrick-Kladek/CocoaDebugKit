@@ -3,8 +3,8 @@ CocoaDebugKit
 [![Twitter: @PatrickKladek](https://img.shields.io/badge/twitter-@PatrickKladek-orange.svg?style=flat)](https://twitter.com/PatrickKladek)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Patrick-Kladek/CocoaDebugKit/blob/master/LICENSE.md)
 ![Build](https://img.shields.io/badge/build-Xcode%206.2-blue.svg)
-![Platform](https://img.shields.io/badge/platform-macOS%2010.9-blue.svg)
-![Tested](https://img.shields.io/badge/tested-macOS%2010.9-blue.svg)
+![Platform](https://img.shields.io/badge/platform-macOS%2010.9+%20|%20iOS%208.0+-blue.svg)
+![Tested](https://img.shields.io/badge/tested-macOS%2010.9%20|%20iOS%208.0-blue.svg)
 
 Debugging made easy. Automatically create QuickLook images of custom objects.
 
@@ -48,3 +48,10 @@ After that set a breakpoint in your code, select an object you want to inspect a
 ## Known Limitations
 - NSObject rootclass required
 - Cocoa Runtime
+
+## Note
+On iOS returning a UIView subclass to QuickLook may result in an empty preview. To fix this simply return an image.
+
+```objecitve-c
+return [[CocoaDebugView debugViewWithAllPropertiesOfObject:self includeSuperclasses:YES] imageRepresentation];
+```
