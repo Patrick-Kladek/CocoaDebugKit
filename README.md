@@ -49,6 +49,23 @@ After that set a breakpoint in your code, select an object you want to inspect a
 - NSObject rootclass required
 - Cocoa Runtime
 
+Both of these limitations don't prevent you from using CocoaDebugKit. You can always create the debugView manually:
+
+```objective-c
+- (id)debugQuickLookObject
+{
+    CocoaDebugView *view = [CocoaDebugView debugView];
+
+    [view addLineWithDescription:@"Image:" image:self.image];
+    [view addLineWithDescription:@"First Name:" string:self.firstName];
+    [view addLineWithDescription:@"Last Name:" string:self.lastName];
+    [view addLineWithDescription:@"Birthday" date:self.birthday];
+
+    return view;
+}
+
+```
+
 ## Note
 On iOS returning a UIView subclass to QuickLook may result in an empty preview. To fix this simply return an image.
 
