@@ -670,10 +670,10 @@
         <window title="Test Application" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="428" y="145" width="1044" height="738"/>
+            <rect key="contentRect" x="428" y="145" width="1044" height="920"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="1044" height="738"/>
+                <rect key="frame" x="0.0" y="0.0" width="1044" height="920"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
         </window>

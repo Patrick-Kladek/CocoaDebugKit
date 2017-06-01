@@ -83,6 +83,7 @@ static CPColor *NSColorFromHexString(NSString *inColorString)
 		_backgroundColor		= [CPColor whiteColor];
 		_imageSize				= CPMakeSize(30, 30);
 		
+		_maxSizeOfField			= CGSizeMake(300, 500);
 		_maxDataLenght			= [NSNumber numberWithInteger:50];
 		_convertDataToImage		= true;
 		_propertyNameContains 	= @[@"image", @"icon"];
@@ -236,6 +237,11 @@ static CPColor *NSColorFromHexString(NSString *inColorString)
 		_saveAsPDF = [[settings valueForKeyPath:@"debugView.appearance.usePDF"] boolValue];
 	}
 	
+	if ([settings valueForKeyPath:@"debugView.appearance.maxFieldSize.width"] && [settings valueForKeyPath:@"debugView.appearance.maxFieldSize.height"]) {
+		_maxSizeOfField.width = [[settings valueForKeyPath:@"debugView.appearance.maxFieldSize.width"] floatValue];
+		_maxSizeOfField.height = [[settings valueForKeyPath:@"debugView.appearance.maxFieldSize.height"] floatValue];
+	}
+
 	
 	
 	if ([settings valueForKeyPath:@"debugView.NSDate.format"]) {

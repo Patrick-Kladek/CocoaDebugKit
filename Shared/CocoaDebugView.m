@@ -166,7 +166,7 @@
 		
 		self.dateFormat				= settings.dateFormat;
 		self.numberOfBitsPerColorComponent = settings.numberOfBitsPerColorComponent;
-		
+		self.maxSizeOfField			= settings.maxSizeOfField;
 		
 		
 		propertyEnumerator = [[CocoaPropertyEnumerator alloc] init];
@@ -1061,6 +1061,14 @@
 	
 	[self addSubview:right];
 	[right sizeToFit];
+	
+	// sizeThatsFits only availible in 10.10 and highter :(
+	CGFloat width = right.frame.size.width;
+	if (width > self.maxSizeOfField.width) {
+		NSInteger numberOfLines = ceil(width / self.maxSizeOfField.width);
+		CGFloat height = MIN(numberOfLines * right.font.pointSize * 1.5, self.maxSizeOfField.height);	// 1.5 since I assume pointSize return points from baseline to top (not bottom to top)
+		right.frame = CGRectMake(right.frame.origin.x, right.frame.origin.y, self.maxSizeOfField.width, height);
+	}
 	[self synchroniseRightWidthFromView:right];
 	
 	return right;

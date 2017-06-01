@@ -40,6 +40,7 @@
 @property (nonatomic) BOOL convertDataToImage;
 @property (nonatomic) NSMutableArray *propertyNameContains;
 @property (nonatomic) NSInteger numberOfBitsPerColorComponent;
+@property (nonatomic) CGSize maxSizeOfField;
 
 @property (nonatomic) NSString *dateFormat;
 

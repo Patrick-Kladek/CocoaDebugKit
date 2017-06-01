@@ -29,6 +29,13 @@
 			<false/>
 			<key>numberOfBitsPerColorComponent</key>
 			<integer>0</integer>
+			<key>maxFieldSize</key>
+			<dict>
+				<key>width</key>
+				<integer>300</integer>
+				<key>height</key>
+				<integer>200</integer>
+			</dict>
 		</dict>
 		<key>propertyName</key>
 		<dict>
