@@ -66,7 +66,7 @@
 	if (include) {
 		[view setTitle:[view traceSuperClassesOfObject:obj]];
 	} else {
-		[view setTitle:NSStringFromClass([self class])];
+		[view setTitle:NSStringFromClass([obj class])];
 	}
 	
 	[view addAllPropertiesFromObject:obj includeSuperclasses:include];
