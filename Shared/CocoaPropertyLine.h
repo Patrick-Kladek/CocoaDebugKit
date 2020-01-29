@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface CocoaPropertyLine : NSObject
 
 @property (nonatomic, readonly) NSString *type;

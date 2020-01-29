@@ -8,6 +8,7 @@
 
 #import "TestObject.h"
 
+
 @interface SecondObject : TestObject
 
 @property (nonatomic) NSString *hallo;

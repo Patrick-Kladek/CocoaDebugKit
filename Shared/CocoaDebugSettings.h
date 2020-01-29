@@ -10,20 +10,16 @@
 #import "CrossPlatformDefinitions.h"
 
 
-
-@interface CocoaDebugSettings : NSObject
+@interface CocoaDebugSettings: NSObject
 
 + (CocoaDebugSettings *)sharedSettings;
 
 @property (nonatomic, readonly) NSURL *url;
 @property (nonatomic, readonly) BOOL hasSettings;
 
-
-
-@property (nonatomic) NSInteger lineSpace;			
-@property (nonatomic) BOOL highlightKeywords;		
-@property (nonatomic) BOOL highlightNumbers;		
-
+@property (nonatomic) NSInteger lineSpace;
+@property (nonatomic) BOOL highlightKeywords;
+@property (nonatomic) BOOL highlightNumbers;
 
 @property (nonatomic) CPColor *textColor;
 @property (nonatomic) CPFont *textFont;
@@ -44,29 +40,22 @@
 @property (nonatomic) CPColor *backgroundColor;
 @property (nonatomic) CPSize imageSize;
 
-@property (nonatomic) NSString *dateFormat;			
-
+@property (nonatomic) NSString *dateFormat;
 
 @property (nonatomic) CGSize maxSizeOfField;
-@property (nonatomic) NSNumber *maxDataLenght;			
-@property (nonatomic) BOOL convertDataToImage;			
-@property (nonatomic) NSArray *propertyNameContains;	
+@property (nonatomic) NSNumber *maxDataLenght;
+@property (nonatomic) BOOL convertDataToImage;
+@property (nonatomic) NSArray *propertyNameContains;
 
+@property (nonatomic) BOOL save;
+@property (nonatomic) NSURL *saveUrl;
+@property (nonatomic) BOOL saveAsPDF;
 
-@property (nonatomic) BOOL save;			
-@property (nonatomic) NSURL *saveUrl;		
-@property (nonatomic) BOOL saveAsPDF;		
+@property (nonatomic) NSMutableDictionary *debuggedObjects; // used for numbering debugged views & descriptions
 
+@property (nonatomic) NSInteger numberOfBitsPerColorComponent;
 
-@property (nonatomic) NSMutableDictionary *debuggedObjects;		// used for numbering debugged views & descriptions
-
-
-@property (nonatomic) NSInteger numberOfBitsPerColorComponent;		
-
-
-
-
-- (BOOL)loadSettings:(NSURL *)url;		
-- (BOOL)saveSettings:(NSURL *)url;		
+- (BOOL)loadSettings:(NSURL *)url;
+- (BOOL)saveSettings:(NSURL *)url;
 
 @end

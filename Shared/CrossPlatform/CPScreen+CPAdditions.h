@@ -14,6 +14,6 @@
 @interface NSScreen (CPAdditions)
 #endif
 
-- (CGFloat)cp_scale;
+@property (nonatomic, readonly) CGFloat cp_scale;
 
 @end

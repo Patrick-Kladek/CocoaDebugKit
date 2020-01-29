@@ -17,9 +17,7 @@
 #endif
 
 
-
-- (void)cp_setText:(NSString *)string;
-- (NSString *)cp_Text;
+@property (nonatomic, setter=cp_setText:) NSString *cp_Text;
 
 - (void)cp_setAlignment:(CPTextAlignment)alignment;
 - (void)cp_setBordered:(BOOL)border;

@@ -8,6 +8,7 @@
 
 #import "CocoaPropertyLine.h"
 
+
 @implementation CocoaPropertyLine
 
 + (CocoaPropertyLine *)lineWithType:(NSString *)type name:(NSString *)name value:(NSString *)value

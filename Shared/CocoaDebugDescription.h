@@ -18,7 +18,6 @@
 @property (nonatomic) BOOL save;
 @property (nonatomic) NSURL *saveUrl;
 
-
 + (CocoaDebugDescription *)debugDescription;
 + (CocoaDebugDescription *)debugDescriptionForObject:(NSObject *)obj;
 
@@ -31,10 +30,3 @@
 - (BOOL)saveDebugDescriptionToUrl:(NSURL *)url error:(NSError **)error;
 
 @end
-
-
-
-
-
-
-

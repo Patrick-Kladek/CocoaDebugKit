@@ -36,6 +36,7 @@
 	[self setNeedsDisplay];
 #else
 	[self setNeedsDisplay:YES];
+    [self.layer setNeedsLayout];
 #endif
 }
 

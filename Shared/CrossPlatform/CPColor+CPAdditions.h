@@ -15,9 +15,9 @@
 	@interface NSColor (CPAdditions)
 #endif
 
-- (CGFloat)cp_redComponent;
-- (CGFloat)cp_greenComponent;
-- (CGFloat)cp_blueComponent;
-- (CGFloat)cp_alphaComponent;
+@property (nonatomic, readonly) CGFloat cp_redComponent;
+@property (nonatomic, readonly) CGFloat cp_greenComponent;
+@property (nonatomic, readonly) CGFloat cp_blueComponent;
+@property (nonatomic, readonly) CGFloat cp_alphaComponent;
 
 @end

@@ -6,14 +6,14 @@
 //  Copyright (c) 2017 Patrick Kladek. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "TestClass.h"
 #import <CocoaTouchDebugKit/CocoaTouchDebugKit.h>
+#import "TestClass.h"
+#import "ViewController.h"
+
 
 @interface ViewController ()
 
 @end
-
 
 
 @implementation ViewController
@@ -30,15 +30,11 @@
 	
 	view.frame = CGRectMake(50, 20, view.frame.size.width, view.frame.size.height);
 	[self.view addSubview:view];
-	
-	
+
 	TestClass *test = [TestClass new];
 	NSLog(@"%@", [test debugDescription]);
-	
-	
-	
-	UIImageView *view1 = [[UIImageView alloc] initWithImage:[test debugQuickLookObject]];
-	
+
+    UIImageView *view1 = [[UIImageView alloc] initWithImage:[test debugQuickLookObject]];
 	view1.frame = CGRectMake(10, 150, view1.frame.size.width, view1.frame.size.height);
 	[self.view addSubview:view1];
 }

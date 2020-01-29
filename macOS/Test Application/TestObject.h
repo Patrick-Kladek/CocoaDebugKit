@@ -10,16 +10,15 @@
 
 @class TestObject;
 
+
 @protocol TestObjectDelegate <NSObject>
 
--(void)smt;
+- (void)smt;
 
 @end
 
 
-
-
-@interface TestObject : NSObject
+@interface TestObject: NSObject
 
 @property (nonatomic, weak) id<TestObjectDelegate> delegate;
 
@@ -40,8 +39,6 @@
 @property (nonatomic) long lnum;
 
 @property (nonatomic) NSURL *url;
-
-
 
 @property (nonatomic) TestObject *object;
 
