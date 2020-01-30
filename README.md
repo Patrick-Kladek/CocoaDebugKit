@@ -2,7 +2,7 @@ CocoaDebugKit
 ============
 [![Twitter: @PatrickKladek](https://img.shields.io/badge/twitter-@PatrickKladek-orange.svg?style=flat)](https://twitter.com/PatrickKladek)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Patrick-Kladek/CocoaDebugKit/blob/master/LICENSE.md)
-![Build](https://img.shields.io/badge/build-Xcode%206.2-blue.svg)
+![Build](https://img.shields.io/badge/build-Xcode%2011-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%2010.9+%20|%20iOS%208.0+-blue.svg)
 ![Tested](https://img.shields.io/badge/tested-macOS%2010.9%20|%20iOS%208.0-blue.svg)
 
@@ -43,7 +43,22 @@ After that set a breakpoint in your code, select an object you want to inspect a
 
 ## Requirements
 - macOS 10.9+
-- Xcode 6.2+
+- iOS 8+
+- Xcode 11+
+
+## Installation
+
+The prefered way to use CocoaDebugKit is via Carthage. Simply add this line to your cartfile:
+
+```
+github "Patrick-Kladek/CocoaDebugKit"
+```
+
+and run:
+
+```
+carthage update --platform ios
+```
 
 ## Known Limitations
 - NSObject rootclass required
