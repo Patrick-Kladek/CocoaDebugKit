@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD2762401B0E30210000BB5D"
-               BuildableName = "Test Application.app"
-               BlueprintName = "Test Application"
-               ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
+               BlueprintIdentifier = "CDB4E1531ED1D3DA00DE6714"
+               BuildableName = "CocoaTouchDebugKit.framework"
+               BlueprintName = "CocoaTouchDebugKit"
+               ReferencedContainer = "container:iOS/CocoaTouchDebugKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD2762401B0E30210000BB5D"
-            BuildableName = "Test Application.app"
-            BlueprintName = "Test Application"
-            ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CD2762401B0E30210000BB5D"
-            BuildableName = "Test Application.app"
-            BlueprintName = "Test Application"
-            ReferencedContainer = "container:CocoaDebugKit.xcodeproj">
+            BlueprintIdentifier = "CDB4E1531ED1D3DA00DE6714"
+            BuildableName = "CocoaTouchDebugKit.framework"
+            BlueprintName = "CocoaTouchDebugKit"
+            ReferencedContainer = "container:iOS/CocoaTouchDebugKit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
