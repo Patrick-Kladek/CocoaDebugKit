@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:Example/Example.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CocoaDebugKit/CocoaDebugKit.xcodeproj">
+   </FileRef>
    <Group
       location = "group:macOS/Doc"
       name = "Doc">
+      <FileRef
+         location = "group:../../CocoaDebugKit/CocoaDebugKit.xcodeproj">
+      </FileRef>
       <Group
          location = "group:macOS/Doc"
          name = "Wiki">
@@ -43,10 +52,4 @@
          location = "group:Doc/objc types.pdf">
       </FileRef>
    </Group>
-   <FileRef
-      location = "container:macOS/CocoaDebugKit.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:iOS/CocoaTouchDebugKit.xcodeproj">
-   </FileRef>
 </Workspace>
