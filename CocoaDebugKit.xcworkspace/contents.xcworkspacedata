@@ -1,55 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:Doc"
+      name = "Doc">
+      <FileRef
+         location = "group:../LICENSE.md">
+      </FileRef>
+      <FileRef
+         location = "group:../README.md">
+      </FileRef>
+      <FileRef
+         location = "group:objc types.pdf">
+      </FileRef>
+      <FileRef
+         location = "group:new Debug.png">
+      </FileRef>
+      <FileRef
+         location = "group:NSColor.png">
+      </FileRef>
+      <FileRef
+         location = "group:old Debug.png">
+      </FileRef>
+      <FileRef
+         location = "group:Person.png">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:Example/Example.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CocoaDebugKit/CocoaDebugKit.xcodeproj">
    </FileRef>
-   <Group
-      location = "group:macOS/Doc"
-      name = "Doc">
-      <FileRef
-         location = "group:../../CocoaDebugKit/CocoaDebugKit.xcodeproj">
-      </FileRef>
-      <Group
-         location = "group:macOS/Doc"
-         name = "Wiki">
-         <FileRef
-            location = "group:macOS/../Doc/Auto Versioning.md">
-         </FileRef>
-         <FileRef
-            location = "group:macOS/../Doc/Home.md">
-         </FileRef>
-         <FileRef
-            location = "group:macOS/../Doc/settings.md">
-         </FileRef>
-         <Group
-            location = "group:macOS"
-            name = "Images">
-            <FileRef
-               location = "group:../Doc/new Debug.png">
-            </FileRef>
-            <FileRef
-               location = "group:../Doc/old Debug.png">
-            </FileRef>
-            <FileRef
-               location = "group:../Doc/NSColor.png">
-            </FileRef>
-            <FileRef
-               location = "group:../Doc/Person.png">
-            </FileRef>
-         </Group>
-      </Group>
-      <FileRef
-         location = "group:LICENSE.md">
-      </FileRef>
-      <FileRef
-         location = "group:README.md">
-      </FileRef>
-      <FileRef
-         location = "group:Doc/objc types.pdf">
-      </FileRef>
-   </Group>
 </Workspace>
