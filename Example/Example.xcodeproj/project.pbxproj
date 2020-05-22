@@ -255,7 +255,7 @@
 		CDB4E14B1ED1D3DA00DE6714 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Patrick Kladek";
 				TargetAttributes = {
 					CD63352023E2D28900293E4B = {
