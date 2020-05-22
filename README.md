@@ -5,6 +5,8 @@ CocoaDebugKit
 ![Build](https://img.shields.io/badge/build-Xcode%2011-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%2010.9+%20|%20iOS%208.0+-blue.svg)
 ![Tested](https://img.shields.io/badge/tested-macOS%2010.9%20|%20iOS%208.0-blue.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 
 Debugging made easy. Automatically create QuickLook images of custom objects.
 
