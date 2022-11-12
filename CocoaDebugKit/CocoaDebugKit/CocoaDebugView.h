@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CrossPlatformDefinitions.h"
+#import <CocoaDebugKit/CrossPlatformDefinitions.h>
 
 
 @interface CocoaDebugView : CPView
