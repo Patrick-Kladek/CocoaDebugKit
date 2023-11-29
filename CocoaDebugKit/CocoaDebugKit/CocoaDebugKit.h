@@ -9,9 +9,9 @@
 #include <TargetConditionals.h>
 
 #if TARGET_OS_IPHONE
-    @import UIKit;
+#import <UIKit/UIKit.h>
 #else
-    @import AppKit;
+#import <AppKit/AppKit.h>
 #endif
 
 
